@@ -4,19 +4,25 @@ using TMPro;
 public class MainMenuController : MonoBehaviour
 {
     public TextMeshProUGUI[] menuItems;
+    public AudioClip moveSound;
+    public AudioClip selectSound;
+
+    private AudioSource audioSource;
     private int selectedIndex = 0;
 
-    private void Start()
+    void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         UpdateMenu();
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)
         || Input.GetKeyDown(KeyCode.W))
         {
             selectedIndex = (selectedIndex - 1 + menuItems.Length) % menuItems.Length;
+            PlaySound(moveSound);
             UpdateMenu();
         }
 
@@ -24,16 +30,24 @@ public class MainMenuController : MonoBehaviour
         || Input.GetKeyDown(KeyCode.S))
         {
             selectedIndex = (selectedIndex + 1) % menuItems.Length;
+            PlaySound(moveSound);
             UpdateMenu();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            PlaySound(selectSound);
             SelectOption();
         }
     }
 
-    private void UpdateMenu()
+    void PlaySound(AudioClip clip)
+    {
+        if (clip != null)
+            audioSource.PlayOneShot(clip);
+    }
+
+    void UpdateMenu()
     {
         for (var i = 0; i < menuItems.Length; i++)
         {
@@ -44,7 +58,7 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    private void SelectOption()
+    void SelectOption()
     {
         switch (selectedIndex)
         {
