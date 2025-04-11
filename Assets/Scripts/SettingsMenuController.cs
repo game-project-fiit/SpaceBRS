@@ -20,6 +20,7 @@ public class SettingsMenuController : MonoBehaviour
         selectedIndex = 0; 
         UpdateMenu(); 
         musicSlider.onValueChanged.AddListener(OnMusicVolumeChange); 
+        soundsSlider.onValueChanged.AddListener(OnSoundsVolumeChange);
     }
 
     void Update()
@@ -51,6 +52,20 @@ public class SettingsMenuController : MonoBehaviour
             {
                 musicSlider.value = Mathf.Clamp(musicSlider.value - 1, musicSlider.minValue, musicSlider.maxValue);
                 OnMusicVolumeChange(musicSlider.value);
+            }
+        }
+        
+        if (selectedIndex == 1)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                soundsSlider.value = Mathf.Clamp(soundsSlider.value + 1, soundsSlider.minValue, soundsSlider.maxValue);
+                OnSoundsVolumeChange(soundsSlider.value);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                soundsSlider.value = Mathf.Clamp(soundsSlider.value - 1, soundsSlider.minValue, soundsSlider.maxValue);
+                OnSoundsVolumeChange(soundsSlider.value);
             }
         }
 
@@ -102,7 +117,13 @@ public class SettingsMenuController : MonoBehaviour
 
     void OnMusicVolumeChange(float value)
     {
-        volumeController.SetVolume(value); 
+        volumeController.SetMusicVolume(value); 
         Debug.Log("Music Volume set to: " + value);
+    }
+
+    void OnSoundsVolumeChange(float value)
+    {
+        volumeController.SetSoundsVolume(value); 
+        Debug.Log("Sounds Volume set to: " + value);
     }
 }
