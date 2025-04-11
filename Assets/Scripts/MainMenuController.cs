@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI; // Не забудьте добавить этот namespace для работы с UI
 using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    public TextMeshProUGUI[] menuItems;
+    public Button[] menuButtons; // Массив кнопок
+    public TextMeshProUGUI[] menuTexts; // Массив текстов для отображения
     public AudioClip moveSound;
     public AudioClip selectSound;
-
+    public GameObject optionsPanel; // Ссылка на панель настроек
     private AudioSource audioSource;
     private int selectedIndex = 0;
 
@@ -18,18 +20,18 @@ public class MainMenuController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)
-        || Input.GetKeyDown(KeyCode.W))
+        if (menuButtons.Length == 0) return; // Если массив пустой, ничего не делаем
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            selectedIndex = (selectedIndex - 1 + menuItems.Length) % menuItems.Length;
+            selectedIndex = (selectedIndex - 1 + menuButtons.Length) % menuButtons.Length;
             PlaySound(moveSound);
             UpdateMenu();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)
-        || Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
-            selectedIndex = (selectedIndex + 1) % menuItems.Length;
+            selectedIndex = (selectedIndex + 1) % menuButtons.Length;
             PlaySound(moveSound);
             UpdateMenu();
         }
@@ -49,12 +51,36 @@ public class MainMenuController : MonoBehaviour
 
     void UpdateMenu()
     {
-        for (var i = 0; i < menuItems.Length; i++)
+        for (var i = 0; i < menuButtons.Length; i++)
         {
             if (i == selectedIndex)
-                menuItems[i].text = "> " + menuItems[i].text.Replace("> ", "");
+            {
+                // Добавляем символ '>' к выделенному пункту
+                menuTexts[i].text = ">" + menuTexts[i].text.TrimStart('>');
+                menuButtons[i].Select(); // Выбор кнопки для управления фокусом
+            }
             else
-                menuItems[i].text = menuItems[i].text.Replace("> ", "");
+            {
+                // Убираем символ '>' от невыделенных пунктов
+                menuTexts[i].text = menuTexts[i].text.TrimStart('>');
+            }
+        }
+    }
+
+    void ShowOptionsPanel()
+    {
+        gameObject.SetActive(false); // Скрываем главное меню
+        optionsPanel.SetActive(true); // Активируем панель настроек
+        UpdateOptionsTextVisibility(true); // Показываем текст панели настроек
+    }
+
+    void UpdateOptionsTextVisibility(bool isVisible)
+    {
+        // Предполагаем, что у вас есть ссылки на тексты в optionsPanel
+        TextMeshProUGUI[] optionTexts = optionsPanel.GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (var text in optionTexts)
+        {
+            text.gameObject.SetActive(isVisible); // Устанавливаем видимость текста
         }
     }
 
@@ -64,9 +90,11 @@ public class MainMenuController : MonoBehaviour
         {
             case 0:
                 Debug.Log("Start Game");
+                // Здесь можно добавить код для начала игры
                 break;
             case 1:
                 Debug.Log("Options");
+                ShowOptionsPanel(); // Переход на панель настроек
                 break;
             case 2:
                 Debug.Log("Quit Game");
