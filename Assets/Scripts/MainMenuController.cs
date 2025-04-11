@@ -10,6 +10,7 @@ public class MainMenuController : MonoBehaviour
     public AudioClip moveSound;
     public AudioClip selectSound; 
     public GameObject optionsPanel; 
+    public GameObject menuPanel; 
     private AudioSource audioSource;
     private int selectedIndex = 0;
 
@@ -75,7 +76,7 @@ public class MainMenuController : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Options");
-                optionsPanel.SetActive(true); 
+                ShowOptionsPanel(); // Переход к OptionsPanel
                 break;
             case 2:
                 Debug.Log("Quit Game");
@@ -85,9 +86,15 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    void ShowOptionsPanel()
+    {
+        menuPanel.SetActive(false); // Скрываем MenuPanel
+        optionsPanel.SetActive(true); // Показываем OptionsPanel
+    }
+
     IEnumerator QuitGame()
     {
-        yield return new WaitForSeconds(selectSound.length/2);
+        yield return new WaitForSeconds(selectSound.length / 2);
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

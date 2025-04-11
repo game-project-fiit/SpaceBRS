@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 91ad9d15e9919d642bf5e3d328ec46a3
+guid: 90246d0b34fd1444ebc80cf4b900a815
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8635233584502960418
-    second: "\u0444\u043E\u043D_0"
+      213: -2307654152312937328
+    second: "\u0444\u043E\u043D \u043A\u043E\u0441\u043C\u043E\u0441_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0444\u043E\u043D_0"
+      name: "\u0444\u043E\u043D \u043A\u043E\u0441\u043C\u043E\u0441_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 612
-        height: 408
+        width: 3840
+        height: 2160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ede8d2b6ecc792880800000000000000
-      internalID: -8635233584502960418
+      spriteID: 094aee266c099ffd0800000000000000
+      internalID: -2307654152312937328
       vertices: []
       indices: 
       edges: []
