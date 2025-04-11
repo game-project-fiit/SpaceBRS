@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         UpdateMenu();
+        optionsPanel.SetActive(false); // Скрыть панель опций при старте
     }
 
     void Update()
@@ -75,7 +76,7 @@ public class MainMenuController : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Options");
-                optionsPanel.SetActive(true); 
+                OpenOptions(); // Открыть панель опций
                 break;
             case 2:
                 Debug.Log("Quit Game");
@@ -83,6 +84,28 @@ public class MainMenuController : MonoBehaviour
                 StartCoroutine(QuitGame()); 
                 break;
         }
+    }
+
+    void OpenOptions()
+    {
+        // Скрыть основное меню и показать панель опций
+        foreach (var button in menuButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+        optionsPanel.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
+        // Скрыть панель опций и показать основное меню
+        optionsPanel.SetActive(false);
+        foreach (var button in menuButtons)
+        {
+            button.gameObject.SetActive(true);
+        }
+        selectedIndex = 0; // Сбросить выбранный индекс
+        UpdateMenu(); // Обновить меню
     }
 
     IEnumerator QuitGame()
