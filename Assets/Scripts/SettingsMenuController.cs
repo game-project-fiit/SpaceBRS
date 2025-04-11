@@ -7,12 +7,15 @@ public class SettingsMenuController : MonoBehaviour
     public Slider musicSlider; 
     public Slider soundsSlider; 
     public Button hotkeysButton; 
+    public Button backButton; // Добавляем кнопку "Back"
     public TextMeshProUGUI[] settingTexts; 
     public AudioClip moveSound; 
     public AudioClip selectSound;
     private AudioSource audioSource;
     private int selectedIndex = 0; 
     public VolumeController volumeController; 
+    public GameObject settingsPanel; // Панель настроек
+    public GameObject mainMenuPanel; // Панель главного меню
 
     void Start()
     {
@@ -21,12 +24,18 @@ public class SettingsMenuController : MonoBehaviour
         UpdateMenu(); 
         musicSlider.onValueChanged.AddListener(OnMusicVolumeChange); 
         soundsSlider.onValueChanged.AddListener(OnSoundsVolumeChange);
+    
+        // Добавляем слушатель для кнопки "Back"
+        backButton.onClick.AddListener(ReturnToMainMenu);
+        Debug.Log("Back button listener added");
     }
+
 
     void Update()
     {
         if (settingTexts.Length == 0) return;
 
+        // Навигация по меню
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             selectedIndex = (selectedIndex - 1 + settingTexts.Length) % settingTexts.Length;
@@ -41,6 +50,7 @@ public class SettingsMenuController : MonoBehaviour
             UpdateMenu();
         }
         
+        // Управление значением громкости музыки
         if (selectedIndex == 0)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -55,6 +65,7 @@ public class SettingsMenuController : MonoBehaviour
             }
         }
         
+        // Управление значением громкости звуков
         if (selectedIndex == 1)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -69,6 +80,7 @@ public class SettingsMenuController : MonoBehaviour
             }
         }
 
+        // Обработка нажатия клавиши Enter для выбора опции
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PlaySound(selectSound);
@@ -111,9 +123,37 @@ public class SettingsMenuController : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Opening Hotkeys Menu");
+                // Здесь можно добавить логику для открытия меню горячих клавиш
+                break;
+            case 3: // Обработка кнопки "Back"
+                ReturnToMainMenu(); // Вызов метода для возврата в главное меню
                 break;
         }
     }
+
+    void ReturnToMainMenu()
+    {
+        Debug.Log("Attempting to return to Main Menu");
+
+        // Деактивируем панель настроек
+        settingsPanel.SetActive(false); 
+        Debug.Log("Settings panel deactivated");
+
+        // Активируем панель главного меню
+        mainMenuPanel.SetActive(true);
+        Debug.Log("Main menu panel activated");
+
+        // Убедитесь, что кнопки главного меню активны
+        foreach (Transform child in mainMenuPanel.transform)
+        {
+            if (child.GetComponent<Button>() != null)
+            {
+                child.gameObject.SetActive(true); // Убедитесь, что каждая кнопка активна
+                Debug.Log("Button " + child.name + " activated");
+            }
+        }
+    }
+
 
     void OnMusicVolumeChange(float value)
     {
