@@ -5,6 +5,7 @@ using System.Collections;
 
 public class MainMenuController : MonoBehaviour
 {
+    public GameObject HotkeysPanel; 
     public Button[] menuButtons; 
     public TextMeshProUGUI[] menuTexts; 
     public AudioClip moveSound;
@@ -45,13 +46,13 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    void PlaySound(AudioClip clip)
+    private void PlaySound(AudioClip clip)
     {
         if (clip != null)
             audioSource.PlayOneShot(clip);
     }
 
-    void UpdateMenu()
+    private void UpdateMenu()
     {
         for (var i = 0; i < menuButtons.Length; i++)
         {
@@ -67,7 +68,7 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    void SelectOption()
+    private void SelectOption()
     {
         switch (selectedIndex)
         {
@@ -86,27 +87,26 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    void OpenOptions()
+    private void OpenOptions()
     {
         foreach (var button in menuButtons)
         {
-            button.gameObject.SetActive(false);
+            button.gameObject.SetActive(false); 
         }
-        optionsPanel.SetActive(true);
-    }
-
-    public void BackToMainMenu()
-    {
-        optionsPanel.SetActive(false);
-        foreach (var button in menuButtons)
+        
+        if (optionsPanel != null) optionsPanel.SetActive(true);
+        if (HotkeysPanel != null)
         {
-            button.gameObject.SetActive(true);
+            HotkeysPanel.SetActive(false);
         }
-        selectedIndex = 0; 
-        UpdateMenu(); 
+        else
+        {
+            Debug.LogWarning("HotkeysPanel is not assigned in the inspector!");
+        }
+        
     }
 
-    IEnumerator QuitGame()
+    private IEnumerator QuitGame()
     {
         yield return new WaitForSeconds(selectSound.length/2);
         #if UNITY_EDITOR
