@@ -1,16 +1,17 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 using TMPro;
-using System.Collections; 
+using System.Collections;
 
 public class MainMenuController : MonoBehaviour
 {
-    public GameObject HotkeysPanel; 
-    public Button[] menuButtons; 
-    public TextMeshProUGUI[] menuTexts; 
+    public GameObject HotkeysPanel;
+    public Button[] menuButtons;
+    public TextMeshProUGUI[] menuTexts;
     public AudioClip moveSound;
-    public AudioClip selectSound; 
-    public GameObject optionsPanel; 
+    public AudioClip selectSound;
+    public GameObject optionsPanel;
+    public GameObject menuPanel;
     private AudioSource audioSource;
     private int selectedIndex = 0;
 
@@ -18,12 +19,12 @@ public class MainMenuController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         UpdateMenu();
-        optionsPanel.SetActive(false); 
+        optionsPanel.SetActive(false);
     }
 
     void Update()
     {
-        if (menuButtons.Length == 0) return; 
+        if (menuButtons.Length == 0) return;
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
@@ -38,7 +39,7 @@ public class MainMenuController : MonoBehaviour
             PlaySound(moveSound);
             UpdateMenu();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PlaySound(selectSound);
@@ -59,7 +60,7 @@ public class MainMenuController : MonoBehaviour
             if (i == selectedIndex)
             {
                 menuTexts[i].text = ">" + menuTexts[i].text.TrimStart('>');
-                menuButtons[i].Select(); 
+                menuButtons[i].Select();
             }
             else
             {
@@ -77,12 +78,12 @@ public class MainMenuController : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Options");
-                OpenOptions();
+                OpenOptions(); // Вызов вашей версии метода
                 break;
             case 2:
                 Debug.Log("Quit Game");
-                PlaySound(selectSound); 
-                StartCoroutine(QuitGame()); 
+                PlaySound(selectSound);
+                StartCoroutine(QuitGame());
                 break;
         }
     }
@@ -91,9 +92,9 @@ public class MainMenuController : MonoBehaviour
     {
         foreach (var button in menuButtons)
         {
-            button.gameObject.SetActive(false); 
+            button.gameObject.SetActive(false);
         }
-        
+
         if (optionsPanel != null) optionsPanel.SetActive(true);
         if (HotkeysPanel != null)
         {
@@ -103,16 +104,16 @@ public class MainMenuController : MonoBehaviour
         {
             Debug.LogWarning("HotkeysPanel is not assigned in the inspector!");
         }
-        
     }
 
     private IEnumerator QuitGame()
     {
-        yield return new WaitForSeconds(selectSound.length/2);
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
+        yield return new WaitForSeconds(selectSound.length / 2);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
+    
 }
