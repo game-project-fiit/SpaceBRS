@@ -50,7 +50,7 @@ public class HotkeysPanelController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PlaySound(selectSound);
-            SelectControlScheme(); // Выбор горячих клавиш
+            SelectControlScheme(); 
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -134,12 +134,10 @@ public class HotkeysPanelController : MonoBehaviour
 
     private void ReturnToSettingsMenu()
     {
-        // Отключаем панель горячих клавиш и включаем панель настроек
         HotkeysPanel.SetActive(false);
         SettingsMenuPanel.SetActive(true);
         MainMenuPanel.SetActive(false);
-
-        // Фокусируемся на первом элементе в меню настроек
+        
         var settingsMenuButtons = SettingsMenuPanel.GetComponentsInChildren<Button>(true);
         if (settingsMenuButtons.Length > 0)
         {

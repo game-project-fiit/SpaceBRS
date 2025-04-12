@@ -78,7 +78,7 @@ public class MainMenuController : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Options");
-                OpenOptions(); // Вызов вашей версии метода
+                OpenOptions();
                 break;
             case 2:
                 Debug.Log("Quit Game");
@@ -100,6 +100,7 @@ public class MainMenuController : MonoBehaviour
             menuPanel.SetActive(false);
             optionsPanel.SetActive(true);
         }
+
         if (HotkeysPanel != null)
         {
             menuPanel.SetActive(false);
@@ -114,10 +115,11 @@ public class MainMenuController : MonoBehaviour
     private IEnumerator QuitGame()
     {
         yield return new WaitForSeconds(selectSound.length / 2);
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit();
+    Application.Quit(); // Завершить приложение
 #endif
     }
 }

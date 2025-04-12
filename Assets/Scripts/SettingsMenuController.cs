@@ -63,10 +63,6 @@ public class SettingsMenuController : MonoBehaviour
             CloseSettingsPanel();
             ReturnToMainMenu();
         }
-        // else if (SettingsMenuPanel.activeSelf)
-        // {
-        //     ReturnToMainMenu();
-        // }
     }
 
     private void UpdateMenu()
@@ -168,7 +164,6 @@ public class SettingsMenuController : MonoBehaviour
     {
         SettingsMenuPanel.SetActive(false);
         MainMenuPanel.SetActive(true);
-
         UpdateMenu();
     }
 }
