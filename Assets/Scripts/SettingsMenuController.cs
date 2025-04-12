@@ -58,14 +58,15 @@ public class SettingsMenuController : MonoBehaviour
     
     private void HandleEscape()
     {
-        if (HotkeysPanel.activeSelf)
+        if (SettingsMenuPanel.activeSelf)
         {
-            CloseHotkeysPanel();
-        }
-        else if (SettingsMenuPanel.activeSelf)
-        {
+            CloseSettingsPanel();
             ReturnToMainMenu();
         }
+        // else if (SettingsMenuPanel.activeSelf)
+        // {
+        //     ReturnToMainMenu();
+        // }
     }
 
     private void UpdateMenu()
@@ -163,10 +164,10 @@ public class SettingsMenuController : MonoBehaviour
         }
     }
 
-    private void CloseHotkeysPanel()
+    private void CloseSettingsPanel()
     {
-        HotkeysPanel.SetActive(false);
-        SettingsMenuPanel.SetActive(true);
+        SettingsMenuPanel.SetActive(false);
+        MainMenuPanel.SetActive(true);
 
         UpdateMenu();
     }

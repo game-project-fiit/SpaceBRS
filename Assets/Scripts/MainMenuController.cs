@@ -95,9 +95,14 @@ public class MainMenuController : MonoBehaviour
             button.gameObject.SetActive(false);
         }
 
-        if (optionsPanel != null) optionsPanel.SetActive(true);
+        if (optionsPanel != null)
+        {
+            menuPanel.SetActive(false);
+            optionsPanel.SetActive(true);
+        }
         if (HotkeysPanel != null)
         {
+            menuPanel.SetActive(false);
             HotkeysPanel.SetActive(false);
         }
         else
@@ -115,5 +120,4 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
 #endif
     }
-    
 }

@@ -111,54 +111,46 @@ public class HotkeysPanelController : MonoBehaviour
         Debug.Log($"Selected control scheme: {selectedControlScheme}");
     }
 
-    private void CloseMainMenuPanel()
-    {
-        MainMenuPanel.SetActive(false);
-        SettingsMenuPanel.SetActive(true);
-        
-    }
-    private void HandleEscape()
-    {
-        if (MainMenuPanel.activeSelf)
-        {
-            CloseMainMenuPanel();
-        }
-        else if (HotkeysPanel.activeSelf)
-        {
-            ReturnToSettingsMenu();
-        }
-    }
-    private void ReturnToSettingsMenu()
+    private void CloseHotKeysPanel()
     {
         HotkeysPanel.SetActive(false);
         SettingsMenuPanel.SetActive(true);
         MainMenuPanel.SetActive(false);
-        
-        var settingsMenuButtons = SettingsMenuPanel.GetComponentsInChildren<Button>(true);
-        var settingsMenuSliders = SettingsMenuPanel.GetComponentsInChildren<Slider>(true);
-        foreach (var button in settingsMenuButtons)
+    }
+    private void HandleEscape()
+    {
+        if (HotkeysPanel.activeSelf)
         {
-            button.gameObject.SetActive(true);
-            button.interactable = true;
+            CloseHotKeysPanel();
+            ReturnToSettingsMenu();
         }
 
-        foreach (var slider in settingsMenuSliders)
+        if (MainMenuPanel.activeSelf)
         {
-            slider.gameObject.SetActive(true);
-            slider.interactable = true;
+            CloseHotKeysPanel();
+            ReturnToSettingsMenu();
         }
+    }
+
+    private void ReturnToSettingsMenu()
+    {
+        // Отключаем панель горячих клавиш и включаем панель настроек
+        HotkeysPanel.SetActive(false);
+        SettingsMenuPanel.SetActive(true);
+        MainMenuPanel.SetActive(false);
+
+        // Фокусируемся на первом элементе в меню настроек
+        var settingsMenuButtons = SettingsMenuPanel.GetComponentsInChildren<Button>(true);
         if (settingsMenuButtons.Length > 0)
         {
             EventSystem.current.SetSelectedGameObject(settingsMenuButtons[0].gameObject);
         }
-
-        if (settingsMenuSliders.Length > 0)
+        else
         {
-            EventSystem.current.SetSelectedGameObject(settingsMenuSliders[0].gameObject);
+            Debug.LogWarning("Нет кнопок в SettingsMenuPanel!");
         }
     }
-
-
+    
     public static string GetControlScheme()
     {
         return PlayerPrefs.GetString("ControlScheme", "WASD");
