@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour
     public AudioClip selectSound;
     public GameObject optionsPanel;
     public GameObject menuPanel;
+    public GameObject storyPanel;
     private AudioSource audioSource;
     private int selectedIndex = 0;
 
@@ -62,10 +63,9 @@ public class MainMenuController : MonoBehaviour
                 menuTexts[i].text = ">" + menuTexts[i].text.TrimStart('>');
                 menuButtons[i].Select();
             }
+
             else
-            {
                 menuTexts[i].text = menuTexts[i].text.TrimStart('>');
-            }
         }
     }
 
@@ -75,6 +75,13 @@ public class MainMenuController : MonoBehaviour
         {
             case 0:
                 Debug.Log("Start Game");
+                if (PlayerPrefs.GetInt("StoryViewed", 0) == 0)
+                {
+                    storyPanel.SetActive(true);
+                    menuPanel.SetActive(false);
+                }
+                else
+                    SceneManager.LoadScene("Levels");
                 break;
             case 1:
                 Debug.Log("Options");
@@ -112,14 +119,14 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    private IEnumerator QuitGame()
+    private System.Collections.IEnumerator QuitGame()
     {
         yield return new WaitForSeconds(selectSound.length / 2);
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-    Application.Quit(); // Завершить приложение
+        Application.Quit();
 #endif
     }
 }
