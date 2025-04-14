@@ -102,10 +102,15 @@ public class MainMenuController : MonoBehaviour
             button.gameObject.SetActive(false);
         }
 
+        menuPanel.SetActive(false);
+        enabled = false;
+
         if (optionsPanel != null)
         {
             menuPanel.SetActive(false);
             optionsPanel.SetActive(true);
+            SettingsMenuController.Instance.gameObject.SetActive(true);
+            SettingsMenuController.Instance.enabled = true;
         }
 
         if (HotkeysPanel != null)
@@ -113,14 +118,30 @@ public class MainMenuController : MonoBehaviour
             menuPanel.SetActive(false);
             HotkeysPanel.SetActive(false);
         }
+
         else
-        {
             Debug.LogWarning("HotkeysPanel is not assigned in the inspector!");
-        }
+    }
+
+    public void ResetSelection()
+    {
+        selectedIndex = 0;
+        UpdateMenu();
     }
 
     private System.Collections.IEnumerator QuitGame()
     {
+        if (SettingsMenuController.Instance != null)
+        {
+            SettingsMenuController.Instance.optionsPanel.SetActive(false);
+            SettingsMenuController.Instance.SettingsMenuPanel.SetActive(false);
+
+            if (SettingsMenuController.Instance.HotkeysPanel != null)
+                SettingsMenuController.Instance.HotkeysPanel.SetActive(false);
+            if (SettingsMenuController.Instance.storyPanel != null)
+                SettingsMenuController.Instance.storyPanel.SetActive(false);
+        }
+
         yield return new WaitForSeconds(selectSound.length / 2);
 
 #if UNITY_EDITOR

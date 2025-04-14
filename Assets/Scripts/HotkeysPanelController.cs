@@ -40,6 +40,7 @@ public class HotkeysPanelController : MonoBehaviour
             PlaySound(moveSound);
             UpdateButtonSelection();
         }
+
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             selectedIndex = (selectedIndex + 1) % controlButtons.Length;
@@ -63,13 +64,11 @@ public class HotkeysPanelController : MonoBehaviour
     private void PlaySound(AudioClip clip)
     {
         if (audioSource != null && clip != null)
-        {
             audioSource.PlayOneShot(clip);
-        }
+
         else
-        {
             Debug.LogWarning("AudioSource or AudioClip is missing!");
-        }
+
     }
 
     private void UpdateButtonSelection()
@@ -80,19 +79,16 @@ public class HotkeysPanelController : MonoBehaviour
             var text = controlButtons[i].GetComponentInChildren<TextMeshProUGUI>();
 
             if (text is not null)
-            {
                 text.color = i == selectedIndex ? Color.black : Color.white;
-            }
+
 
             if (buttonImage is not null)
-            {
                 buttonImage.color = i == selectedIndex ? Color.white : new Color(1, 1, 1, 0);
-            }
+
 
             if (i == selectedIndex)
-            {
                 controlButtons[i].Select();
-            }
+
         }
     }
 
@@ -107,7 +103,6 @@ public class HotkeysPanelController : MonoBehaviour
 
         PlayerPrefs.SetString("ControlScheme", selectedControlScheme);
         PlayerPrefs.Save();
-
         Debug.Log($"Selected control scheme: {selectedControlScheme}");
     }
 
@@ -140,19 +135,15 @@ public class HotkeysPanelController : MonoBehaviour
         
         var settingsMenuButtons = SettingsMenuPanel.GetComponentsInChildren<Button>(true);
         if (settingsMenuButtons.Length > 0)
-        {
             EventSystem.current.SetSelectedGameObject(settingsMenuButtons[0].gameObject);
-        }
+
         else
-        {
             Debug.LogWarning("Нет кнопок в SettingsMenuPanel!");
-        }
     }
     
-    public static string GetControlScheme()
-    {
-        return PlayerPrefs.GetString("ControlScheme", "WASD");
-    }
+    public static string GetControlScheme() => 
+        PlayerPrefs.GetString("ControlScheme", "WASD");
+
 }
 
 

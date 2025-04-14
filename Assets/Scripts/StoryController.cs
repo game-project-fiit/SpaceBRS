@@ -8,6 +8,7 @@ public class StoryController : MonoBehaviour
     public int currentSlideIndex = 0;
     public CanvasGroup blackOverlay;
     public float fadeDuration = 1f;
+    public bool replayFromOptions = false;
     private bool isTransitioning = false;
 
     void Start()
@@ -138,8 +139,24 @@ public class StoryController : MonoBehaviour
 
     void EndStory()
     {
-        PlayerPrefs.SetInt("StoryViewed", 1);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene("Levels");
+        if (!gameObject.activeInHierarchy)
+            return;
+
+        if (replayFromOptions)
+        {
+            replayFromOptions = false;
+            currentSlideIndex = 0;
+            gameObject.SetActive(false);
+            SettingsMenuController.Instance?.ReturnToOptionsAfterPlot();
+            enabled = false;
+            Debug.Log("Replay ended, returning to options");
+        }
+
+        else
+        {
+            PlayerPrefs.SetInt("StoryViewed", 1);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Levels");
+        }
     }
 }
