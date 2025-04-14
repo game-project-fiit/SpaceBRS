@@ -81,7 +81,7 @@ public class MainMenuController : MonoBehaviour
                     menuPanel.SetActive(false);
                 }
                 else
-                    SceneManager.LoadScene("Levels");
+                    SceneManager.LoadScene("LevelsMenu");
                 break;
             case 1:
                 Debug.Log("Options");

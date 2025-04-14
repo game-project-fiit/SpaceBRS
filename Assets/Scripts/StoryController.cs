@@ -89,7 +89,7 @@ public class StoryController : MonoBehaviour
         slideCG.alpha = 1f;
     }
 
-    public void NextSlide() => 
+    public void NextSlide() =>
         StartCoroutine(TransitionToNextSlide());
 
     IEnumerator TransitionToNextSlide()
@@ -156,7 +156,7 @@ public class StoryController : MonoBehaviour
         {
             PlayerPrefs.SetInt("StoryViewed", 1);
             PlayerPrefs.Save();
-            SceneManager.LoadScene("Levels");
+            SceneManager.LoadScene("LevelsMenu");
         }
     }
 }
