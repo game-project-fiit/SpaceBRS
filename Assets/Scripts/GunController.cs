@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GunShoot : MonoBehaviour
@@ -10,6 +10,7 @@ public class GunShoot : MonoBehaviour
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
+            // Debug.Log("Координаты перед выстрело --- Player: " + transform.position + " --- FirePoint: " + firePoint.position);
             Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         }
     }
