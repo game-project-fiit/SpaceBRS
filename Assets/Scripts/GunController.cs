@@ -4,14 +4,17 @@ using UnityEngine.InputSystem;
 public class GunShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public Transform firePoint;
+    public RectTransform firePoint;
 
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            // Debug.Log("Координаты перед выстрело --- Player: " + transform.position + " --- FirePoint: " + firePoint.position);
-            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            var screenPosition = firePoint.position;
+            screenPosition.z = Mathf.Abs(Camera.main.transform.position.z);
+            var worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+
+            Instantiate(bulletPrefab, worldPosition, firePoint.rotation);
         }
     }
 }
