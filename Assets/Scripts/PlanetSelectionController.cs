@@ -17,6 +17,8 @@ public class PlanetController : MonoBehaviour
             RotateLeft();
         else if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
+        else if (Input.GetKeyDown(KeyCode.Return))
+            SceneManager.LoadScene("VVMLevel");
     }
 
     void RotateRight()
