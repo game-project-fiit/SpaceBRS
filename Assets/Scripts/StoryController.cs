@@ -9,7 +9,6 @@ public class StoryController : MonoBehaviour
 	public CanvasGroup blackOverlay;
 	public float fadeDuration = 1f;
 	public bool replayFromOptions;
-	private bool isTransitioning;
 
 	private void Start()
 	{
@@ -43,7 +42,6 @@ public class StoryController : MonoBehaviour
 
 	private IEnumerator InitialFadeTransition()
 	{
-		isTransitioning = true;
 		blackOverlay.gameObject.SetActive(true);
 		blackOverlay.alpha = 0f;
 
@@ -66,8 +64,6 @@ public class StoryController : MonoBehaviour
 			EndStory();
 			yield break;
 		}
-
-		isTransitioning = false;
 	}
 
 	private IEnumerator CrossFadeCanvasGroup(CanvasGroup blackCG, CanvasGroup slideCG, float duration)
@@ -92,7 +88,6 @@ public class StoryController : MonoBehaviour
 
 	private IEnumerator TransitionToNextSlide()
 	{
-		isTransitioning = true;
 		var currentCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
 
 		if (currentCG == null)
@@ -115,8 +110,6 @@ public class StoryController : MonoBehaviour
 
 		else
 			EndStory();
-
-		isTransitioning = false;
 	}
 
 	private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float duration)
