@@ -2,152 +2,154 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class MainMenuController : MonoBehaviour
 {
-    public GameObject HotkeysPanel;
-    public Button[] menuButtons;
-    public TextMeshProUGUI[] menuTexts;
-    public AudioClip moveSound;
-    public AudioClip selectSound;
-    public GameObject optionsPanel;
-    public GameObject menuPanel;
-    public GameObject storyPanel;
-    private AudioSource audioSource;
-    private int selectedIndex = 0;
+	[FormerlySerializedAs("HotkeysPanel")] public GameObject hotkeysPanel;
+	public Button[] menuButtons;
+	public TextMeshProUGUI[] menuTexts;
+	public AudioClip moveSound;
+	public AudioClip selectSound;
+	public GameObject optionsPanel;
+	public GameObject menuPanel;
+	public GameObject storyPanel;
+	private AudioSource audioSource;
+	private int selectedIndex;
 
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-        UpdateMenu();
-        optionsPanel.SetActive(false);
-    }
+	public void ResetSelection()
+	{
+		selectedIndex = 0;
+		UpdateMenu();
+	}
 
-    void Update()
-    {
-        if (menuButtons.Length == 0) return;
+	private void Start()
+	{
+		audioSource = GetComponent<AudioSource>();
+		UpdateMenu();
+		optionsPanel.SetActive(false);
+	}
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
-            selectedIndex = (selectedIndex - 1 + menuButtons.Length) % menuButtons.Length;
-            PlaySound(moveSound);
-            UpdateMenu();
-        }
+	private void Update()
+	{
+		if (menuButtons.Length == 0) return;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
-            selectedIndex = (selectedIndex + 1) % menuButtons.Length;
-            PlaySound(moveSound);
-            UpdateMenu();
-        }
+		if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+		{
+			selectedIndex = (selectedIndex - 1 + menuButtons.Length) % menuButtons.Length;
+			PlaySound(moveSound);
+			UpdateMenu();
+		}
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            PlaySound(selectSound);
-            SelectOption();
-        }
-    }
+		if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+		{
+			selectedIndex = (selectedIndex + 1) % menuButtons.Length;
+			PlaySound(moveSound);
+			UpdateMenu();
+		}
 
-    private void PlaySound(AudioClip clip)
-    {
-        if (clip != null)
-            audioSource.PlayOneShot(clip);
-    }
+		if (Input.GetKeyDown(KeyCode.Return))
+		{
+			PlaySound(selectSound);
+			SelectOption();
+		}
+	}
 
-    private void UpdateMenu()
-    {
-        for (var i = 0; i < menuButtons.Length; i++)
-        {
-            if (i == selectedIndex)
-            {
-                menuTexts[i].text = ">" + menuTexts[i].text.TrimStart('>');
-                menuButtons[i].Select();
-            }
+	private void PlaySound(AudioClip clip)
+	{
+		if (clip != null)
+			audioSource.PlayOneShot(clip);
+	}
 
-            else
-                menuTexts[i].text = menuTexts[i].text.TrimStart('>');
-        }
-    }
+	private void UpdateMenu()
+	{
+		for (var i = 0; i < menuButtons.Length; i++)
+		{
+			if (i == selectedIndex)
+			{
+				menuTexts[i].text = ">" + menuTexts[i].text.TrimStart('>');
+				menuButtons[i].Select();
+			}
 
-    private void SelectOption()
-    {
-        switch (selectedIndex)
-        {
-            case 0:
-                Debug.Log("Start Game");
-                if (PlayerPrefs.GetInt("StoryViewed", 0) == 0)
-                {
-                    storyPanel.SetActive(true);
-                    menuPanel.SetActive(false);
-                }
-                else
-                    SceneManager.LoadScene("LevelsMenu");
-                break;
-            case 1:
-                Debug.Log("Options");
-                OpenOptions();
-                break;
-            case 2:
-                Debug.Log("Quit Game");
-                PlaySound(selectSound);
-                StartCoroutine(QuitGame());
-                break;
-        }
-    }
+			else
+				menuTexts[i].text = menuTexts[i].text.TrimStart('>');
+		}
+	}
 
-    private void OpenOptions()
-    {
-        foreach (var button in menuButtons)
-        {
-            button.gameObject.SetActive(false);
-        }
+	private void SelectOption()
+	{
+		switch (selectedIndex)
+		{
+			case 0:
+				Debug.Log("Start Game");
+				if (PlayerPrefs.GetInt("StoryViewed", 0) == 0)
+				{
+					storyPanel.SetActive(true);
+					menuPanel.SetActive(false);
+				}
+				else
+					SceneManager.LoadScene("LevelsMenu");
 
-        menuPanel.SetActive(false);
-        enabled = false;
+				break;
+			case 1:
+				Debug.Log("Options");
+				OpenOptions();
+				break;
+			case 2:
+				Debug.Log("Quit Game");
+				PlaySound(selectSound);
+				StartCoroutine(QuitGame());
+				break;
+		}
+	}
 
-        if (optionsPanel != null)
-        {
-            menuPanel.SetActive(false);
-            optionsPanel.SetActive(true);
-            SettingsMenuController.Instance.gameObject.SetActive(true);
-            SettingsMenuController.Instance.enabled = true;
-        }
+	private void OpenOptions()
+	{
+		foreach (var button in menuButtons)
+		{
+			button.gameObject.SetActive(false);
+		}
 
-        if (HotkeysPanel != null)
-        {
-            menuPanel.SetActive(false);
-            HotkeysPanel.SetActive(false);
-        }
+		menuPanel.SetActive(false);
+		enabled = false;
 
-        else
-            Debug.LogWarning("HotkeysPanel is not assigned in the inspector!");
-    }
+		if (optionsPanel != null)
+		{
+			menuPanel.SetActive(false);
+			optionsPanel.SetActive(true);
+			SettingsMenuController.instance.gameObject.SetActive(true);
+			SettingsMenuController.instance.enabled = true;
+		}
 
-    public void ResetSelection()
-    {
-        selectedIndex = 0;
-        UpdateMenu();
-    }
+		if (hotkeysPanel != null)
+		{
+			menuPanel.SetActive(false);
+			hotkeysPanel.SetActive(false);
+		}
 
-    private System.Collections.IEnumerator QuitGame()
-    {
-        if (SettingsMenuController.Instance != null)
-        {
-            SettingsMenuController.Instance.optionsPanel.SetActive(false);
-            SettingsMenuController.Instance.SettingsMenuPanel.SetActive(false);
+		else
+			Debug.LogWarning("HotkeysPanel is not assigned in the inspector!");
+	}
 
-            if (SettingsMenuController.Instance.HotkeysPanel != null)
-                SettingsMenuController.Instance.HotkeysPanel.SetActive(false);
-            if (SettingsMenuController.Instance.storyPanel != null)
-                SettingsMenuController.Instance.storyPanel.SetActive(false);
-        }
+	private System.Collections.IEnumerator QuitGame()
+	{
+		if (SettingsMenuController.instance != null)
+		{
+			SettingsMenuController.instance.optionsPanel.SetActive(false);
+			SettingsMenuController.instance.settingsMenuPanel.SetActive(false);
 
-        yield return new WaitForSeconds(selectSound.length / 2);
+			if (SettingsMenuController.instance.hotkeysPanel != null)
+				SettingsMenuController.instance.hotkeysPanel.SetActive(false);
+			if (SettingsMenuController.instance.storyPanel != null)
+				SettingsMenuController.instance.storyPanel.SetActive(false);
+		}
+
+		yield return new WaitForSeconds(selectSound.length / 2);
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+		UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
-    }
+	}
 }

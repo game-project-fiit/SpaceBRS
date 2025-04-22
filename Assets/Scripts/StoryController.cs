@@ -4,159 +4,157 @@ using UnityEngine.SceneManagement;
 
 public class StoryController : MonoBehaviour
 {
-    public GameObject[] slides;
-    public int currentSlideIndex = 0;
-    public CanvasGroup blackOverlay;
-    public float fadeDuration = 1f;
-    public bool replayFromOptions = false;
-    private bool isTransitioning = false;
+	public GameObject[] slides;
+	public int currentSlideIndex;
+	public CanvasGroup blackOverlay;
+	public float fadeDuration = 1f;
+	public bool replayFromOptions;
+	private bool isTransitioning;
 
-    void Start()
-    {
-        ShowSlide(currentSlideIndex);
-        StartCoroutine(InitialFadeTransition());
-    }
+	private void Start()
+	{
+		ShowSlide(currentSlideIndex);
+		StartCoroutine(InitialFadeTransition());
+	}
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            NextSlide();
-        if (Input.GetKeyDown(KeyCode.Escape))
-            EndStory();
-    }
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.RightArrow))
+			NextSlide();
+		if (Input.GetKeyDown(KeyCode.Escape))
+			EndStory();
+	}
 
-    void ShowSlide(int index)
-    {
-        foreach (GameObject slide in slides)
-            slide.SetActive(false);
+	private void ShowSlide(int index)
+	{
+		foreach (GameObject slide in slides)
+			slide.SetActive(false);
 
-        if (index >= 0 && index < slides.Length)
-        {
-            slides[index].SetActive(true);
-            var canvasGroup = slides[index].GetComponent<CanvasGroup>();
+		if (index < 0 || index >= slides.Length) return;
 
-            if (canvasGroup == null)
-                canvasGroup = slides[index].AddComponent<CanvasGroup>();
+		slides[index].SetActive(true);
+		var canvasGroup = slides[index].GetComponent<CanvasGroup>();
 
-            canvasGroup.alpha = 1f;
-        }
-    }
+		if (canvasGroup == null)
+			canvasGroup = slides[index].AddComponent<CanvasGroup>();
 
-    IEnumerator InitialFadeTransition()
-    {
-        isTransitioning = true;
-        blackOverlay.gameObject.SetActive(true);
-        blackOverlay.alpha = 0f;
+		canvasGroup.alpha = 1f;
+	}
 
-        yield return StartCoroutine(FadeCanvasGroup(blackOverlay, 0f, 1f, fadeDuration));
+	private IEnumerator InitialFadeTransition()
+	{
+		isTransitioning = true;
+		blackOverlay.gameObject.SetActive(true);
+		blackOverlay.alpha = 0f;
 
-        currentSlideIndex++;
-        if (currentSlideIndex < slides.Length)
-        {
-            ShowSlide(currentSlideIndex);
-            var nextSlideCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
+		yield return StartCoroutine(FadeCanvasGroup(blackOverlay, 0f, 1f, fadeDuration));
 
-            if (nextSlideCG == null)
-                nextSlideCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
+		currentSlideIndex++;
+		if (currentSlideIndex < slides.Length)
+		{
+			ShowSlide(currentSlideIndex);
+			var nextSlideCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
 
-            nextSlideCG.alpha = 0f;
-            yield return StartCoroutine(CrossFadeCanvasGroup(blackOverlay, nextSlideCG, fadeDuration));
-        }
+			if (nextSlideCG == null)
+				nextSlideCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
 
-        else
-        {
-            EndStory();
-            yield break;
-        }
+			nextSlideCG.alpha = 0f;
+			yield return StartCoroutine(CrossFadeCanvasGroup(blackOverlay, nextSlideCG, fadeDuration));
+		}
+		else
+		{
+			EndStory();
+			yield break;
+		}
 
-        isTransitioning = false;
-    }
+		isTransitioning = false;
+	}
 
-    IEnumerator CrossFadeCanvasGroup(CanvasGroup blackCG, CanvasGroup slideCG, float duration)
-    {
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            var t = elapsed / duration;
-            blackCG.alpha = Mathf.Lerp(1f, 0f, t);
-            slideCG.alpha = Mathf.Lerp(0f, 1f, t);
+	private IEnumerator CrossFadeCanvasGroup(CanvasGroup blackCG, CanvasGroup slideCG, float duration)
+	{
+		var elapsed = 0f;
+		while (elapsed < duration)
+		{
+			elapsed += Time.deltaTime;
+			var t = elapsed / duration;
+			blackCG.alpha = Mathf.Lerp(1f, 0f, t);
+			slideCG.alpha = Mathf.Lerp(0f, 1f, t);
 
-            yield return null;
-        }
+			yield return null;
+		}
 
-        blackCG.alpha = 0f;
-        slideCG.alpha = 1f;
-    }
+		blackCG.alpha = 0f;
+		slideCG.alpha = 1f;
+	}
 
-    public void NextSlide() =>
-        StartCoroutine(TransitionToNextSlide());
+	private void NextSlide() =>
+		StartCoroutine(TransitionToNextSlide());
 
-    IEnumerator TransitionToNextSlide()
-    {
-        isTransitioning = true;
-        var currentCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
+	private IEnumerator TransitionToNextSlide()
+	{
+		isTransitioning = true;
+		var currentCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
 
-        if (currentCG == null)
-            currentCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
+		if (currentCG == null)
+			currentCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
 
-        yield return StartCoroutine(FadeCanvasGroup(currentCG, 1f, 0f, fadeDuration / 2));
+		yield return StartCoroutine(FadeCanvasGroup(currentCG, 1f, 0f, fadeDuration / 2));
 
-        currentSlideIndex++;
-        if (currentSlideIndex < slides.Length)
-        {
-            ShowSlide(currentSlideIndex);
-            var nextCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
+		currentSlideIndex++;
+		if (currentSlideIndex < slides.Length)
+		{
+			ShowSlide(currentSlideIndex);
+			var nextCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
 
-            if (nextCG == null)
-                nextCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
+			if (nextCG == null)
+				nextCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
 
-            nextCG.alpha = 0f;
-            yield return StartCoroutine(FadeCanvasGroup(nextCG, 0f, 1f, fadeDuration / 2));
-        }
+			nextCG.alpha = 0f;
+			yield return StartCoroutine(FadeCanvasGroup(nextCG, 0f, 1f, fadeDuration / 2));
+		}
 
-        else
-            EndStory();
+		else
+			EndStory();
 
-        isTransitioning = false;
-    }
+		isTransitioning = false;
+	}
 
-    IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float duration)
-    {
-        var elapsed = 0f;
-        cg.alpha = start;
+	private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float duration)
+	{
+		var elapsed = 0f;
+		cg.alpha = start;
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            cg.alpha = Mathf.Lerp(start, end, elapsed / duration);
+		while (elapsed < duration)
+		{
+			elapsed += Time.deltaTime;
+			cg.alpha = Mathf.Lerp(start, end, elapsed / duration);
 
-            yield return null;
-        }
+			yield return null;
+		}
 
-        cg.alpha = end;
-    }
+		cg.alpha = end;
+	}
 
-    void EndStory()
-    {
-        if (!gameObject.activeInHierarchy)
-            return;
+	private void EndStory()
+	{
+		if (!gameObject.activeInHierarchy)
+			return;
 
-        if (replayFromOptions)
-        {
-            replayFromOptions = false;
-            currentSlideIndex = 0;
-            gameObject.SetActive(false);
-            SettingsMenuController.Instance?.ReturnToOptionsAfterPlot();
-            enabled = false;
-            Debug.Log("Replay ended, returning to options");
-        }
+		if (replayFromOptions)
+		{
+			replayFromOptions = false;
+			currentSlideIndex = 0;
+			gameObject.SetActive(false);
+			SettingsMenuController.instance?.ReturnToOptionsAfterPlot();
+			enabled = false;
+			Debug.Log("Replay ended, returning to options");
+		}
 
-        else
-        {
-            PlayerPrefs.SetInt("StoryViewed", 1);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("LevelsMenu");
-        }
-    }
+		else
+		{
+			PlayerPrefs.SetInt("StoryViewed", 1);
+			PlayerPrefs.Save();
+			SceneManager.LoadScene("LevelsMenu");
+		}
+	}
 }

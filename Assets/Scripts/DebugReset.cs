@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class DebugReset : MonoBehaviour
 {
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            PlayerPrefs.DeleteKey("StoryViewed");
-            Debug.Log("StoryViewed is clear");
-        }
-    }
+	private void Update()
+	{
+		if (!Input.GetKeyDown(KeyCode.R)) return;
+
+		PlayerPrefs.DeleteKey("StoryViewed");
+		if (Debug.isDebugBuild)
+			Debug.Log("StoryViewed is clear");
+	}
 }
