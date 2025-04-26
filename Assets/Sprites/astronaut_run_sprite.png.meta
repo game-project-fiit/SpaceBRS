@@ -1,0 +1,2665 @@
+fileFormatVersion: 2
+guid: 44d10f24e35015c4b8bf78b3e55386d3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6556944731947227384
+    second: astronaut_run_sprite_0
+  - first:
+      213: -2990400750730627100
+    second: astronaut_run_sprite_1
+  - first:
+      213: 8132352554877427238
+    second: astronaut_run_sprite_2
+  - first:
+      213: -7528412344539233031
+    second: astronaut_run_sprite_3
+  - first:
+      213: 292343984696099514
+    second: astronaut_run_sprite_4
+  - first:
+      213: -7310848872405075751
+    second: astronaut_run_sprite_5
+  - first:
+      213: -5209139446612382930
+    second: astronaut_run_sprite_6
+  - first:
+      213: 1758965073394748834
+    second: astronaut_run_sprite_7
+  - first:
+      213: -3962130650294384110
+    second: astronaut_run_sprite_8
+  - first:
+      213: -4265669528666905465
+    second: astronaut_run_sprite_9
+  - first:
+      213: 3020620201489988998
+    second: astronaut_run_sprite_10
+  - first:
+      213: 6746769192406319386
+    second: astronaut_run_sprite_11
+  - first:
+      213: -5569216606694645117
+    second: astronaut_run_sprite_12
+  - first:
+      213: -8720277112116250304
+    second: astronaut_run_sprite_13
+  - first:
+      213: -8006317271599886805
+    second: astronaut_run_sprite_14
+  - first:
+      213: 4614154908709028311
+    second: astronaut_run_sprite_15
+  - first:
+      213: -7375389597250733031
+    second: astronaut_run_sprite_16
+  - first:
+      213: -4970263213472767637
+    second: astronaut_run_sprite_17
+  - first:
+      213: -1705102929745495584
+    second: astronaut_run_sprite_18
+  - first:
+      213: -7725817411412897292
+    second: astronaut_run_sprite_19
+  - first:
+      213: 4171385720097379232
+    second: astronaut_run_sprite_20
+  - first:
+      213: 1126230895979296306
+    second: astronaut_run_sprite_21
+  - first:
+      213: 3636735364865565063
+    second: astronaut_run_sprite_22
+  - first:
+      213: 3029503416616466625
+    second: astronaut_run_sprite_23
+  - first:
+      213: 5171510781132789959
+    second: astronaut_run_sprite_24
+  - first:
+      213: -5299972833919009279
+    second: astronaut_run_sprite_25
+  - first:
+      213: 145971781455636852
+    second: astronaut_run_sprite_26
+  - first:
+      213: -7679337779385862458
+    second: astronaut_run_sprite_27
+  - first:
+      213: -1004327475518455368
+    second: astronaut_run_sprite_28
+  - first:
+      213: 6916058976397087213
+    second: astronaut_run_sprite_29
+  - first:
+      213: -4832602809125142236
+    second: astronaut_run_sprite_30
+  - first:
+      213: -6449108340402533804
+    second: astronaut_run_sprite_31
+  - first:
+      213: 6455132545132145963
+    second: astronaut_run_sprite_32
+  - first:
+      213: 7499652739167216461
+    second: astronaut_run_sprite_33
+  - first:
+      213: -3115900344769243480
+    second: astronaut_run_sprite_34
+  - first:
+      213: -3164459776639730201
+    second: astronaut_run_sprite_35
+  - first:
+      213: 3574038970465632211
+    second: astronaut_run_sprite_36
+  - first:
+      213: -9007043930346074246
+    second: astronaut_run_sprite_37
+  - first:
+      213: -7159177200392035129
+    second: astronaut_run_sprite_38
+  - first:
+      213: 5895122394206830078
+    second: astronaut_run_sprite_39
+  - first:
+      213: 2410278369997111996
+    second: astronaut_run_sprite_40
+  - first:
+      213: -1131060551528544424
+    second: astronaut_run_sprite_41
+  - first:
+      213: -5906035229898397281
+    second: astronaut_run_sprite_42
+  - first:
+      213: 2262190341186999156
+    second: astronaut_run_sprite_43
+  - first:
+      213: 4880366334523045832
+    second: astronaut_run_sprite_44
+  - first:
+      213: -1783198015033050411
+    second: astronaut_run_sprite_45
+  - first:
+      213: -6862009655157276889
+    second: astronaut_run_sprite_46
+  - first:
+      213: -7211528314979674696
+    second: astronaut_run_sprite_47
+  - first:
+      213: 2166862463459841872
+    second: astronaut_run_sprite_48
+  - first:
+      213: -1084766081421101268
+    second: astronaut_run_sprite_49
+  - first:
+      213: -2885777832357123354
+    second: astronaut_run_sprite_50
+  - first:
+      213: 1864379509880690553
+    second: astronaut_run_sprite_51
+  - first:
+      213: 4223779156166700524
+    second: astronaut_run_sprite_52
+  - first:
+      213: -2639005726220585613
+    second: astronaut_run_sprite_53
+  - first:
+      213: -3039885293390652698
+    second: astronaut_run_sprite_54
+  - first:
+      213: -8692419100620555451
+    second: astronaut_run_sprite_55
+  - first:
+      213: -3808962319176033258
+    second: astronaut_run_sprite_56
+  - first:
+      213: -3783446218447893432
+    second: astronaut_run_sprite_57
+  - first:
+      213: 3672081757862127063
+    second: astronaut_run_sprite_58
+  - first:
+      213: 2701381961456068908
+    second: astronaut_run_sprite_59
+  - first:
+      213: 3741746110406526800
+    second: astronaut_run_sprite_60
+  - first:
+      213: -1703090149637972352
+    second: astronaut_run_sprite_61
+  - first:
+      213: 8980342620655191102
+    second: astronaut_run_sprite_62
+  - first:
+      213: -7513751366685128183
+    second: astronaut_run_sprite_63
+  - first:
+      213: 8247702108449613036
+    second: astronaut_run_sprite_64
+  - first:
+      213: 5492204225280018254
+    second: astronaut_run_sprite_65
+  - first:
+      213: 7256510400424191017
+    second: astronaut_run_sprite_66
+  - first:
+      213: 8015219403238065382
+    second: astronaut_run_sprite_67
+  - first:
+      213: -5414313120339866371
+    second: astronaut_run_sprite_68
+  - first:
+      213: 929216010117418342
+    second: astronaut_run_sprite_69
+  - first:
+      213: -1853117904879276869
+    second: astronaut_run_sprite_70
+  - first:
+      213: -1817260524096621304
+    second: astronaut_run_sprite_71
+  - first:
+      213: 5507685883419125343
+    second: astronaut_run_sprite_72
+  - first:
+      213: 3365391662715960512
+    second: astronaut_run_sprite_73
+  - first:
+      213: 4742826021136742640
+    second: astronaut_run_sprite_74
+  - first:
+      213: 9136783234642789236
+    second: astronaut_run_sprite_75
+  - first:
+      213: 8305194865713928366
+    second: astronaut_run_sprite_76
+  - first:
+      213: -2558879966042718498
+    second: astronaut_run_sprite_77
+  - first:
+      213: 510494117511030927
+    second: astronaut_run_sprite_78
+  - first:
+      213: 726336646110388996
+    second: astronaut_run_sprite_79
+  - first:
+      213: -7077901884668653525
+    second: astronaut_run_sprite_80
+  - first:
+      213: -4618097837389475171
+    second: astronaut_run_sprite_81
+  - first:
+      213: 5577197506798865389
+    second: astronaut_run_sprite_82
+  - first:
+      213: -3929801191296934795
+    second: astronaut_run_sprite_83
+  - first:
+      213: -7982434372290290494
+    second: astronaut_run_sprite_84
+  - first:
+      213: -6956415188646271582
+    second: astronaut_run_sprite_85
+  - first:
+      213: 7048385529886609969
+    second: astronaut_run_sprite_86
+  - first:
+      213: 1439617457045783125
+    second: astronaut_run_sprite_87
+  - first:
+      213: 6634690719457374641
+    second: astronaut_run_sprite_88
+  - first:
+      213: -6518852398502320003
+    second: astronaut_run_sprite_89
+  - first:
+      213: -1412547808243705400
+    second: astronaut_run_sprite_90
+  - first:
+      213: -4722675191493541960
+    second: astronaut_run_sprite_91
+  - first:
+      213: 367097414965187409
+    second: astronaut_run_sprite_92
+  - first:
+      213: 7430576977960714969
+    second: astronaut_run_sprite_93
+  - first:
+      213: 1158486999257106923
+    second: astronaut_run_sprite_94
+  - first:
+      213: -4075450093897059260
+    second: astronaut_run_sprite_95
+  - first:
+      213: 5090575154377249267
+    second: astronaut_run_sprite_96
+  - first:
+      213: 130628536914311679
+    second: astronaut_run_sprite_97
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: astronaut_run_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 0
+        width: 509
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f855975e72fefa50800000000000000
+      internalID: 6556944731947227384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 683
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e7b3ac6c56ff76d0800000000000000
+      internalID: -2990400750730627100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 679
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e95b5cf8bebd070800000000000000
+      internalID: 8132352554877427238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 683
+        width: 51
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f4c2112cd4b58790800000000000000
+      internalID: -7528412344539233031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 691
+        width: 9
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab288002e4d9e0400800000000000000
+      internalID: 292343984696099514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 35
+        width: 522
+        height: 670
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d8fab16fa5aa8a90800000000000000
+      internalID: -7310848872405075751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 7888
+        y: 0
+        width: 461
+        height: 710
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ba133c54b65b7b0800000000000000
+      internalID: -5209139446612382930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 8637
+        y: 0
+        width: 486
+        height: 703
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ad43043a69196810800000000000000
+      internalID: 1758965073394748834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 9287
+        y: 6
+        width: 594
+        height: 714
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a04837a2fa309c0800000000000000
+      internalID: -3962130650294384110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_9
+      rect:
+        serializedVersion: 2
+        x: 10113
+        y: 14
+        width: 538
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 784e9960a2c4dc4c0800000000000000
+      internalID: -4265669528666905465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_10
+      rect:
+        serializedVersion: 2
+        x: 10887
+        y: 34
+        width: 555
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68dfd2fb1166be920800000000000000
+      internalID: 3020620201489988998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_11
+      rect:
+        serializedVersion: 2
+        x: 11241
+        y: 689
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a118de6a5d651ad50800000000000000
+      internalID: 6746769192406319386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_12
+      rect:
+        serializedVersion: 2
+        x: 12435
+        y: 17
+        width: 565
+        height: 703
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38262c0d00b26b2b0800000000000000
+      internalID: -5569216606694645117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_13
+      rect:
+        serializedVersion: 2
+        x: 15611
+        y: 13
+        width: 472
+        height: 684
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04977552b2a5bf680800000000000000
+      internalID: -8720277112116250304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_14
+      rect:
+        serializedVersion: 2
+        x: 16305
+        y: 13
+        width: 550
+        height: 684
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2ec63b5cd8d3e090800000000000000
+      internalID: -8006317271599886805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_15
+      rect:
+        serializedVersion: 2
+        x: 17027
+        y: 11
+        width: 614
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d10a305175c80040800000000000000
+      internalID: 4614154908709028311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_16
+      rect:
+        serializedVersion: 2
+        x: 17913
+        y: 15
+        width: 498
+        height: 688
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91c32cfdc3a55a990800000000000000
+      internalID: -7375389597250733031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_17
+      rect:
+        serializedVersion: 2
+        x: 18690
+        y: 14
+        width: 495
+        height: 681
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b61a3c0e0f3160bb0800000000000000
+      internalID: -4970263213472767637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_18
+      rect:
+        serializedVersion: 2
+        x: 19459
+        y: 23
+        width: 516
+        height: 675
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e9ba0f5be14658e0800000000000000
+      internalID: -1705102929745495584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_19
+      rect:
+        serializedVersion: 2
+        x: 19491
+        y: 695
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f1d4395ff168c490800000000000000
+      internalID: -7725817411412897292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_20
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 45
+        width: 515
+        height: 649
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a39a83263db3e930800000000000000
+      internalID: 4171385720097379232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_21
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 685
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2367ae9680d21af00800000000000000
+      internalID: 1126230895979296306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_22
+      rect:
+        serializedVersion: 2
+        x: 8655
+        y: 677
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 781a9eccb87487230800000000000000
+      internalID: 3636735364865565063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_23
+      rect:
+        serializedVersion: 2
+        x: 8659
+        y: 665
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c8b1417e45fa0a20800000000000000
+      internalID: 3029503416616466625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_24
+      rect:
+        serializedVersion: 2
+        x: 11661
+        y: 47
+        width: 560
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c8d585d7a5e4c740800000000000000
+      internalID: 5171510781132789959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_25
+      rect:
+        serializedVersion: 2
+        x: 11942
+        y: 681
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10e790bb9c6b276b0800000000000000
+      internalID: -5299972833919009279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_26
+      rect:
+        serializedVersion: 2
+        x: 11952
+        y: 679
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 479e4e4df88960200800000000000000
+      internalID: 145971781455636852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_27
+      rect:
+        serializedVersion: 2
+        x: 11961
+        y: 679
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c6f77df9f28d6590800000000000000
+      internalID: -7679337779385862458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_28
+      rect:
+        serializedVersion: 2
+        x: 2417
+        y: 12
+        width: 530
+        height: 663
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b1ce8f6b79ef02f0800000000000000
+      internalID: -1004327475518455368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_29
+      rect:
+        serializedVersion: 2
+        x: 3188
+        y: 3
+        width: 530
+        height: 669
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de1dcc50ff6caff50800000000000000
+      internalID: 6916058976397087213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_30
+      rect:
+        serializedVersion: 2
+        x: 8667
+        y: 662
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4218a8d69552fecb0800000000000000
+      internalID: -4832602809125142236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_31
+      rect:
+        serializedVersion: 2
+        x: 14765
+        y: 14
+        width: 551
+        height: 651
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45a4c4c122a2086a0800000000000000
+      internalID: -6449108340402533804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_32
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 643
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d2aaa59dc359950800000000000000
+      internalID: 6455132545132145963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_33
+      rect:
+        serializedVersion: 2
+        x: 3951
+        y: 0
+        width: 532
+        height: 649
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d43e8d07e6e141860800000000000000
+      internalID: 7499652739167216461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_34
+      rect:
+        serializedVersion: 2
+        x: 4201
+        y: 642
+        width: 23
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a6138a252912c4d0800000000000000
+      internalID: -3115900344769243480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_35
+      rect:
+        serializedVersion: 2
+        x: 4719
+        y: 0
+        width: 534
+        height: 649
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ed706369949514d0800000000000000
+      internalID: -3164459776639730201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_36
+      rect:
+        serializedVersion: 2
+        x: 7021
+        y: 0
+        width: 570
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dfb100f189899130800000000000000
+      internalID: 3574038970465632211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_37
+      rect:
+        serializedVersion: 2
+        x: 13209
+        y: 4
+        width: 566
+        height: 654
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7f4267444d800380800000000000000
+      internalID: -9007043930346074246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_38
+      rect:
+        serializedVersion: 2
+        x: 13983
+        y: 0
+        width: 559
+        height: 658
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4ae86644e75ac90800000000000000
+      internalID: -7159177200392035129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_39
+      rect:
+        serializedVersion: 2
+        x: 5521
+        y: 0
+        width: 526
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efdf526759eafc150800000000000000
+      internalID: 5895122394206830078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_40
+      rect:
+        serializedVersion: 2
+        x: 6299
+        y: 0
+        width: 518
+        height: 641
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb24c754867037120800000000000000
+      internalID: 2410278369997111996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_41
+      rect:
+        serializedVersion: 2
+        x: 7085
+        y: 596
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8570fa6cb6aad40f0800000000000000
+      internalID: -1131060551528544424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_42
+      rect:
+        serializedVersion: 2
+        x: 7095
+        y: 581
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f99a6faff3c890ea0800000000000000
+      internalID: -5906035229898397281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_43
+      rect:
+        serializedVersion: 2
+        x: 7886
+        y: 529
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47355c4312ae46f10800000000000000
+      internalID: 2262190341186999156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_44
+      rect:
+        serializedVersion: 2
+        x: 10212
+        y: 520
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c7750fe25b8ab340800000000000000
+      internalID: 4880366334523045832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_45
+      rect:
+        serializedVersion: 2
+        x: 3191
+        y: 488
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5daf5c56adec047e0800000000000000
+      internalID: -1783198015033050411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_46
+      rect:
+        serializedVersion: 2
+        x: 6314
+        y: 493
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72fbc0b339e35c0a0800000000000000
+      internalID: -6862009655157276889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_47
+      rect:
+        serializedVersion: 2
+        x: 16851
+        y: 398
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b517f1b4318beb90800000000000000
+      internalID: -7211528314979674696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_48
+      rect:
+        serializedVersion: 2
+        x: 13326
+        y: 329
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057d6a31eed321e10800000000000000
+      internalID: 2166862463459841872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_49
+      rect:
+        serializedVersion: 2
+        x: 5241
+        y: 183
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c27b08c0ff222f0f0800000000000000
+      internalID: -1084766081421101268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_50
+      rect:
+        serializedVersion: 2
+        x: 6011
+        y: 185
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea28a9d958a3f7d0800000000000000
+      internalID: -2885777832357123354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_51
+      rect:
+        serializedVersion: 2
+        x: 15305
+        y: 183
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97794fc494b9fd910800000000000000
+      internalID: 1864379509880690553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_52
+      rect:
+        serializedVersion: 2
+        x: 6794
+        y: 169
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cede30593c0ed9a30800000000000000
+      internalID: 4223779156166700524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_53
+      rect:
+        serializedVersion: 2
+        x: 12216
+        y: 127
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3757668264e506bd0800000000000000
+      internalID: -2639005726220585613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_54
+      rect:
+        serializedVersion: 2
+        x: 15310
+        y: 141
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea14818e6820d5d0800000000000000
+      internalID: -3039885293390652698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_55
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 43
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54bf0b4e1e25e5780800000000000000
+      internalID: -8692419100620555451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_56
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 22
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c1aa293f8d32bc0800000000000000
+      internalID: -3808962319176033258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_57
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 23
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c4e9ab5bf7e7bc0800000000000000
+      internalID: -3783446218447893432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_58
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 23
+        width: 47
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5609b37ead5f230800000000000000
+      internalID: 3672081757862127063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_59
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 16
+        width: 33
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c29ac37d49c3d7520800000000000000
+      internalID: 2701381961456068908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_60
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 14
+        width: 42
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0570b76434a5de330800000000000000
+      internalID: 3741746110406526800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_61
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 17
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08e9c5248886d58e0800000000000000
+      internalID: -1703090149637972352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_62
+      rect:
+        serializedVersion: 2
+        x: 5241
+        y: 19
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e340479980690ac70800000000000000
+      internalID: 8980342620655191102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_63
+      rect:
+        serializedVersion: 2
+        x: 6027
+        y: 19
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90a802a01fac9b790800000000000000
+      internalID: -7513751366685128183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_64
+      rect:
+        serializedVersion: 2
+        x: 6810
+        y: 18
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce421639e59b57270800000000000000
+      internalID: 8247702108449613036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_65
+      rect:
+        serializedVersion: 2
+        x: 7590
+        y: 18
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4707b9d4aa383c40800000000000000
+      internalID: 5492204225280018254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_66
+      rect:
+        serializedVersion: 2
+        x: 8376
+        y: 18
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 924263633cd44b460800000000000000
+      internalID: 7256510400424191017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_67
+      rect:
+        serializedVersion: 2
+        x: 9160
+        y: 19
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e4c2dea497cb3f60800000000000000
+      internalID: 8015219403238065382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_68
+      rect:
+        serializedVersion: 2
+        x: 9943
+        y: 18
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfcc76f37ee7cd4b0800000000000000
+      internalID: -5414313120339866371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_69
+      rect:
+        serializedVersion: 2
+        x: 10725
+        y: 19
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d87aab90d35ec00800000000000000
+      internalID: 929216010117418342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_70
+      rect:
+        serializedVersion: 2
+        x: 11060
+        y: 23
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc21c075176846e0800000000000000
+      internalID: -1853117904879276869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_71
+      rect:
+        serializedVersion: 2
+        x: 11508
+        y: 19
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80571ec7e2bc7c6e0800000000000000
+      internalID: -1817260524096621304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_72
+      rect:
+        serializedVersion: 2
+        x: 11833
+        y: 18
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5661a7412b3f6c40800000000000000
+      internalID: 5507685883419125343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_73
+      rect:
+        serializedVersion: 2
+        x: 12295
+        y: 18
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ccfe3af2e544be20800000000000000
+      internalID: 3365391662715960512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_74
+      rect:
+        serializedVersion: 2
+        x: 12688
+        y: 11
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f8b55d3327e1d140800000000000000
+      internalID: 4742826021136742640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_75
+      rect:
+        serializedVersion: 2
+        x: 13086
+        y: 19
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 473c0a271ff5cce70800000000000000
+      internalID: 9136783234642789236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_76
+      rect:
+        serializedVersion: 2
+        x: 13868
+        y: 19
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea8d6414abaf14370800000000000000
+      internalID: 8305194865713928366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_77
+      rect:
+        serializedVersion: 2
+        x: 14652
+        y: 19
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edef8297a380d7cd0800000000000000
+      internalID: -2558879966042718498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_78
+      rect:
+        serializedVersion: 2
+        x: 15434
+        y: 20
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f88eb26f1b3a51700800000000000000
+      internalID: 510494117511030927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_79
+      rect:
+        serializedVersion: 2
+        x: 16215
+        y: 15
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40322c2d457741a00800000000000000
+      internalID: 726336646110388996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_80
+      rect:
+        serializedVersion: 2
+        x: 16999
+        y: 18
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b20d1497cbd36cd90800000000000000
+      internalID: -7077901884668653525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_81
+      rect:
+        serializedVersion: 2
+        x: 17781
+        y: 18
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9296601c7839efb0800000000000000
+      internalID: -4618097837389475171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_82
+      rect:
+        serializedVersion: 2
+        x: 18562
+        y: 19
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: debc0fa459f266d40800000000000000
+      internalID: 5577197506798865389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_83
+      rect:
+        serializedVersion: 2
+        x: 19340
+        y: 23
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57cd6d233aa8679c0800000000000000
+      internalID: -3929801191296934795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_84
+      rect:
+        serializedVersion: 2
+        x: 2618
+        y: 0
+        width: 45
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ccd4cc2b32b83190800000000000000
+      internalID: -7982434372290290494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_85
+      rect:
+        serializedVersion: 2
+        x: 4152
+        y: 0
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a56b9a1e39d57f90800000000000000
+      internalID: -6956415188646271582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_86
+      rect:
+        serializedVersion: 2
+        x: 7301
+        y: 0
+        width: 39
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13215e4ab45e0d160800000000000000
+      internalID: 7048385529886609969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_87
+      rect:
+        serializedVersion: 2
+        x: 8923
+        y: 0
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5524aa3237c8af310800000000000000
+      internalID: 1439617457045783125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_88
+      rect:
+        serializedVersion: 2
+        x: 14212
+        y: 0
+        width: 53
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b176d7ae08231c50800000000000000
+      internalID: 6634690719457374641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_89
+      rect:
+        serializedVersion: 2
+        x: 15021
+        y: 9
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d78e01c28426885a0800000000000000
+      internalID: -6518852398502320003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_90
+      rect:
+        serializedVersion: 2
+        x: 15037
+        y: 0
+        width: 25
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c9906d904f956ce0800000000000000
+      internalID: -1412547808243705400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_91
+      rect:
+        serializedVersion: 2
+        x: 15057
+        y: 9
+        width: 25
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bf3a756fefa57eb0800000000000000
+      internalID: -4722675191493541960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_92
+      rect:
+        serializedVersion: 2
+        x: 15097
+        y: 0
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 153d6f86721381500800000000000000
+      internalID: 367097414965187409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_93
+      rect:
+        serializedVersion: 2
+        x: 15131
+        y: 10
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d24b8f7466be1760800000000000000
+      internalID: 7430576977960714969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_94
+      rect:
+        serializedVersion: 2
+        x: 16665
+        y: 0
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be9c0a3b9c5c31010800000000000000
+      internalID: 1158486999257106923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_95
+      rect:
+        serializedVersion: 2
+        x: 4141
+        y: 0
+        width: 13
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 444fe657bb71177c0800000000000000
+      internalID: -4075450093897059260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_96
+      rect:
+        serializedVersion: 2
+        x: 13418
+        y: 0
+        width: 23
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f1d513c12b55a640800000000000000
+      internalID: 5090575154377249267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astronaut_run_sprite_97
+      rect:
+        serializedVersion: 2
+        x: 15113
+        y: 0
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff97e4456f510d100800000000000000
+      internalID: 130628536914311679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      astronaut_run_sprite_0: 6556944731947227384
+      astronaut_run_sprite_1: -2990400750730627100
+      astronaut_run_sprite_10: 3020620201489988998
+      astronaut_run_sprite_11: 6746769192406319386
+      astronaut_run_sprite_12: -5569216606694645117
+      astronaut_run_sprite_13: -8720277112116250304
+      astronaut_run_sprite_14: -8006317271599886805
+      astronaut_run_sprite_15: 4614154908709028311
+      astronaut_run_sprite_16: -7375389597250733031
+      astronaut_run_sprite_17: -4970263213472767637
+      astronaut_run_sprite_18: -1705102929745495584
+      astronaut_run_sprite_19: -7725817411412897292
+      astronaut_run_sprite_2: 8132352554877427238
+      astronaut_run_sprite_20: 4171385720097379232
+      astronaut_run_sprite_21: 1126230895979296306
+      astronaut_run_sprite_22: 3636735364865565063
+      astronaut_run_sprite_23: 3029503416616466625
+      astronaut_run_sprite_24: 5171510781132789959
+      astronaut_run_sprite_25: -5299972833919009279
+      astronaut_run_sprite_26: 145971781455636852
+      astronaut_run_sprite_27: -7679337779385862458
+      astronaut_run_sprite_28: -1004327475518455368
+      astronaut_run_sprite_29: 6916058976397087213
+      astronaut_run_sprite_3: -7528412344539233031
+      astronaut_run_sprite_30: -4832602809125142236
+      astronaut_run_sprite_31: -6449108340402533804
+      astronaut_run_sprite_32: 6455132545132145963
+      astronaut_run_sprite_33: 7499652739167216461
+      astronaut_run_sprite_34: -3115900344769243480
+      astronaut_run_sprite_35: -3164459776639730201
+      astronaut_run_sprite_36: 3574038970465632211
+      astronaut_run_sprite_37: -9007043930346074246
+      astronaut_run_sprite_38: -7159177200392035129
+      astronaut_run_sprite_39: 5895122394206830078
+      astronaut_run_sprite_4: 292343984696099514
+      astronaut_run_sprite_40: 2410278369997111996
+      astronaut_run_sprite_41: -1131060551528544424
+      astronaut_run_sprite_42: -5906035229898397281
+      astronaut_run_sprite_43: 2262190341186999156
+      astronaut_run_sprite_44: 4880366334523045832
+      astronaut_run_sprite_45: -1783198015033050411
+      astronaut_run_sprite_46: -6862009655157276889
+      astronaut_run_sprite_47: -7211528314979674696
+      astronaut_run_sprite_48: 2166862463459841872
+      astronaut_run_sprite_49: -1084766081421101268
+      astronaut_run_sprite_5: -7310848872405075751
+      astronaut_run_sprite_50: -2885777832357123354
+      astronaut_run_sprite_51: 1864379509880690553
+      astronaut_run_sprite_52: 4223779156166700524
+      astronaut_run_sprite_53: -2639005726220585613
+      astronaut_run_sprite_54: -3039885293390652698
+      astronaut_run_sprite_55: -8692419100620555451
+      astronaut_run_sprite_56: -3808962319176033258
+      astronaut_run_sprite_57: -3783446218447893432
+      astronaut_run_sprite_58: 3672081757862127063
+      astronaut_run_sprite_59: 2701381961456068908
+      astronaut_run_sprite_6: -5209139446612382930
+      astronaut_run_sprite_60: 3741746110406526800
+      astronaut_run_sprite_61: -1703090149637972352
+      astronaut_run_sprite_62: 8980342620655191102
+      astronaut_run_sprite_63: -7513751366685128183
+      astronaut_run_sprite_64: 8247702108449613036
+      astronaut_run_sprite_65: 5492204225280018254
+      astronaut_run_sprite_66: 7256510400424191017
+      astronaut_run_sprite_67: 8015219403238065382
+      astronaut_run_sprite_68: -5414313120339866371
+      astronaut_run_sprite_69: 929216010117418342
+      astronaut_run_sprite_7: 1758965073394748834
+      astronaut_run_sprite_70: -1853117904879276869
+      astronaut_run_sprite_71: -1817260524096621304
+      astronaut_run_sprite_72: 5507685883419125343
+      astronaut_run_sprite_73: 3365391662715960512
+      astronaut_run_sprite_74: 4742826021136742640
+      astronaut_run_sprite_75: 9136783234642789236
+      astronaut_run_sprite_76: 8305194865713928366
+      astronaut_run_sprite_77: -2558879966042718498
+      astronaut_run_sprite_78: 510494117511030927
+      astronaut_run_sprite_79: 726336646110388996
+      astronaut_run_sprite_8: -3962130650294384110
+      astronaut_run_sprite_80: -7077901884668653525
+      astronaut_run_sprite_81: -4618097837389475171
+      astronaut_run_sprite_82: 5577197506798865389
+      astronaut_run_sprite_83: -3929801191296934795
+      astronaut_run_sprite_84: -7982434372290290494
+      astronaut_run_sprite_85: -6956415188646271582
+      astronaut_run_sprite_86: 7048385529886609969
+      astronaut_run_sprite_87: 1439617457045783125
+      astronaut_run_sprite_88: 6634690719457374641
+      astronaut_run_sprite_89: -6518852398502320003
+      astronaut_run_sprite_9: -4265669528666905465
+      astronaut_run_sprite_90: -1412547808243705400
+      astronaut_run_sprite_91: -4722675191493541960
+      astronaut_run_sprite_92: 367097414965187409
+      astronaut_run_sprite_93: 7430576977960714969
+      astronaut_run_sprite_94: 1158486999257106923
+      astronaut_run_sprite_95: -4075450093897059260
+      astronaut_run_sprite_96: 5090575154377249267
+      astronaut_run_sprite_97: 130628536914311679
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
