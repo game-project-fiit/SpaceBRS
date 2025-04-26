@@ -86,4 +86,10 @@ public class ScoreManager : MonoBehaviour
         if (clip != null && audioSource != null)
             audioSource.PlayOneShot(clip);
     }
+    
+    public int GetScore()
+    {
+        return score; 
+    }
+
 }

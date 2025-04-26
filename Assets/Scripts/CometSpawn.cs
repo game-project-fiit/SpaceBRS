@@ -10,6 +10,7 @@ public class CometSpawner : MonoBehaviour
     public float spawnRangeX = 8.0f; 
     public float cometSpeed = 5.0f;  
     private float screenHeight;
+    private Coroutine spawnCoroutine; // Хранит ссылку на корутину спавна
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class CometSpawner : MonoBehaviour
             spawnRangeX = Camera.main.orthographicSize * Camera.main.aspect;
 
         screenHeight = Camera.main.orthographicSize * 2.0f;
-        StartCoroutine(SpawnComets());
+        spawnCoroutine = StartCoroutine(SpawnComets());
     }
 
     private IEnumerator SpawnComets()
@@ -29,9 +30,18 @@ public class CometSpawner : MonoBehaviour
         }
     }
 
+    public void StopSpawning()
+    {
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine); // Останавливаем корутину спавна
+            spawnCoroutine = null; // Обнуляем ссылку
+        }
+    }
+
     private void SpawnComet()
     {
-        var spawnX = Random.Range(-spawnRangeX, spawnRangeX); // Изменено, чтобы кометы могли появляться с обеих сторон
+        var spawnX = Random.Range(-spawnRangeX, spawnRangeX);
         var spawnPosition = spawnPoint != null
             ? spawnPoint.position
             : new Vector3(spawnX, Camera.main.orthographicSize + 1, 0);
@@ -50,7 +60,6 @@ public class CometSpawner : MonoBehaviour
         var diagonalSpeedY = -cometSpeed; 
         rigidBody.linearVelocity = new Vector2(diagonalSpeedX, diagonalSpeedY);
         
-        // Уничтожаем комету через определенное время
         Destroy(comet, (screenHeight + 10) / 
                        Mathf.Sqrt(diagonalSpeedX * diagonalSpeedX + diagonalSpeedY * diagonalSpeedY));
     }
