@@ -31,7 +31,7 @@ public class CometSpawner : MonoBehaviour
 
     private void SpawnComet()
     {
-        var spawnX = Random.Range(0, spawnRangeX);
+        var spawnX = Random.Range(-spawnRangeX, spawnRangeX); // Изменено, чтобы кометы могли появляться с обеих сторон
         var spawnPosition = spawnPoint != null
             ? spawnPoint.position
             : new Vector3(spawnX, Camera.main.orthographicSize + 1, 0);
@@ -50,7 +50,8 @@ public class CometSpawner : MonoBehaviour
         var diagonalSpeedY = -cometSpeed; 
         rigidBody.linearVelocity = new Vector2(diagonalSpeedX, diagonalSpeedY);
         
+        // Уничтожаем комету через определенное время
         Destroy(comet, (screenHeight + 10) / 
-            Mathf.Sqrt(diagonalSpeedX * diagonalSpeedX + diagonalSpeedY * diagonalSpeedY));
+                       Mathf.Sqrt(diagonalSpeedX * diagonalSpeedX + diagonalSpeedY * diagonalSpeedY));
     }
 }
