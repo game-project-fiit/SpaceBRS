@@ -112,20 +112,20 @@ public class StoryController : MonoBehaviour
 			EndStory();
 	}
 
-	private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float duration)
+	private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float duration)
 	{
 		var elapsed = 0f;
-		cg.alpha = start;
+		canvasGroup.alpha = start;
 
 		while (elapsed < duration)
 		{
 			elapsed += Time.deltaTime;
-			cg.alpha = Mathf.Lerp(start, end, elapsed / duration);
+			canvasGroup.alpha = Mathf.Lerp(start, end, elapsed / duration);
 
 			yield return null;
 		}
 
-		cg.alpha = end;
+		canvasGroup.alpha = end;
 	}
 
 	private void EndStory()
