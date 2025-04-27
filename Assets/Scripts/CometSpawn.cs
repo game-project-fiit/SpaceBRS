@@ -10,7 +10,7 @@ public class CometSpawner : MonoBehaviour
     public float spawnRangeX = 8.0f; 
     public float cometSpeed = 5.0f;  
     private float screenHeight;
-    private Coroutine spawnCoroutine; // Хранит ссылку на корутину спавна
+    private Coroutine spawnCoroutine; 
 
     private void Start()
     {
@@ -34,8 +34,8 @@ public class CometSpawner : MonoBehaviour
     {
         if (spawnCoroutine != null)
         {
-            StopCoroutine(spawnCoroutine); // Останавливаем корутину спавна
-            spawnCoroutine = null; // Обнуляем ссылку
+            StopCoroutine(spawnCoroutine); 
+            spawnCoroutine = null;
         }
     }
 

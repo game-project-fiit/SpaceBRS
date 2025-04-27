@@ -24,8 +24,6 @@ public class Comet : MonoBehaviour
         { "зачёт по питону", 4},
     };
 
-    public TextMeshProUGUI notificationText;
-
     private void Start()
     {
         cometText = GetComponentInChildren<TextMeshProUGUI>();
@@ -33,8 +31,6 @@ public class Comet : MonoBehaviour
         {
             cometText.text = GetRandomText();
         }
-
-        notificationText.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -48,7 +44,8 @@ public class Comet : MonoBehaviour
 
         if (cometText != null)
         {
-            cometText.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+            var offsetX = 20f; 
+            cometText.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, 0, 0);
         }
 
         foreach (var bullet in FindObjectsOfType<Bullet>())
@@ -66,7 +63,7 @@ public class Comet : MonoBehaviour
                 if (cometPoints.TryGetValue(cometTextValue, out var points))
                 {
                     ScoreManager.Instance.IncreaseScore(points);
-                    ShowNotification(cometTextValue, points);
+                    NotificationManager.Instance.ShowNotification(cometTextValue, points);
                 }
 
                 Destroy(bullet.gameObject);
@@ -76,41 +73,11 @@ public class Comet : MonoBehaviour
         }
     }
 
+
     private static string GetRandomText()
     {
         string[] texts =
             { "комп практика", "коллок по матану", "тысячи", "кр по алгему", "python task", "дедлайн по ятп", "экзамен по матану",  "экзамен по алгему", "нтк по философии", "зачёт по питону"};
         return texts[Random.Range(0, texts.Length)];
-    }
-    
-    private void ShowNotification(string cometTextValue, int points)
-    {
-        var message = cometTextValue switch
-        {
-            "комп практика" => $"Вы сдали комп практику! +{points}",
-            "коллок по матану" => $"Вы сдали коллок по матану! +{points}",
-            "тысячи" => $"Вы сдали тысячи! +{points}",
-            "кр по алгему" => $"Вы написали кр по алгему! +{points}",
-            "python task" => $"Вы сделали python task! +{points}",
-            "дедлайн по ятп" => $"Вы сделали дедлайн по ятп! +{points}",
-            "зачёт по питону" => $"Вы сдали зачёт по питону! +{points}", 
-            "экзамен по матану" => $"Вы сдали экзамен по матану! +{points}",
-            "экзамен по алгему" => $"Вы сдали экзамен по алгему! +{points}",
-            "нтк по философии" => $"Вы написали нтк по философии! +{points}",
-            _ => ""
-        };
-
-        StartCoroutine(DisplayNotification(message));
-    }
-
-    private IEnumerator DisplayNotification(string message)
-    {
-        Debug.Log($"Displaying notification: {message}");
-        notificationText.text = message;
-        notificationText.gameObject.SetActive(true);
-        var rectTransform = notificationText.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = Vector2.zero;
-        yield return new WaitForSeconds(3f);
-        notificationText.gameObject.SetActive(false);
     }
 }

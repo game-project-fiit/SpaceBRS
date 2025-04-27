@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,15 +9,24 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI resultText; 
     public TextMeshProUGUI descriptionText; 
     public CometSpawner cometSpawner; 
+    public Slider timeSlider; 
 
     private void Start()
     {
+        timeSlider.maxValue = gameDuration; 
+        timeSlider.value = gameDuration; 
         StartCoroutine(GameTimer());
     }
 
     private IEnumerator GameTimer()
     {
-        yield return new WaitForSeconds(gameDuration); 
+        var elapsedTime = 0f; 
+        while (elapsedTime < gameDuration)
+        {
+            elapsedTime += Time.deltaTime; 
+            timeSlider.value = gameDuration - elapsedTime; 
+            yield return null; 
+        }
         EndGame();
     }
 
