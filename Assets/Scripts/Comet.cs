@@ -10,7 +10,7 @@ public class Comet : MonoBehaviour
     public float bulletScreenRadius = 10f;
     public TextMeshProUGUI cometText;
 
-    private readonly Dictionary<string, int> cometPoints = new Dictionary<string, int>
+    private readonly Dictionary<string, int> cometPoints = new()
     {
         { "комп практика", 2 },
         { "коллок по матану", 4 },

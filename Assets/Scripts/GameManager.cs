@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameDuration = 15f; 
+    public float gameDuration = 45f; 
     public TextMeshProUGUI resultText; 
     public TextMeshProUGUI descriptionText; 
     public CometSpawner cometSpawner; 
     public Slider timeSlider; 
+    public Image resultBackground;
 
     private void Start()
     {
         timeSlider.maxValue = gameDuration; 
         timeSlider.value = gameDuration; 
         StartCoroutine(GameTimer());
+        
+        resultBackground.gameObject.SetActive(false);
+        resultText.gameObject.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
     }
 
     private IEnumerator GameTimer()
@@ -24,7 +29,14 @@ public class GameManager : MonoBehaviour
         while (elapsedTime < gameDuration)
         {
             elapsedTime += Time.deltaTime; 
-            timeSlider.value = gameDuration - elapsedTime; 
+            timeSlider.value = gameDuration - elapsedTime;
+            
+            if (ScoreManager.Instance.GetScore() >= 100)
+            {
+                EndGameWithAutomaticWin();
+                yield break; 
+            }
+
             yield return null; 
         }
         EndGame();
@@ -47,13 +59,32 @@ public class GameManager : MonoBehaviour
         
         descriptionText.text = GetDescription(finalScore);
         descriptionText.gameObject.SetActive(true); 
-
+        
+        resultBackground.gameObject.SetActive(true);
+        
         if (cometSpawner != null)
         {
             cometSpawner.StopSpawning();
         }
         
-        StartCoroutine(QuitGameAfterDelay(2f));
+        StartCoroutine(QuitGameAfterDelay(5f));
+    }
+
+    private void EndGameWithAutomaticWin()
+    {
+        resultBackground.gameObject.SetActive(true);
+        resultText.text = "Автомат!";
+        resultText.gameObject.SetActive(true);
+        
+        descriptionText.text = "Ты получил автомат!";
+        descriptionText.gameObject.SetActive(true);
+        
+        if (cometSpawner != null)
+        {
+            cometSpawner.StopSpawning();
+        }
+        
+        StartCoroutine(QuitGameAfterDelay(5f));
     }
 
     private static string GetDescription(int score)

@@ -56,7 +56,7 @@ public class NotificationManager : MonoBehaviour
         for (var i = 0; i < notificationContainer.childCount; i++)
         {
             var rectTransform = notificationContainer.GetChild(i).GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(0, -i * 12); 
+            rectTransform.anchoredPosition = new Vector2(0, -i * 7); 
         }
     }
 }
