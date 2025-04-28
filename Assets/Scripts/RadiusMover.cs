@@ -3,50 +3,53 @@ using UnityEngine.InputSystem;
 
 public class RadiusMover : MonoBehaviour
 {
-    public RectTransform planetRect;
-    public float angularSpeed = 90f;
-    Camera camera;
-    float cameraZ;
+	public RectTransform planetRect;
+	public float angularSpeed = 90f;
+	public float rotationSpeed = 10f;
+	new Camera camera;
+	float cameraZ;
 
-    private void Awake()
-    {
-        camera = Camera.main;
-        cameraZ = Mathf.Abs(camera.transform.position.z);
-    }
+	private void Awake()
+	{
+		camera = Camera.main;
+		cameraZ = Mathf.Abs(camera?.transform.position.z ?? 0);
+	}
 
-    private void Update()
-    {
-        var input = 0f;
-        if (Keyboard.current.aKey.isPressed)
-            input += 1f;
-        if (Keyboard.current.dKey.isPressed)
-            input -= 1f;
-        if (input == 0f) return;
+	private void Update()
+	{
+		transform.RotateAround(planetRect.transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
 
-        var screenPlanet = planetRect.position;
-        screenPlanet.z = cameraZ;
-        var worldPlanet = camera.ScreenToWorldPoint(screenPlanet);
+		var input = 0f;
+		if (Keyboard.current.aKey.isPressed)
+			input += 1f;
+		if (Keyboard.current.dKey.isPressed)
+			input -= 1f;
+		if (input == 0f) return;
 
-        var screenPlayer = ((RectTransform)transform).position;
-        screenPlayer.z = cameraZ;
-        var worldPlayer = camera.ScreenToWorldPoint(screenPlayer);
+		var screenPlanet = planetRect.position;
+		screenPlanet.z = cameraZ;
+		var worldPlanet = camera.ScreenToWorldPoint(screenPlanet);
 
-        var deltaAngle = angularSpeed * input * Time.deltaTime;
-        var direction = worldPlayer - worldPlanet;
-        direction = Quaternion.Euler(0, 0, deltaAngle) * direction;
-        var newWorld = worldPlanet + direction;
+		var screenPlayer = ((RectTransform)transform).position;
+		screenPlayer.z = cameraZ;
+		var worldPlayer = camera.ScreenToWorldPoint(screenPlayer);
 
-        var newScreen = camera.WorldToScreenPoint(newWorld);
-        newScreen.z = 0;
+		var deltaAngle = angularSpeed * input * Time.deltaTime;
+		var direction = worldPlayer - worldPlanet;
+		direction = Quaternion.Euler(0, 0, deltaAngle) * direction;
+		var newWorld = worldPlanet + direction;
 
-        var outOfBounds =
-            newScreen.x < 0f || newScreen.x > Screen.width ||
-            newScreen.y < 0f || newScreen.y > Screen.height;
+		var newScreen = camera.WorldToScreenPoint(newWorld);
+		newScreen.z = 0;
 
-        if (!outOfBounds)
-        {
-            ((RectTransform)transform).position = newScreen;
-            transform.up = (newWorld - worldPlanet).normalized;
-        }
-    }
+		var outOfBounds =
+			newScreen.x < 0f || newScreen.x > Screen.width ||
+			newScreen.y < 0f || newScreen.y > Screen.height;
+
+		if (!outOfBounds)
+		{
+			((RectTransform)transform).position = newScreen;
+			transform.up = (newWorld - worldPlanet).normalized;
+		}
+	}
 }

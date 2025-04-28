@@ -9,6 +9,13 @@ public class PlanetController : MonoBehaviour
 	public List<Transform> positions;
 	public TextMeshProUGUI planetNameText;
 
+	private readonly Dictionary<string, string> levelScenesByNames = new()
+	{
+		{ "ВВМ", "VVMLevel" },
+		{ "Term 1", "Term1Level" },
+		{ "Term 2", "Term2Level" }
+	};
+
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -18,7 +25,14 @@ public class PlanetController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.Escape))
 			SceneManager.LoadScene("Main Menu");
 		else if (Input.GetKeyDown(KeyCode.Return))
-			SceneManager.LoadScene("VVMLevel");
+			LoadSelectedPlanetLevel();
+	}
+
+	private void LoadSelectedPlanetLevel()
+	{
+		var level = planets[0].name;
+		Debug.Log($"Opening level: {levelScenesByNames[level]}");
+		SceneManager.LoadScene(levelScenesByNames[level]);
 	}
 
 	private void RotateRight()
