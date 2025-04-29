@@ -10,18 +10,28 @@ public class Comet : MonoBehaviour
     public float bulletScreenRadius = 10f;
     public TextMeshProUGUI cometText;
 
-    private readonly Dictionary<string, int> cometPoints = new()
+    private readonly Dictionary<int, List<string>> cometPoints = new()
     {
-        { "комп практика", 2 },
-        { "коллок по матану", 4 },
+        { 1, new List<string> { "тысячи", "нтк по философии" } },
+        { 2, new List<string> { "комп практика" } },
+        { 3, new List<string> { "python task", "дедлайн по ятп" } },
+        { 4, new List<string> { "кр по алгему", "зачёт по питону" } },
+        { 5, new List<string> { "коллок по матану" } },
+        { 6, new List<string> { "экзамен по матану", "экзамен по алгему" } },
+    };
+
+    private readonly Dictionary<string, int> taskScores = new()
+    {
         { "тысячи", 1 },
-        { "кр по алгему", 4 },
+        { "нтк по философии", 1 },
+        { "комп практика", 2 },
         { "python task", 3 },
-        { "дедлайн по ятп", 2 }, 
-        { "экзамен по матану", 5},
-        { "экзамен по алгему", 5},
-        { "нтк по философии", 1},
-        { "зачёт по питону", 4},
+        { "дедлайн по ятп", 3 },
+        { "кр по алгему", 4 },
+        { "зачёт по питону", 4 },
+        { "коллок по матану", 5 },
+        { "экзамен по матану", 6 },
+        { "экзамен по алгему", 6 },
     };
 
     private void Start()
@@ -29,7 +39,8 @@ public class Comet : MonoBehaviour
         cometText = GetComponentInChildren<TextMeshProUGUI>();
         if (cometText != null)
         {
-            cometText.text = GetRandomText();
+            int randomScore = Random.Range(1, 7); // Случайное число от 1 до 6
+            cometText.text = randomScore.ToString();
         }
     }
 
@@ -59,11 +70,12 @@ public class Comet : MonoBehaviour
 
             if ((cometScreen - bulletScreen).magnitude < (cometScreenRadius + bulletScreenRadius))
             {
-                var cometTextValue = cometText.text;
-                if (cometPoints.TryGetValue(cometTextValue, out var points))
+                int cometValue = int.Parse(cometText.text);
+                if (cometPoints.TryGetValue(cometValue, out var tasks))
                 {
-                    ScoreManager.Instance.IncreaseScore(points);
-                    NotificationManager.Instance.ShowNotification(cometTextValue, points);
+                    string randomTask = tasks[Random.Range(0, tasks.Count)];
+                    ScoreManager.Instance.IncreaseScore(taskScores[randomTask]);
+                    NotificationManager.Instance.ShowNotification(randomTask, taskScores[randomTask]);
                 }
 
                 Destroy(bullet.gameObject);
@@ -71,13 +83,5 @@ public class Comet : MonoBehaviour
                 return;
             }
         }
-    }
-
-
-    private static string GetRandomText()
-    {
-        string[] texts =
-            { "комп практика", "коллок по матану", "тысячи", "кр по алгему", "python task", "дедлайн по ятп", "экзамен по матану",  "экзамен по алгему", "нтк по философии", "зачёт по питону"};
-        return texts[Random.Range(0, texts.Length)];
     }
 }
