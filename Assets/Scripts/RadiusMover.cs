@@ -17,8 +17,6 @@ public class RadiusMover : MonoBehaviour
 
 	private void Update()
 	{
-		transform.RotateAround(planetRect.transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
-
 		var input = 0f;
 		if (Keyboard.current.aKey.isPressed)
 			input += 1f;
