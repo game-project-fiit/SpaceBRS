@@ -13,7 +13,6 @@ public class PlayerAnimator : MonoBehaviour
         image = GetComponentInChildren<Image>();
         image.preserveAspect = true;
         image.rectTransform.sizeDelta = new Vector2(55, 55);
-        //last = image.sprite;
     }
      
 
@@ -30,5 +29,7 @@ public class PlayerAnimator : MonoBehaviour
         else if (left)
             image.rectTransform.localScale = Vector3.one;
 
+        if (Input.GetKeyDown(KeyCode.Space))
+            animator.SetTrigger("shoot");
     }
 }
