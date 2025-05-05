@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CometSpawner : MonoBehaviour
@@ -93,7 +94,7 @@ public class CometSpawner : MonoBehaviour
         var horizontalSpeed = spawnSide == 0 ? cometSpeed : -cometSpeed;
         var verticalSpeed = -cometSpeed;
 
-        rigidBody.linearVelocity = new Vector2(horizontalSpeed, verticalSpeed); // Изменил на velocity
+        rigidBody.linearVelocity = new Vector2(horizontalSpeed, verticalSpeed);
 
         if (spawnSide == 0)
             activeCometsLeft.Add(comet);
@@ -101,6 +102,22 @@ public class CometSpawner : MonoBehaviour
             activeCometsRight.Add(comet);
 
         Destroy(comet, (screenHeight + 10) / Mathf.Sqrt(cometSpeed * cometSpeed));
+    }
+
+    public void ClearAllComets() 
+    {
+        foreach (var comet in activeCometsLeft.Where(comet => comet != null))
+        {
+            Destroy(comet);
+        }
+
+        foreach (var comet in activeCometsRight.Where(comet => comet != null))
+        {
+            Destroy(comet);
+        }
+
+        activeCometsLeft.Clear();
+        activeCometsRight.Clear();
     }
 
     private void Update()

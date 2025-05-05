@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public AudioClip victorySound;
     private AudioSource audioSource;
     private bool isGameActive = false;
-    private bool isGameOver = false; // Новый флаг для отслеживания состояния окончания игры
+    private bool isGameOver = false;
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
-        isGameOver = false; // Сбрасываем флаг при старте игры
+        isGameOver = false;
         StartCoroutine(GameTimer());
         if (cometSpawner != null)
         {
@@ -70,8 +70,7 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
-
-        // Проверка нажатия Enter для выхода из игры только если игра окончена
+        
         if (isGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             ExitGame();
@@ -81,7 +80,9 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         isGameActive = false;
-        isGameOver = true; // Устанавливаем флаг окончания игры
+        isGameOver = true; 
+        cometSpawner.ClearAllComets();
+
         var finalScore = ScoreManager.Instance.GetScore();
         var resultIndex = finalScore switch
         {
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
 
         resultImages[resultIndex].gameObject.SetActive(true);
         tapEnterText.gameObject.SetActive(true);
-        tapEnterText.text = "Tap Enter"; // Устанавливаем текст
+        tapEnterText.text = "Tap Enter"; 
 
         if (finalScore < 40)
         {
@@ -118,7 +119,9 @@ public class GameManager : MonoBehaviour
     private void EndGameWithAutomaticWin()
     {
         isGameActive = false;
-        isGameOver = true; // Устанавливаем флаг окончания игры
+        isGameOver = true;
+        cometSpawner.ClearAllComets();
+
         foreach (var img in resultImages)
         {
             img.gameObject.SetActive(false);
@@ -128,18 +131,19 @@ public class GameManager : MonoBehaviour
         tapEnterText.gameObject.SetActive(true);
         tapEnterText.text = "Tap Enter";
         audioSource.PlayOneShot(victorySound);
+    
         if (cometSpawner != null)
         {
             cometSpawner.StopSpawning();
         }
     }
 
-    private void ExitGame()
+
+    private static void ExitGame()
     {
-        // Завершение игры
         Application.Quit();
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // Остановка игры в редакторе
+        UnityEditor.EditorApplication.isPlaying = false; 
 #endif
     }
 }
