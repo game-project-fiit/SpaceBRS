@@ -1,24 +1,26 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameDuration = 45f; 
-    public TextMeshProUGUI resultText; 
-    public TextMeshProUGUI descriptionText; 
+    public float gameDuration = 5f; 
+    public Image resultImage; // Изображение для результата
     public CometSpawner cometSpawner; 
     public Slider timeSlider; 
-    public Image resultBackground;
+
+    public Image[] resultImages; // Массив изображений для разных результатов
 
     private void Start()
     {
         timeSlider.maxValue = gameDuration; 
         timeSlider.value = gameDuration; 
-        resultBackground.gameObject.SetActive(false);
-        resultText.gameObject.SetActive(false);
-        descriptionText.gameObject.SetActive(false);
+        
+        // Скрываем все изображения результата при старте
+        foreach (var img in resultImages)
+        {
+            img.gameObject.SetActive(false);
+        }
     }
 
     public void StartGame() 
@@ -53,21 +55,23 @@ public class GameManager : MonoBehaviour
     {
         var finalScore = ScoreManager.Instance.GetScore();
         
-        var resultMessage = finalScore switch
+        // Получаем индекс изображения результата
+        int resultIndex = finalScore switch
         {
-            < 40 => "Game Over",
-            >= 40 and < 60 => "Удовлетворительно",
-            >= 60 and < 80 => "Хорошо",
-            _ => "Отлично"
+            < 40 => 0, // Индекс для "Game Over"
+            >= 40 and < 60 => 1, // Индекс для "Удовлетворительно"
+            >= 60 and < 80 => 2, // Индекс для "Хорошо"
+            _ => 3 // Индекс для "Отлично"
         };
-        
-        resultText.text = resultMessage;
-        resultText.gameObject.SetActive(true);
-        
-        descriptionText.text = GetDescription(finalScore);
-        descriptionText.gameObject.SetActive(true); 
-        
-        resultBackground.gameObject.SetActive(true);
+
+        // Скрываем все изображения перед активацией нужного
+        foreach (var img in resultImages)
+        {
+            img.gameObject.SetActive(false);
+        }
+
+        // Активируем нужное изображение
+        resultImages[resultIndex].gameObject.SetActive(true);
         
         if (cometSpawner != null)
         {
@@ -79,12 +83,14 @@ public class GameManager : MonoBehaviour
 
     private void EndGameWithAutomaticWin()
     {
-        resultBackground.gameObject.SetActive(true);
-        resultText.text = "Автомат!";
-        resultText.gameObject.SetActive(true);
-        
-        descriptionText.text = "Ты получил автомат!";
-        descriptionText.gameObject.SetActive(true);
+        // Скрываем все изображения перед активацией нужного
+        foreach (var img in resultImages)
+        {
+            img.gameObject.SetActive(false);
+        }
+
+        // Активируем изображение для "Автомат"
+        resultImages[4].gameObject.SetActive(true);
         
         if (cometSpawner != null)
         {
@@ -92,17 +98,6 @@ public class GameManager : MonoBehaviour
         }
         
         StartCoroutine(QuitGameAfterDelay(5f));
-    }
-
-    private static string GetDescription(int score)
-    {
-        return score switch
-        {
-            < 40 => "Ты отчислен! Можешь попробовать перепоступить в следующем году или пойти в УГИ, IT - не твоё",
-            >= 40 and < 60 => "Ну хоть закрылся! Но стипендии тебе не видать, поздравляю! Ещё и из общаги выселят. Больше не говори на лекциях, что тебе очев",
-            >= 60 and < 80 => "Минус повышка, но ты на верном пути! Съешь сэндвич из автомата и не грусти:)",
-            _ => "ОГО! Ты даже матан сдал на отлично? Что ж, наше почтение!"
-        };
     }
 
     private IEnumerator QuitGameAfterDelay(float delay)

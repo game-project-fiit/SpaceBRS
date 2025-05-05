@@ -6,7 +6,7 @@ public class RulesManager : MonoBehaviour
     public List<GameObject> rulesImages;
     private int currentRuleIndex = 0;
     public GameManager gameManager;
-    public bool IsShowingRules { get; private set; } = true;
+    private bool IsShowingRules { get; set; } = true;
 
     public AudioClip pageTurnSound;
     private AudioSource audioSource;
@@ -26,11 +26,12 @@ public class RulesManager : MonoBehaviour
     {
         if (IsShowingRules)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            // Листание правил по нажатию клавиши Enter
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 ShowNextRule();
             }
-            else if (Input.GetKeyDown(KeyCode.Return))
+            else if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (currentRuleIndex == rulesImages.Count - 1)
                 {
