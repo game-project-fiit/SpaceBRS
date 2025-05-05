@@ -1,112 +1,145 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameDuration = 5f; 
-    public Image resultImage; // Изображение для результата
-    public CometSpawner cometSpawner; 
-    public Slider timeSlider; 
-
-    public Image[] resultImages; // Массив изображений для разных результатов
+    public float gameDuration = 5f;
+    public CometSpawner cometSpawner;
+    public Slider timeSlider;
+    public Image[] resultImages;
+    public TextMeshProUGUI tapEnterText;
+    public AudioClip gameOverSound;
+    public AudioClip victorySound;
+    private AudioSource audioSource;
+    private bool isGameActive = false;
+    private bool isGameOver = false; // Новый флаг для отслеживания состояния окончания игры
 
     private void Start()
     {
-        timeSlider.maxValue = gameDuration; 
-        timeSlider.value = gameDuration; 
-        
-        // Скрываем все изображения результата при старте
+        timeSlider.maxValue = gameDuration;
+        timeSlider.value = gameDuration;
+
         foreach (var img in resultImages)
         {
             img.gameObject.SetActive(false);
         }
+
+        tapEnterText.gameObject.SetActive(false);
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    public void StartGame() 
+    public void StartGame()
     {
+        isGameActive = true;
+        isGameOver = false; // Сбрасываем флаг при старте игры
         StartCoroutine(GameTimer());
         if (cometSpawner != null)
         {
-            cometSpawner.StartSpawning(); 
+            cometSpawner.StartSpawning();
         }
     }
 
     private IEnumerator GameTimer()
     {
-        var elapsedTime = 0f; 
-        while (elapsedTime < gameDuration)
+        var elapsedTime = 0f;
+        while (elapsedTime < gameDuration && isGameActive)
         {
-            elapsedTime += Time.deltaTime; 
+            elapsedTime += Time.deltaTime;
             timeSlider.value = gameDuration - elapsedTime;
-            
             if (ScoreManager.Instance.GetScore() >= 100)
             {
                 EndGameWithAutomaticWin();
-                yield break; 
+                yield break;
             }
 
-            yield return null; 
+            yield return null;
         }
-        EndGame();
+
+        if (isGameActive)
+        {
+            EndGame();
+        }
+    }
+
+    private void Update()
+    {
+        if (isGameActive && Input.GetKeyDown(KeyCode.Return))
+        {
+            EndGame();
+        }
+
+        // Проверка нажатия Enter для выхода из игры только если игра окончена
+        if (isGameOver && Input.GetKeyDown(KeyCode.Return))
+        {
+            ExitGame();
+        }
     }
 
     private void EndGame()
     {
+        isGameActive = false;
+        isGameOver = true; // Устанавливаем флаг окончания игры
         var finalScore = ScoreManager.Instance.GetScore();
-        
-        // Получаем индекс изображения результата
-        int resultIndex = finalScore switch
+        var resultIndex = finalScore switch
         {
-            < 40 => 0, // Индекс для "Game Over"
-            >= 40 and < 60 => 1, // Индекс для "Удовлетворительно"
-            >= 60 and < 80 => 2, // Индекс для "Хорошо"
-            _ => 3 // Индекс для "Отлично"
+            < 40 => 0,
+            >= 40 and < 60 => 1,
+            >= 60 and < 80 => 2,
+            _ => 3
         };
 
-        // Скрываем все изображения перед активацией нужного
         foreach (var img in resultImages)
         {
             img.gameObject.SetActive(false);
         }
 
-        // Активируем нужное изображение
         resultImages[resultIndex].gameObject.SetActive(true);
-        
+        tapEnterText.gameObject.SetActive(true);
+        tapEnterText.text = "Tap Enter"; // Устанавливаем текст
+
+        if (finalScore < 40)
+        {
+            audioSource.PlayOneShot(gameOverSound);
+        }
+        else
+        {
+            audioSource.PlayOneShot(victorySound);
+        }
+
         if (cometSpawner != null)
         {
             cometSpawner.StopSpawning();
         }
-        
-        StartCoroutine(QuitGameAfterDelay(5f));
     }
 
     private void EndGameWithAutomaticWin()
     {
-        // Скрываем все изображения перед активацией нужного
+        isGameActive = false;
+        isGameOver = true; // Устанавливаем флаг окончания игры
         foreach (var img in resultImages)
         {
             img.gameObject.SetActive(false);
         }
 
-        // Активируем изображение для "Автомат"
         resultImages[4].gameObject.SetActive(true);
-        
+        tapEnterText.gameObject.SetActive(true);
+        tapEnterText.text = "Tap Enter";
+        audioSource.PlayOneShot(victorySound);
         if (cometSpawner != null)
         {
             cometSpawner.StopSpawning();
         }
-        
-        StartCoroutine(QuitGameAfterDelay(5f));
     }
 
-    private IEnumerator QuitGameAfterDelay(float delay)
+    private void ExitGame()
     {
-        yield return new WaitForSeconds(delay); 
+        // Завершение игры
         Application.Quit();
-
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; 
+        UnityEditor.EditorApplication.isPlaying = false; // Остановка игры в редакторе
 #endif
     }
 }
