@@ -16,11 +16,18 @@ public class GameManager : MonoBehaviour
     {
         timeSlider.maxValue = gameDuration; 
         timeSlider.value = gameDuration; 
-        StartCoroutine(GameTimer());
-        
         resultBackground.gameObject.SetActive(false);
         resultText.gameObject.SetActive(false);
         descriptionText.gameObject.SetActive(false);
+    }
+
+    public void StartGame() 
+    {
+        StartCoroutine(GameTimer());
+        if (cometSpawner != null)
+        {
+            cometSpawner.StartSpawning(); 
+        }
     }
 
     private IEnumerator GameTimer()

@@ -7,6 +7,7 @@ public class GunShoot : MonoBehaviour
     public RectTransform firePoint; 
     public AudioClip shootSound; 
     private AudioSource audioSource; 
+    public RulesManager rulesManager;
 
     private void Start()
     {
@@ -15,14 +16,20 @@ public class GunShoot : MonoBehaviour
 
     private void Update()
     {
-        if (!Keyboard.current.spaceKey.wasPressedThisFrame || !Camera.main) return;
+        if (rulesManager != null && rulesManager.IsShowingRules)
+        {
+            return; 
+        }
 
-        var screenPosition = firePoint.position;
-        screenPosition.z = Mathf.Abs(Camera.main.transform.position.z);
-        var worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-        
-        Instantiate(bulletPrefab, worldPosition, firePoint.rotation);
-        PlayShootSound();
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && Camera.main)
+        {
+            var screenPosition = firePoint.position;
+            screenPosition.z = Mathf.Abs(Camera.main.transform.position.z);
+            var worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+
+            Instantiate(bulletPrefab, worldPosition, firePoint.rotation);
+            PlayShootSound();
+        }
     }
 
     private void PlayShootSound()

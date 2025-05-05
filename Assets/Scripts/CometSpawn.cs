@@ -14,22 +14,20 @@ public class CometSpawner : MonoBehaviour
     private float screenHeight;
     private Coroutine spawnCoroutine;
 
-    private List<GameObject> activeCometsLeft = new List<GameObject>();
-    private List<GameObject> activeCometsRight = new List<GameObject>();
+    private List<GameObject> activeCometsLeft = new();
+    private List<GameObject> activeCometsRight = new();
 
     private void Start()
     {
         spawnRangeX = Camera.main.orthographicSize * Camera.main.aspect;
         screenHeight = Camera.main.orthographicSize * 2.0f;
-        spawnCoroutine = StartCoroutine(SpawnComets());
     }
 
-    private IEnumerator SpawnComets()
+    public void StartSpawning() 
     {
-        while (true)
+        if (spawnCoroutine == null)
         {
-            SpawnComet();
-            yield return new WaitForSeconds(spawnInterval);
+            spawnCoroutine = StartCoroutine(SpawnComets());
         }
     }
 
@@ -42,9 +40,18 @@ public class CometSpawner : MonoBehaviour
         }
     }
 
+    private IEnumerator SpawnComets()
+    {
+        while (true)
+        {
+            SpawnComet();
+            yield return new WaitForSeconds(spawnInterval);
+        }
+    }
+
     private void SpawnComet()
     {
-        int spawnSide = Random.Range(0, 2);
+        var spawnSide = Random.Range(0, 2);
         Vector3 spawnPosition;
 
         if (spawnSide == 0) 
@@ -86,7 +93,7 @@ public class CometSpawner : MonoBehaviour
         var horizontalSpeed = spawnSide == 0 ? cometSpeed : -cometSpeed;
         var verticalSpeed = -cometSpeed;
 
-        rigidBody.linearVelocity = new Vector2(horizontalSpeed, verticalSpeed);
+        rigidBody.linearVelocity = new Vector2(horizontalSpeed, verticalSpeed); // Изменил на velocity
 
         if (spawnSide == 0)
             activeCometsLeft.Add(comet);

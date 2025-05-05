@@ -147,6 +147,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -559,7 +572,25 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      astronaut_shooting_0: 2223230139297219004
+      astronaut_shooting_1: 7781817189493625379
+      astronaut_shooting_10: -8909219751260441914
+      astronaut_shooting_11: -6458167011401392185
+      astronaut_shooting_12: -8845212751315219824
+      astronaut_shooting_13: -3338015744415570627
+      astronaut_shooting_14: 1736402793335828139
+      astronaut_shooting_15: 4552964772950872478
+      astronaut_shooting_16: 2572130967777892572
+      astronaut_shooting_17: 436271977154218884
+      astronaut_shooting_2: -5750201425049272437
+      astronaut_shooting_3: -4028217220144872692
+      astronaut_shooting_4: 3829721377805464938
+      astronaut_shooting_5: -2297904936747163868
+      astronaut_shooting_6: -5264987557392008919
+      astronaut_shooting_7: 4029976058258241435
+      astronaut_shooting_8: -2135613973151777209
+      astronaut_shooting_9: -1426494863128942649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

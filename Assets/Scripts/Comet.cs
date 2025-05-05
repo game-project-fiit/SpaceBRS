@@ -39,7 +39,7 @@ public class Comet : MonoBehaviour
         cometText = GetComponentInChildren<TextMeshProUGUI>();
         if (cometText != null)
         {
-            int randomScore = Random.Range(1, 7); // Случайное число от 1 до 6
+            var randomScore = Random.Range(1, 7); 
             cometText.text = randomScore.ToString();
         }
     }
@@ -55,8 +55,10 @@ public class Comet : MonoBehaviour
 
         if (cometText != null)
         {
-            var offsetX = 20f; 
-            cometText.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, 0, 0);
+            var offsetX = (transform.position.x < 0) ? 117f : 65f; 
+            var offsetY = -35f; 
+
+            cometText.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, offsetY, 0);
         }
 
         foreach (var bullet in FindObjectsOfType<Bullet>())
@@ -70,10 +72,10 @@ public class Comet : MonoBehaviour
 
             if ((cometScreen - bulletScreen).magnitude < (cometScreenRadius + bulletScreenRadius))
             {
-                int cometValue = int.Parse(cometText.text);
+                var cometValue = int.Parse(cometText.text);
                 if (cometPoints.TryGetValue(cometValue, out var tasks))
                 {
-                    string randomTask = tasks[Random.Range(0, tasks.Count)];
+                    var randomTask = tasks[Random.Range(0, tasks.Count)];
                     ScoreManager.Instance.IncreaseScore(taskScores[randomTask]);
                     NotificationManager.Instance.ShowNotification(randomTask, taskScores[randomTask]);
                 }
@@ -84,4 +86,5 @@ public class Comet : MonoBehaviour
             }
         }
     }
+
 }
