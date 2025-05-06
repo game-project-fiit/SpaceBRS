@@ -6,8 +6,8 @@ using UnityEngine;
 public class CometSpawner : MonoBehaviour
 {
     public GameObject cometPrefab;
-    public Sprite cometSpriteLeft;
-    public Sprite cometSpriteRight;
+    public List<Sprite> cometSpritesLeft;
+    public List<Sprite> cometSpritesRight;
     public RectTransform planetRect;
     public float spawnInterval = 6f; 
     public float spawnRangeX = 8.0f;
@@ -82,7 +82,14 @@ public class CometSpawner : MonoBehaviour
         var spriteRenderer = comet.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
         {
-            spriteRenderer.sprite = spawnSide == 0 ? cometSpriteLeft : cometSpriteRight;
+            if (spawnSide == 0 && cometSpritesLeft.Count > 0)
+            {
+                spriteRenderer.sprite = cometSpritesLeft[Random.Range(0, cometSpritesLeft.Count)];
+            }
+            else if (spawnSide == 1 && cometSpritesRight.Count > 0)
+            {
+                spriteRenderer.sprite = cometSpritesRight[Random.Range(0, cometSpritesRight.Count)];
+        }
         }
 
         var rigidBody = comet.GetComponent<Rigidbody2D>();

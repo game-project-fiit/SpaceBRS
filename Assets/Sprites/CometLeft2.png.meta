@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 19048d29639ac6a428c4fbe5e7a2bdd8
+guid: 4d0369edcf21e49d991b5a64d3cb65b5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2863920868643860737
-    second: vvm rules 1_0
+      213: 7115572681347598087
+    second: CometLeft2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vvm rules 1_0
+      name: CometLeft2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1224
-        height: 678
+        x: 1
+        y: 6
+        width: 193
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10178583bd0beb720800000000000000
-      internalID: 2863920868643860737
+      spriteID: 707823d57a79fb260800000000000000
+      internalID: 7115572681347598087
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      vvm rules 1_0: 2863920868643860737
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
