@@ -13,7 +13,7 @@ public class Comet : MonoBehaviour
     private readonly Dictionary<int, List<string>> cometPoints = new()
     {
         { 1, new List<string> { "тысячи", "нтк по философии" } },
-        { 2, new List<string> { "комп практика" } },
+        { 2, new List<string> { "комп практику" } },
         { 3, new List<string> { "python task", "дедлайн по ятп" } },
         { 4, new List<string> { "кр по алгему", "зачёт по питону" } },
         { 5, new List<string> { "коллок по матану" } },
@@ -24,7 +24,7 @@ public class Comet : MonoBehaviour
     {
         { "тысячи", 1 },
         { "нтк по философии", 1 },
-        { "комп практика", 2 },
+        { "комп практику", 2 },
         { "python task", 3 },
         { "дедлайн по ятп", 3 },
         { "кр по алгему", 4 },
@@ -59,6 +59,16 @@ public class Comet : MonoBehaviour
         if (RectTransformUtility.RectangleContainsScreenPoint(planetRect, cometScreen, null))
         {
             Destroy(gameObject);
+            if (ScoreManager.Instance.decreaseScore)
+            {
+                var cometValue = int.Parse(cometText.text);
+                if (cometPoints.TryGetValue(cometValue, out var tasks))
+                {
+                    var randomTask = tasks[Random.Range(0, tasks.Count)];
+                    ScoreManager.Instance.ChangeScore(taskScores[randomTask], false);
+                    NotificationManager.Instance.ShowNotification(randomTask, taskScores[randomTask], false);
+                }
+            }
             return;
         }
 
@@ -85,8 +95,8 @@ public class Comet : MonoBehaviour
                 if (cometPoints.TryGetValue(cometValue, out var tasks))
                 {
                     var randomTask = tasks[Random.Range(0, tasks.Count)];
-                    ScoreManager.Instance.IncreaseScore(taskScores[randomTask]);
-                    NotificationManager.Instance.ShowNotification(randomTask, taskScores[randomTask]);
+                    ScoreManager.Instance.ChangeScore(taskScores[randomTask], true);
+                    NotificationManager.Instance.ShowNotification(randomTask, taskScores[randomTask], true);
                 }
 
                 Destroy(bullet.gameObject);

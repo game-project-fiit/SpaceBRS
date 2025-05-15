@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class RotatingRadiusMover : MonoBehaviour
+
+public class RadiusMoverTerm2 : MonoBehaviour
 {
     public RectTransform planetRect;
     public float angularSpeed = 90f;
-    public PlanetRotator planetRotator;
-
+    public RandomPlanetRotator randomPlanetRotator;
+    
     Camera camera;
     float cameraZ;
     float radius;
@@ -31,7 +32,7 @@ public class RotatingRadiusMover : MonoBehaviour
         radius = offset.magnitude;
         direction = offset.normalized;
     }
-
+    
     void Update()
     {
         var input = 0f;
@@ -39,10 +40,10 @@ public class RotatingRadiusMover : MonoBehaviour
             input += 1f;
         if (Keyboard.current.dKey.isPressed)
             input -= 1f;
-        if (input == 0f && planetRotator.rotationSpeed == 0f) return;
+        if (input == 0f && randomPlanetRotator.rotationSpeed == 0f) return;
 
         var playerDeltaDegree = angularSpeed * input * Time.deltaTime;
-        var spineDeltaDegree = planetRotator.rotationSpeed * Time.deltaTime;
+        var spineDeltaDegree = randomPlanetRotator.rotationSpeed * Time.deltaTime;
         var totalDegree = playerDeltaDegree + spineDeltaDegree;
 
         var candidateDirection = Quaternion.Euler(0f, 0f, totalDegree) * direction;
