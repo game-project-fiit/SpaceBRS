@@ -5,9 +5,10 @@ using UnityEngine;
 public class Comet : MonoBehaviour
 {
     public RectTransform planetRect;
+    public TextMeshProUGUI cometText;
     public float cometScreenRadius = 20f;
     public float bulletScreenRadius = 10f;
-    public TextMeshProUGUI cometText;
+    public float size = 0.1f;
 
     private readonly Dictionary<int, List<string>> cometPoints = new()
     {
@@ -35,11 +36,20 @@ public class Comet : MonoBehaviour
 
     private void Start()
     {
+        transform.localScale = Vector3.one * size;
+
         cometText = GetComponentInChildren<TextMeshProUGUI>();
         if (cometText != null)
         {
             var randomScore = Random.Range(1, 7); 
             cometText.text = randomScore.ToString();
+
+            cometText.fontSize = 48;
+            cometText.color = Color.black;
+
+            var material = cometText.fontMaterial;
+            material.SetColor(ShaderUtilities.ID_OutlineColor, Color.white);
+            material.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.13f);
         }
     }
 
@@ -54,7 +64,7 @@ public class Comet : MonoBehaviour
 
         if (cometText != null)
         {
-            var offsetX = (transform.position.x < 0) ? 117f : 65f; 
+            var offsetX = (transform.position.x < 0) ? 127f : 45f; 
             var offsetY = -35f; 
 
             cometText.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, offsetY, 0);
@@ -85,5 +95,4 @@ public class Comet : MonoBehaviour
             }
         }
     }
-
 }
