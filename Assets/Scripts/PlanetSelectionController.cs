@@ -40,6 +40,12 @@ public class PlanetController : MonoBehaviour
 		{
 			SceneManager.LoadScene("Term1Level");
 		}
+		
+		
+		if (level == "Term 2")
+		{
+			SceneManager.LoadScene("Term2Level");
+		}
 	}
 
 	private void RotateRight()
