@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelsMenu.unity
     guid: 9810549e09728404fac95e26bb301a82
   - enabled: 1
+    path: Assets/Scenes/Term1Level.unity
+    guid: 6bafa2292e01548238ec4e4cff062547
+  - enabled: 1
     path: Assets/Scenes/VVMLevel.unity
     guid: ef11b1373e6ca9740b8e51141988f1b8
   m_configObjects:

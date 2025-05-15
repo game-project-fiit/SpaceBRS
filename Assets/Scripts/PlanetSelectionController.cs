@@ -31,8 +31,15 @@ public class PlanetController : MonoBehaviour
 	private void LoadSelectedPlanetLevel()
 	{
 		var level = planets[0].name;
-		Debug.Log($"Opening level: {levelScenesByNames[level]}");
-		SceneManager.LoadScene(levelScenesByNames[level]);
+		if (level == "ВВМ")
+		{
+			SceneManager.LoadScene("VVMLevel");
+		}
+
+		if (level == "Term 1")
+		{
+			SceneManager.LoadScene("Term1Level");
+		}
 	}
 
 	private void RotateRight()
