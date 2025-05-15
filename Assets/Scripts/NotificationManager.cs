@@ -22,9 +22,14 @@ public class NotificationManager : MonoBehaviour
         }
     }
 
-    public void ShowNotification(string cometTextValue, int score)
+    public void ShowNotification(string cometTextValue, int score, bool positive)
     {
-        string message = $"Вы сдали {cometTextValue} +{score}!";
+        var message = string.Format("Вы {0} {1} {2}{3}!",
+            positive ? "сдали" : "не сдали",
+            cometTextValue,
+            positive ? "+" : "-",
+            score);
+
         CreateNotification(message);
     }
 
