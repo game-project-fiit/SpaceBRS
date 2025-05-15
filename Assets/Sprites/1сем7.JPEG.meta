@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: c519a3589a37c0d46afa685e48434eea
+guid: 628bd3e0da308ab41a25d8d98e29437c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1652530800292273874
-    second: IMG_5860_0
-  - first:
-      213: 4886835548210945172
-    second: IMG_5860_1
+      213: -7983478430255134410
+    second: "1\u0441\u0435\u043C7_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_5860_0
+      name: "1\u0441\u0435\u043C7_0"
       rect:
         serializedVersion: 2
-        x: 112
-        y: 202
-        width: 1299
-        height: 2042
+        x: 0
+        y: 0
+        width: 3424
+        height: 1902
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2de10d3e108fee610800000000000000
-      internalID: 1652530800292273874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_5860_1
-      rect:
-        serializedVersion: 2
-        x: 1311
-        y: 2148
-        width: 1988
-        height: 1089
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49c5dde1a0781d340800000000000000
-      internalID: 4886835548210945172
+      spriteID: 63946ac7aacf43190800000000000000
+      internalID: -7983478430255134410
       vertices: []
       indices: 
       edges: []

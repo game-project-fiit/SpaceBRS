@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class GameManager : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class GameManager : MonoBehaviour
     public AudioClip gameOverSound;
     public AudioClip victorySound;
     private AudioSource audioSource;
+    public GameObject pausePanel; 
+    public GameObject gamePanel; 
     private bool isGameActive = false;
     private bool isGameOver = false;
+    private bool isPaused = false; 
 
     private void Start()
     {
@@ -27,6 +31,8 @@ public class GameManager : MonoBehaviour
         }
 
         tapEnterText.gameObject.SetActive(false);
+        pausePanel.SetActive(false); 
+        gamePanel.SetActive(true);
 
         audioSource = gameObject.AddComponent<AudioSource>();
     }
@@ -66,15 +72,53 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (isGameActive && Input.GetKeyDown(KeyCode.Return))
+        if (isGameActive)
         {
-            EndGame();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused)
+                {
+                    ExitGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    EndGame();
+                }
+            }
         }
-        
+
         if (isGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             ExitGame();
         }
+    }
+
+    private void PauseGame()
+    {
+        isPaused = true; 
+        Time.timeScale = 0; 
+        pausePanel.SetActive(true);
+        gamePanel.SetActive(false); 
+    }
+
+    private void ResumeGame()
+    {
+        isPaused = false; 
+        Time.timeScale = 1; 
+        pausePanel.SetActive(false); 
+        gamePanel.SetActive(true); 
     }
 
     private void EndGame()
@@ -126,24 +170,20 @@ public class GameManager : MonoBehaviour
         {
             img.gameObject.SetActive(false);
         }
-
+        
         resultImages[4].gameObject.SetActive(true);
         tapEnterText.gameObject.SetActive(true);
-        tapEnterText.text = "Tap Enter";
-        audioSource.PlayOneShot(victorySound);
-    
+        tapEnterText.text = "Tap Enter"; 
+        audioSource.PlayOneShot(victorySound); 
+
         if (cometSpawner != null)
         {
             cometSpawner.StopSpawning();
         }
     }
 
-
     private static void ExitGame()
     {
-        Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; 
-#endif
+        SceneManager.LoadScene("LevelsMenu");
     }
 }
