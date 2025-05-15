@@ -44,7 +44,7 @@ public class Comet : MonoBehaviour
             var randomScore = Random.Range(1, 7); 
             cometText.text = randomScore.ToString();
 
-            cometText.fontSize = 48;
+            cometText.fontSize = 45;
             cometText.color = Color.black;
 
             var material = cometText.fontMaterial;
@@ -64,8 +64,8 @@ public class Comet : MonoBehaviour
 
         if (cometText != null)
         {
-            var offsetX = (transform.position.x < 0) ? 127f : 45f; 
-            var offsetY = -35f; 
+            var offsetX = (transform.position.x < 0) ? 122f : 52f; 
+            var offsetY = -32f; 
 
             cometText.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, offsetY, 0);
         }
