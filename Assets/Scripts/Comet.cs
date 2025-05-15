@@ -12,26 +12,22 @@ public class Comet : MonoBehaviour
 
     private readonly Dictionary<int, List<string>> cometPoints = new()
     {
-        { 1, new List<string> { "тысячи", "нтк по философии" } },
-        { 2, new List<string> { "комп практику" } },
-        { 3, new List<string> { "python task", "дедлайн по ятп" } },
-        { 4, new List<string> { "кр по алгему", "зачёт по питону" } },
-        { 5, new List<string> { "коллок по матану" } },
-        { 6, new List<string> { "экзамен по матану", "экзамен по алгему" } },
+        { 1, new List<string> { "Lego island" } },
+        { 2, new List<string> { "Board game" } },
+        { 3, new List<string> { "ВВМ Ulearn" } },
+        { 4, new List<string> { "первый дедлайн по ятп" } },
+        { 5, new List<string> { "ввм кр 1" } },
+        { 6, new List<string> { "ввм кр 2" } },
     };
 
-    private readonly Dictionary<string, int> taskScores = new()
+    private readonly Dictionary<string, int>  taskScores = new()
     {
-        { "тысячи", 1 },
-        { "нтк по философии", 1 },
-        { "комп практику", 2 },
-        { "python task", 3 },
-        { "дедлайн по ятп", 3 },
-        { "кр по алгему", 4 },
-        { "зачёт по питону", 4 },
-        { "коллок по матану", 5 },
-        { "экзамен по матану", 6 },
-        { "экзамен по алгему", 6 },
+        { "Lego island", 1 },
+        { "Board game", 2 },
+        { "ВВМ Ulearn", 3 },
+        { "первый дедлайн по ятп", 4 },
+        { "ввм кр 1", 5 },
+        { "ввм кр 2", 6 },
     };
 
     private void Start()
