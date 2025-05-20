@@ -8,6 +8,8 @@ public class PlanetController : MonoBehaviour
 	public List<GameObject> planets;
 	public List<Transform> positions;
 	public TextMeshProUGUI planetNameText;
+	public AudioClip rotateClip;
+	public AudioClip clickClip;
 
 	private readonly Dictionary<string, string> levelScenesByNames = new()
 	{
@@ -19,13 +21,28 @@ public class PlanetController : MonoBehaviour
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.RightArrow))
-			RotateRight();
+		{
+            RotateRight();
+			AudioManager.Instance.PlaySVX(rotateClip);
+        }
+			
 		else if (Input.GetKeyDown(KeyCode.LeftArrow))
-			RotateLeft();
+		{
+            RotateLeft();
+            AudioManager.Instance.PlaySVX(rotateClip);
+        }
+		
 		else if (Input.GetKeyDown(KeyCode.Escape))
-			SceneManager.LoadScene("Main Menu");
+		{
+            AudioManager.Instance.PlaySVX(clickClip);
+            SceneManager.LoadScene("Main Menu");
+        }
+			
 		else if (Input.GetKeyDown(KeyCode.Return))
-			LoadSelectedPlanetLevel();
+        {
+            AudioManager.Instance.PlaySVX(clickClip);
+            LoadSelectedPlanetLevel();
+        }
 	}
 
 	private void LoadSelectedPlanetLevel()

@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
     public AudioMixer audioMixer;
+    public AudioSource SVXSource;
     private const string KeyMusic = "MusicVolume";
     private const string KeySVX = "SVXVolume";
 
@@ -41,5 +42,14 @@ public class AudioManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat(KeySVX, linear);
         audioMixer.SetFloat("VolSVX", Mathf.Log10(Mathf.Clamp01(linear)) * 20f);
+    }
+
+    public void PlaySVX(AudioClip clip)
+    {
+        if (clip == null || SVXSource == null)
+            return;
+
+        var volume = PlayerPrefs.GetFloat(KeySVX, 1f);
+        SVXSource.PlayOneShot(clip, volume);
     }
 }
