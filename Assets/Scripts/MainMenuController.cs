@@ -57,8 +57,11 @@ public class MainMenuController : MonoBehaviour
 
 	private void PlaySound(AudioClip clip)
 	{
-		if (clip != null)
-			audioSource.PlayOneShot(clip);
+		if (clip == null)
+			return;
+
+		var volume = PlayerPrefs.GetFloat("SVXVolume", 1f);
+		audioSource.PlayOneShot(clip, volume);
 	}
 
 	private void UpdateMenu()

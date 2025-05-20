@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
+using UnityEngine.Audio;
 
 public class SettingsMenuController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class SettingsMenuController : MonoBehaviour
 	public AudioSource audioSource;
 	public AudioClip audioClip;
 	public AudioClip clickClip;
+	public AudioMixer audioMixer;
 
 	private int selectedIndex;
 
@@ -55,16 +57,15 @@ public class SettingsMenuController : MonoBehaviour
             UpdateMenu();
 		}
 
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
-			AdjustVolume(-0.01f);
-		else if (Input.GetKeyDown(KeyCode.RightArrow))
-			AdjustVolume(0.01f);
+		if (Input.GetKey(KeyCode.LeftArrow))
+			AdjustVolume(-0.3f * Time.deltaTime);
+		else if (Input.GetKey(KeyCode.RightArrow))
+			AdjustVolume(0.3f * Time.deltaTime);
 
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			PlayClickSounds();
 			SelectOption();
-
         }
 
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -114,11 +115,13 @@ public class SettingsMenuController : MonoBehaviour
 		switch (selectedIndex)
 		{
 			case 0:
-				musicSlider.value = Mathf.Clamp(musicSlider.value + change, 0f, 1f);
+				musicSlider.value = Mathf.Clamp01(musicSlider.value + change);
+				AudioManager.Instance.SetMusicVolume(musicSlider.value);
 				break;
 			case 1:
-				soundSlider.value = Mathf.Clamp(soundSlider.value + change, 0f, 1f);
-				break;
+				soundSlider.value = Mathf.Clamp01(soundSlider.value + change);
+                AudioManager.Instance.setSVXVolume(soundSlider.value);
+                break;
 		}
 
 		UpdateMenu();
@@ -237,8 +240,11 @@ public class SettingsMenuController : MonoBehaviour
 
 	private void OnEnable()
 	{
+		musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
+		soundSlider.value = PlayerPrefs.GetFloat("SVXVolume", 1f);
+
 		selectedIndex = 0;
 		UpdateMenu();
-		UpdateMenu();
+		//UpdateMenu();
 	}
 }
