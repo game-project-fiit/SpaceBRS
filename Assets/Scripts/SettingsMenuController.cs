@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
@@ -20,6 +20,11 @@ public class SettingsMenuController : MonoBehaviour
 
 	[FormerlySerializedAs("HotkeysPanel")] public GameObject hotkeysPanel;
 	public GameObject storyPanel;
+
+	public AudioSource audioSource;
+	public AudioClip audioClip;
+	public AudioClip clickClip;
+
 	private int selectedIndex;
 
 	private void Awake()
@@ -39,13 +44,15 @@ public class SettingsMenuController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
 		{
 			selectedIndex = (selectedIndex - 1 + settingTexts.Length) % settingTexts.Length;
+			PlayNavigateSounds();
 			UpdateMenu();
 		}
 
-		else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+		else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) // Зачем еще S для переключения?
 		{
 			selectedIndex = (selectedIndex + 1) % settingTexts.Length;
-			UpdateMenu();
+            PlayNavigateSounds();
+            UpdateMenu();
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -53,9 +60,12 @@ public class SettingsMenuController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.RightArrow))
 			AdjustVolume(0.01f);
 
-
 		if (Input.GetKeyDown(KeyCode.Return))
+		{
+			PlayClickSounds();
 			SelectOption();
+
+        }
 
 		if (Input.GetKeyDown(KeyCode.Escape))
 			HandleEscape();
@@ -77,7 +87,19 @@ public class SettingsMenuController : MonoBehaviour
 				: GetOptionText(i);
 	}
 
-	private string GetOptionText(int index)
+	private void PlayNavigateSounds()
+	{
+		if (audioSource != null && audioClip != null)
+			audioSource.PlayOneShot(audioClip, soundSlider.value);
+	}
+
+	private void PlayClickSounds()
+	{
+        if (audioSource != null && clickClip != null)
+            audioSource.PlayOneShot(clickClip, soundSlider.value);
+    }
+
+    private string GetOptionText(int index)
 		=> index switch
 		{
 			0 => $"Music Volume: {Mathf.RoundToInt(musicSlider.value * 100)}%",
