@@ -108,7 +108,7 @@ public class Comet : MonoBehaviour
             currentTaskScores = taskScoresTerm1;
         }
         
-        if (sceneName == "Term1Level")
+        if (sceneName == "Term2Level")
         {
             currentCometPoints = cometPointsTerm2;
             currentTaskScores = taskScoresTerm2;
