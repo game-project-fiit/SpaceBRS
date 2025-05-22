@@ -27,9 +27,7 @@ public class GunShoot : MonoBehaviour
 
     private void PlayShootSound()
     {
-        if (shootSound != null && audioSource != null)
-        {
+        if (shootSound && audioSource)
             audioSource.PlayOneShot(shootSound);
-        }
     }
 }

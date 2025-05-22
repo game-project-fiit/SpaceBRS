@@ -57,8 +57,7 @@ public class MainMenuController : MonoBehaviour
 
 	private void PlaySound(AudioClip clip)
 	{
-		if (clip == null)
-			return;
+		if (!clip) return;
 
 		var volume = PlayerPrefs.GetFloat("SVXVolume", 1f);
 		audioSource.PlayOneShot(clip, volume);
@@ -73,7 +72,6 @@ public class MainMenuController : MonoBehaviour
 				menuTexts[i].text = ">" + menuTexts[i].text.TrimStart('>');
 				menuButtons[i].Select();
 			}
-
 			else
 				menuTexts[i].text = menuTexts[i].text.TrimStart('>');
 		}
@@ -116,7 +114,7 @@ public class MainMenuController : MonoBehaviour
 		menuPanel.SetActive(false);
 		enabled = false;
 
-		if (optionsPanel != null)
+		if (optionsPanel)
 		{
 			menuPanel.SetActive(false);
 			optionsPanel.SetActive(true);
@@ -124,26 +122,25 @@ public class MainMenuController : MonoBehaviour
 			SettingsMenuController.instance.enabled = true;
 		}
 
-		if (hotkeysPanel != null)
+		if (hotkeysPanel)
 		{
 			menuPanel.SetActive(false);
 			hotkeysPanel.SetActive(false);
 		}
-
 		else
 			Debug.LogWarning("HotkeysPanel is not assigned in the inspector!");
 	}
 
 	private System.Collections.IEnumerator QuitGame()
 	{
-		if (SettingsMenuController.instance != null)
+		if (SettingsMenuController.instance)
 		{
 			SettingsMenuController.instance.optionsPanel.SetActive(false);
 			SettingsMenuController.instance.settingsMenuPanel.SetActive(false);
 
-			if (SettingsMenuController.instance.hotkeysPanel != null)
+			if (SettingsMenuController.instance.hotkeysPanel)
 				SettingsMenuController.instance.hotkeysPanel.SetActive(false);
-			if (SettingsMenuController.instance.storyPanel != null)
+			if (SettingsMenuController.instance.storyPanel)
 				SettingsMenuController.instance.storyPanel.SetActive(false);
 		}
 
@@ -151,8 +148,6 @@ public class MainMenuController : MonoBehaviour
 
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
 #endif
 	}
 }

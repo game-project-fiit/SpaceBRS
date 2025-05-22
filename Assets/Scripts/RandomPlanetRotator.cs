@@ -10,12 +10,10 @@ public class RandomPlanetRotator : MonoBehaviour
 
     private float nextChangeTime;
 
-    void Start()
-    {
-        ScheduleNextChange();
-    }
+    private void Start()
+        => ScheduleNextChange();
 
-    void Update()
+    private void Update()
     {
         if (Time.time >= nextChangeTime)
         {
@@ -26,7 +24,7 @@ public class RandomPlanetRotator : MonoBehaviour
         transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
     }
 
-    void ScheduleNextChange()
+    private void ScheduleNextChange()
     {
         var interval = Random.Range(minInterval, maxInterval);
         nextChangeTime = Time.time + interval;

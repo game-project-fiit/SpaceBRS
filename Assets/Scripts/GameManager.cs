@@ -2,188 +2,156 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameDuration = 5f;
-    public CometSpawner cometSpawner;
-    public Slider timeSlider;
-    public Image[] resultImages;
-    public TextMeshProUGUI tapEnterText;
-    public AudioClip gameOverSound;
-    public AudioClip victorySound;
-    private AudioSource audioSource;
-    public GameObject pausePanel; 
-    public GameObject gamePanel; 
-    private bool isGameActive = false;
-    private bool isGameOver = false;
-    private bool isPaused = false; 
+	public float gameDuration = 5f;
+	public CometSpawner cometSpawner;
+	public Slider timeSlider;
+	public Image[] resultImages;
+	public TextMeshProUGUI tapEnterText;
+	public AudioClip gameOverSound;
+	public AudioClip victorySound;
+	private AudioSource audioSource;
+	public GameObject pausePanel;
+	public GameObject gamePanel;
+	private bool isGameActive;
+	private bool isGameOver;
+	private bool isPaused;
 
-    private void Start()
-    {
-        timeSlider.maxValue = gameDuration;
-        timeSlider.value = gameDuration;
+	private void Start()
+	{
+		timeSlider.maxValue = gameDuration;
+		timeSlider.value = gameDuration;
 
-        foreach (var img in resultImages)
-        {
-            img.gameObject.SetActive(false);
-        }
+		foreach (var img in resultImages)
+			img.gameObject.SetActive(false);
 
-        tapEnterText.gameObject.SetActive(false);
-        pausePanel.SetActive(false); 
-        gamePanel.SetActive(true);
+		tapEnterText.gameObject.SetActive(false);
+		pausePanel.SetActive(false);
+		gamePanel.SetActive(true);
 
-        audioSource = gameObject.AddComponent<AudioSource>();
-    }
+		audioSource = gameObject.AddComponent<AudioSource>();
+	}
 
-    public void StartGame()
-    {
-        isGameActive = true;
-        isGameOver = false;
-        StartCoroutine(GameTimer());
-        if (cometSpawner != null)
-        {
-            cometSpawner.StartSpawning();
-        }
-    }
+	public void StartGame()
+	{
+		isGameActive = true;
+		isGameOver = false;
+		StartCoroutine(GameTimer());
+		if (cometSpawner)
+			cometSpawner.StartSpawning();
+	}
 
-    private IEnumerator GameTimer()
-    {
-        var elapsedTime = 0f;
-        while (elapsedTime < gameDuration && isGameActive)
-        {
-            elapsedTime += Time.deltaTime;
-            timeSlider.value = gameDuration - elapsedTime;
-            if (ScoreManager.Instance.GetScore() >= 100)
-            {
-                EndGameWithAutomaticWin();
-                yield break;
-            }
+	private IEnumerator GameTimer()
+	{
+		var elapsedTime = 0f;
+		while (elapsedTime < gameDuration && isGameActive)
+		{
+			elapsedTime += Time.deltaTime;
+			timeSlider.value = gameDuration - elapsedTime;
 
-            yield return null;
-        }
+			if (ScoreManager.instance.GetScore() >= 100)
+			{
+				EndGameWithAutomaticWin();
+				yield break;
+			}
 
-        if (isGameActive)
-        {
-            EndGame();
-        }
-    }
+			yield return null;
+		}
 
-    private void Update()
-    {
-        if (isGameActive)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (isPaused)
-                {
-                    ExitGame();
-                }
-                else
-                {
-                    PauseGame();
-                }
-            }
+		if (isGameActive)
+			EndGame();
+	}
 
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                if (isPaused)
-                {
-                    ResumeGame();
-                }
-                else
-                {
-                    EndGame();
-                }
-            }
-        }
+	private void Update()
+	{
+		if (isGameActive)
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				if (isPaused)
+					ExitGame();
+				else
+					PauseGame();
+			}
 
-        if (isGameOver && Input.GetKeyDown(KeyCode.Return))
-        {
-            ExitGame();
-        }
-    }
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				if (isPaused)
+					ResumeGame();
+				else
+					EndGame();
+			}
+		}
 
-    private void PauseGame()
-    {
-        isPaused = true; 
-        Time.timeScale = 0; 
-        pausePanel.SetActive(true);
-        gamePanel.SetActive(false); 
-    }
+		if (isGameOver && Input.GetKeyDown(KeyCode.Return))
+			ExitGame();
+	}
 
-    private void ResumeGame()
-    {
-        isPaused = false; 
-        Time.timeScale = 1; 
-        pausePanel.SetActive(false); 
-        gamePanel.SetActive(true); 
-    }
+	private void PauseGame()
+	{
+		isPaused = true;
+		Time.timeScale = 0;
+		pausePanel.SetActive(true);
+		gamePanel.SetActive(false);
+	}
 
-    private void EndGame()
-    {
-        isGameActive = false;
-        isGameOver = true; 
-        cometSpawner.ClearAllComets();
+	private void ResumeGame()
+	{
+		isPaused = false;
+		Time.timeScale = 1;
+		pausePanel.SetActive(false);
+		gamePanel.SetActive(true);
+	}
 
-        var finalScore = ScoreManager.Instance.GetScore();
-        var resultIndex = finalScore switch
-        {
-            < 40 => 0,
-            >= 40 and < 60 => 1,
-            >= 60 and < 80 => 2,
-            _ => 3
-        };
+	private void EndGame()
+	{
+		isGameActive = false;
+		isGameOver = true;
+		cometSpawner.ClearAllComets();
 
-        foreach (var img in resultImages)
-        {
-            img.gameObject.SetActive(false);
-        }
+		var finalScore = ScoreManager.instance.GetScore();
+		var resultIndex = finalScore switch
+		{
+			< 40 => 0,
+			< 60 => 1,
+			< 80 => 2,
+			_ => 3
+		};
 
-        resultImages[resultIndex].gameObject.SetActive(true);
-        tapEnterText.gameObject.SetActive(true);
-        tapEnterText.text = "Tap Enter"; 
+		foreach (var img in resultImages)
+			img.gameObject.SetActive(false);
 
-        if (finalScore < 40)
-        {
-            audioSource.PlayOneShot(gameOverSound);
-        }
-        else
-        {
-            audioSource.PlayOneShot(victorySound);
-        }
+		resultImages[resultIndex].gameObject.SetActive(true);
+		tapEnterText.gameObject.SetActive(true);
+		tapEnterText.text = "Tap Enter";
 
-        if (cometSpawner != null)
-        {
-            cometSpawner.StopSpawning();
-        }
-    }
+		audioSource.PlayOneShot(finalScore < 40 ? gameOverSound : victorySound);
 
-    private void EndGameWithAutomaticWin()
-    {
-        isGameActive = false;
-        isGameOver = true;
-        cometSpawner.ClearAllComets();
+		if (cometSpawner)
+			cometSpawner.StopSpawning();
+	}
 
-        foreach (var img in resultImages)
-        {
-            img.gameObject.SetActive(false);
-        }
-        
-        resultImages[4].gameObject.SetActive(true);
-        tapEnterText.gameObject.SetActive(true);
-        tapEnterText.text = "Tap Enter"; 
-        audioSource.PlayOneShot(victorySound); 
+	private void EndGameWithAutomaticWin()
+	{
+		isGameActive = false;
+		isGameOver = true;
+		cometSpawner.ClearAllComets();
 
-        if (cometSpawner != null)
-        {
-            cometSpawner.StopSpawning();
-        }
-    }
+		foreach (var img in resultImages)
+			img.gameObject.SetActive(false);
 
-    private static void ExitGame()
-    {
-        SceneManager.LoadScene("LevelsMenu");
-    }
+		resultImages[4].gameObject.SetActive(true);
+		tapEnterText.gameObject.SetActive(true);
+		tapEnterText.text = "Tap Enter";
+		audioSource.PlayOneShot(victorySound);
+
+		if (cometSpawner)
+			cometSpawner.StopSpawning();
+	}
+
+	private static void ExitGame()
+		=> SceneManager.LoadScene("LevelsMenu");
 }

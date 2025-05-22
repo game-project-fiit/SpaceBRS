@@ -34,7 +34,7 @@ public class StoryController : MonoBehaviour
 		slides[index].SetActive(true);
 		var canvasGroup = slides[index].GetComponent<CanvasGroup>();
 
-		if (canvasGroup == null)
+		if (!canvasGroup)
 			canvasGroup = slides[index].AddComponent<CanvasGroup>();
 
 		canvasGroup.alpha = 1f;
@@ -53,17 +53,14 @@ public class StoryController : MonoBehaviour
 			ShowSlide(currentSlideIndex);
 			var nextSlideCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
 
-			if (nextSlideCG == null)
+			if (!nextSlideCG)
 				nextSlideCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
 
 			nextSlideCG.alpha = 0f;
 			yield return StartCoroutine(CrossFadeCanvasGroup(blackOverlay, nextSlideCG, fadeDuration));
 		}
 		else
-		{
 			EndStory();
-			yield break;
-		}
 	}
 
 	private IEnumerator CrossFadeCanvasGroup(CanvasGroup blackCG, CanvasGroup slideCG, float duration)
@@ -90,7 +87,7 @@ public class StoryController : MonoBehaviour
 	{
 		var currentCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
 
-		if (currentCG == null)
+		if (!currentCG)
 			currentCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
 
 		yield return StartCoroutine(FadeCanvasGroup(currentCG, 1f, 0f, fadeDuration / 2));
@@ -101,7 +98,7 @@ public class StoryController : MonoBehaviour
 			ShowSlide(currentSlideIndex);
 			var nextCG = slides[currentSlideIndex].GetComponent<CanvasGroup>();
 
-			if (nextCG == null)
+			if (!nextCG)
 				nextCG = slides[currentSlideIndex].AddComponent<CanvasGroup>();
 
 			nextCG.alpha = 0f;
@@ -130,8 +127,7 @@ public class StoryController : MonoBehaviour
 
 	private void EndStory()
 	{
-		if (!gameObject.activeInHierarchy)
-			return;
+		if (!gameObject.activeInHierarchy) return;
 
 		if (replayFromOptions)
 		{
@@ -142,7 +138,6 @@ public class StoryController : MonoBehaviour
 			enabled = false;
 			Debug.Log("Replay ended, returning to options");
 		}
-
 		else
 		{
 			PlayerPrefs.SetInt("StoryViewed", 1);

@@ -7,13 +7,13 @@ public class RotatingRadiusMover : MonoBehaviour
     public float angularSpeed = 90f;
     public PlanetRotator planetRotator;
 
-    Camera camera;
-    float cameraZ;
-    float radius;
-    Vector3 worldPlanet;
-    Vector3 direction;
+    private Camera camera;
+    private float cameraZ;
+    private float radius;
+    private Vector3 worldPlanet;
+    private Vector3 direction;
 
-    void Start()
+    private void Start()
     {
         camera = Camera.main;
         cameraZ = Mathf.Abs(camera.transform.position.z);
@@ -53,11 +53,10 @@ public class RotatingRadiusMover : MonoBehaviour
         var outOfBounds = newScreen.x < 0f || newScreen.x > Screen.width
                                            || newScreen.y < 0f || newScreen.y > Screen.height;
 
-        if (!outOfBounds)
-        {
-            direction = candidateDirection;
-            ((RectTransform)transform).position = newScreen;
-            transform.up = direction;
-        }
+        if (outOfBounds) return;
+        
+        direction = candidateDirection;
+        ((RectTransform)transform).position = newScreen;
+        transform.up = direction;
     }
 }

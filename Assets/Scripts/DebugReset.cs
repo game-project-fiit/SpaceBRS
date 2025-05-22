@@ -7,6 +7,7 @@ public class DebugReset : MonoBehaviour
 		if (!Input.GetKeyDown(KeyCode.R)) return;
 
 		PlayerPrefs.DeleteKey("StoryViewed");
+		
 		if (Debug.isDebugBuild)
 			Debug.Log("StoryViewed is clear");
 	}

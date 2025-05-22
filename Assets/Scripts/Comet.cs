@@ -16,12 +16,12 @@ public class Comet : MonoBehaviour
 
     private readonly Dictionary<int, List<string>> cometPointsVvm = new()
     {
-        { 1, new List<string> { "Lego island" } },
-        { 2, new List<string> { "Board game" } },
-        { 3, new List<string> { "ВВМ Ulearn" } },
-        { 4, new List<string> { "первый дедлайн по ятп" } },
-        { 5, new List<string> { "ввм кр 1" } },
-        { 6, new List<string> { "ввм кр 2" } },
+        { 1, new() { "Lego island" } },
+        { 2, new() { "Board game" } },
+        { 3, new() { "ВВМ Ulearn" } },
+        { 4, new() { "первый дедлайн по ятп" } },
+        { 5, new() { "ввм кр 1" } },
+        { 6, new() { "ввм кр 2" } }
     };
 
     private readonly Dictionary<string, int> taskScoresVvm = new()
@@ -62,12 +62,12 @@ public class Comet : MonoBehaviour
 
     private readonly Dictionary<int, List<string>> cometPointsTerm2 = new()
     {
-        { 1, new List<string> { "тысячи" } },
-        { 2, new List<string> { "комп практика", "нтк по английскому", "нтк по философии" } },
-        { 3, new List<string> { "дедлайн по ятп", "сдача дз по Nand2Tetris", "python task" } },
-        { 4, new List<string> { "первый коллок по матану", "зачет по питону" } },
-        { 5, new List<string> { "второй коллок по матану", "первая кр по алгему", "вторая кр по алгему", "ДКР" } },
-        { 6, new List<string> { "экзамен по алгему", "экзамен по матану", "экзамен по ятп" } },
+        { 1, new() { "тысячи" } },
+        { 2, new() { "комп практика", "нтк по английскому", "нтк по философии" } },
+        { 3, new() { "дедлайн по ятп", "сдача дз по Nand2Tetris", "python task" } },
+        { 4, new() { "первый коллок по матану", "зачет по питону" } },
+        { 5, new() { "второй коллок по матану", "первая кр по алгему", "вторая кр по алгему", "ДКР" } },
+        { 6, new() { "экзамен по алгему", "экзамен по матану", "экзамен по ятп" } },
     };
 
     private readonly Dictionary<string, int> taskScoresTerm2 = new()
@@ -95,37 +95,34 @@ public class Comet : MonoBehaviour
         transform.localScale = Vector3.one * size;
 
         cometText = GetComponentInChildren<TextMeshProUGUI>();
-        var sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == "VVMLevel")
-        {
-            currentCometPoints = cometPointsVvm;
-            currentTaskScores = taskScoresVvm;
-        }
         
-        if (sceneName == "Term1Level")
+        switch (SceneManager.GetActiveScene().name)
         {
-            currentCometPoints = cometPointsTerm1;
-            currentTaskScores = taskScoresTerm1;
+            case "VVMLevel":
+                currentCometPoints = cometPointsVvm;
+                currentTaskScores = taskScoresVvm;
+                break;
+            case "Term1Level":
+                currentCometPoints = cometPointsTerm1;
+                currentTaskScores = taskScoresTerm1;
+                break;
+            case "Term2Level":
+                currentCometPoints = cometPointsTerm2;
+                currentTaskScores = taskScoresTerm2;
+                break;
         }
-        
-        if (sceneName == "Term2Level")
-        {
-            currentCometPoints = cometPointsTerm2;
-            currentTaskScores = taskScoresTerm2;
-        }
-        
-        if (cometText != null)
-        {
-            var randomScore = Random.Range(1, 7);
-            cometText.text = randomScore.ToString();
 
-            cometText.fontSize = 45;
-            cometText.color = Color.black;
+        if (!cometText) return;
+        
+        var randomScore = Random.Range(1, 7);
+        cometText.text = randomScore.ToString();
 
-            var material = cometText.fontMaterial;
-            material.SetColor(ShaderUtilities.ID_OutlineColor, Color.white);
-            material.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.13f);
-        }
+        cometText.fontSize = 45;
+        cometText.color = Color.black;
+
+        var material = cometText.fontMaterial;
+        material.SetColor(ShaderUtilities.ID_OutlineColor, Color.white);
+        material.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.13f);
     }
 
     private void Update()
@@ -134,24 +131,22 @@ public class Comet : MonoBehaviour
         if (RectTransformUtility.RectangleContainsScreenPoint(planetRect, cometScreen, null))
         {
             Destroy(gameObject);
-            if (ScoreManager.Instance.decreaseScore)
-            {
-                var cometValue = int.Parse(cometText.text);
-                if (currentCometPoints.TryGetValue(cometValue, out var tasks))
-                {
-                    var randomTask = tasks[Random.Range(0, tasks.Count)];
-                    ScoreManager.Instance.ChangeScore(currentTaskScores[randomTask], false);
-                    NotificationManager.Instance.ShowNotification(randomTask, currentTaskScores[randomTask], false);
-                }
-            }
+            if (!ScoreManager.instance.decreaseScore) return;
+            
+            var cometValue = int.Parse(cometText.text);
+            if (!currentCometPoints.TryGetValue(cometValue, out var tasks)) return;
+            
+            var randomTask = tasks[Random.Range(0, tasks.Count)];
+            ScoreManager.instance.ChangeScore(currentTaskScores[randomTask], false);
+            NotificationManager.instance.ShowNotification(randomTask, currentTaskScores[randomTask], false);
 
             return;
         }
 
-        if (cometText != null)
+        if (cometText)
         {
             var offsetX = (transform.position.x < 0) ? 122f : 52f;
-            var offsetY = -32f;
+            const float offsetY = -32f;
 
             cometText.transform.position =
                 Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, offsetY, 0);
@@ -159,27 +154,25 @@ public class Comet : MonoBehaviour
 
         foreach (var bullet in FindObjectsOfType<Bullet>())
         {
-            Vector2 bulletScreen;
             var bulletScreenPosition = bullet.GetComponent<RectTransform>();
-            if (bulletScreenPosition != null)
-                bulletScreen = bulletScreenPosition.position;
-            else
-                bulletScreen = Camera.main.WorldToScreenPoint(bullet.transform.position);
+            
+            Vector2 bulletScreen = bulletScreenPosition 
+                ? bulletScreenPosition.position 
+                : Camera.main.WorldToScreenPoint(bullet.transform.position);
 
-            if ((cometScreen - bulletScreen).magnitude < (cometScreenRadius + bulletScreenRadius))
+            if (!((cometScreen - bulletScreen).magnitude < cometScreenRadius + bulletScreenRadius)) continue;
+            
+            var cometValue = int.Parse(cometText.text);
+            if (currentCometPoints.TryGetValue(cometValue, out var tasks))
             {
-                var cometValue = int.Parse(cometText.text);
-                if (currentCometPoints.TryGetValue(cometValue, out var tasks))
-                {
-                    var randomTask = tasks[Random.Range(0, tasks.Count)];
-                    ScoreManager.Instance.ChangeScore(currentTaskScores[randomTask], true);
-                    NotificationManager.Instance.ShowNotification(randomTask, currentTaskScores[randomTask], true);
-                }
-
-                Destroy(bullet.gameObject);
-                Destroy(gameObject);
-                return;
+                var randomTask = tasks[Random.Range(0, tasks.Count)];
+                ScoreManager.instance.ChangeScore(currentTaskScores[randomTask], true);
+                NotificationManager.instance.ShowNotification(randomTask, currentTaskScores[randomTask], true);
             }
+
+            Destroy(bullet.gameObject);
+            Destroy(gameObject);
+            return;
         }
     }
 }

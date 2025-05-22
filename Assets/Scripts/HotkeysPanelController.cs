@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class HotkeysPanelController : MonoBehaviour
 {
 	public Button[] controlButtons;
-	public GameObject HotkeysPanel;
-	public GameObject SettingsMenuPanel;
-	public GameObject MainMenuPanel;
+	[FormerlySerializedAs("HotkeysPanel")] public GameObject hotkeysPanel;
+	[FormerlySerializedAs("SettingsMenuPanel")] public GameObject settingsMenuPanel;
+	[FormerlySerializedAs("MainMenuPanel")] public GameObject mainMenuPanel;
 	public AudioClip moveSound;
 	public AudioClip selectSound;
 	private AudioSource audioSource;
@@ -21,7 +22,7 @@ public class HotkeysPanelController : MonoBehaviour
 	private void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
-		if (audioSource == null)
+		if (!audioSource)
 		{
 			Debug.LogError("AudioSource component is missing on this GameObject!");
 			return;
@@ -34,7 +35,7 @@ public class HotkeysPanelController : MonoBehaviour
 
 	private void Update()
 	{
-		if (!HotkeysPanel.activeSelf) return;
+		if (!hotkeysPanel.activeSelf) return;
 		if (controlButtons.Length == 0) return;
 
 		if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
@@ -66,7 +67,7 @@ public class HotkeysPanelController : MonoBehaviour
 
 	private void PlaySound(AudioClip clip)
 	{
-		if (audioSource != null && clip != null)
+		if (audioSource && clip)
 			audioSource.PlayOneShot(clip);
 		else
 			Debug.LogWarning("AudioSource or AudioClip is missing!");
@@ -80,12 +81,14 @@ public class HotkeysPanelController : MonoBehaviour
 			var text = controlButtons[i].GetComponentInChildren<TextMeshProUGUI>();
 
 			if (text is not null)
-				text.color = i == selectedIndex ? Color.black : Color.white;
-
+				text.color = i == selectedIndex
+					? Color.black
+					: Color.white;
 
 			if (buttonImage is not null)
-				buttonImage.color = i == selectedIndex ? Color.white : new Color(1, 1, 1, 0);
-
+				buttonImage.color = i == selectedIndex
+					? Color.white
+					: new(1, 1, 1, 0);
 
 			if (i == selectedIndex)
 				controlButtons[i].Select();
@@ -96,8 +99,8 @@ public class HotkeysPanelController : MonoBehaviour
 	{
 		selectedControlScheme = selectedIndex switch
 		{
-			0 => "WASD",
-			1 => "Arrows",
+			0 => "Arrows",
+			1 => "WASD",
 			_ => selectedControlScheme
 		};
 
@@ -108,33 +111,32 @@ public class HotkeysPanelController : MonoBehaviour
 
 	private void CloseHotKeysPanel()
 	{
-		HotkeysPanel.SetActive(false);
-		SettingsMenuPanel.SetActive(true);
-		MainMenuPanel.SetActive(false);
+		hotkeysPanel.SetActive(false);
+		settingsMenuPanel.SetActive(true);
+		mainMenuPanel.SetActive(false);
 	}
 
 	private void HandleEscape()
 	{
-		if (HotkeysPanel.activeSelf)
+		if (hotkeysPanel.activeSelf)
 		{
 			CloseHotKeysPanel();
 			ReturnToSettingsMenu();
 		}
 
-		if (MainMenuPanel.activeSelf)
-		{
-			CloseHotKeysPanel();
-			ReturnToSettingsMenu();
-		}
+		if (!mainMenuPanel.activeSelf) return;
+
+		CloseHotKeysPanel();
+		ReturnToSettingsMenu();
 	}
 
 	private void ReturnToSettingsMenu()
 	{
-		HotkeysPanel.SetActive(false);
-		SettingsMenuPanel.SetActive(true);
-		MainMenuPanel.SetActive(false);
+		hotkeysPanel.SetActive(false);
+		settingsMenuPanel.SetActive(true);
+		mainMenuPanel.SetActive(false);
 
-		var settingsMenuButtons = SettingsMenuPanel.GetComponentsInChildren<Button>(true);
+		var settingsMenuButtons = settingsMenuPanel.GetComponentsInChildren<Button>(true);
 
 		if (settingsMenuButtons.Length > 0)
 			EventSystem.current.SetSelectedGameObject(settingsMenuButtons[0].gameObject);
@@ -142,27 +144,3 @@ public class HotkeysPanelController : MonoBehaviour
 			Debug.LogWarning("Нет кнопок в SettingsMenuPanel!");
 	}
 }
-
-
-//далее в скрипте который отвечает за логику движения нужно будет написать что-то вроде
-// void Update()
-// {
-//     string controlScheme = HotkeysPanelController.GetControlScheme();
-//
-//     if (controlScheme == "WASD")
-//     {
-//         // Управление через WASD
-//         if (Input.GetKey(KeyCode.W)) MoveUp();
-//         if (Input.GetKey(KeyCode.A)) MoveLeft();
-//         if (Input.GetKey(KeyCode.S)) MoveDown();
-//         if (Input.GetKey(KeyCode.D)) MoveRight();
-//     }
-//     else if (controlScheme == "Arrows")
-//     {
-//         // Управление через стрелки
-//         if (Input.GetKey(KeyCode.UpArrow)) MoveUp();
-//         if (Input.GetKey(KeyCode.LeftArrow)) MoveLeft();
-//         if (Input.GetKey(KeyCode.DownArrow)) MoveDown();
-//         if (Input.GetKey(KeyCode.RightArrow)) MoveRight();
-//     }
-// }

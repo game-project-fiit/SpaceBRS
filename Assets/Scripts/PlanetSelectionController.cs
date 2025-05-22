@@ -10,8 +10,8 @@ public class PlanetController : MonoBehaviour
 	public TextMeshProUGUI planetNameText;
 	public AudioClip rotateClip;
 	public AudioClip clickClip;
-	
-	
+
+
 	private readonly Dictionary<string, string> levelScenesByNames = new()
 	{
 		{ "ВВМ", "VVMLevel" },
@@ -23,47 +23,36 @@ public class PlanetController : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
-            RotateRight();
+			RotateRight();
 			AudioManager.Instance.PlaySVX(rotateClip);
-        }
-			
+		}
+
 		else if (Input.GetKeyDown(KeyCode.LeftArrow))
 		{
-            RotateLeft();
-            AudioManager.Instance.PlaySVX(rotateClip);
-        }
-		
+			RotateLeft();
+			AudioManager.Instance.PlaySVX(rotateClip);
+		}
+
 		else if (Input.GetKeyDown(KeyCode.Escape))
 		{
-            AudioManager.Instance.PlaySVX(clickClip);
-            SceneManager.LoadScene("Main Menu");
-        }
-			
+			AudioManager.Instance.PlaySVX(clickClip);
+			SceneManager.LoadScene("Main Menu");
+		}
+
 		else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            AudioManager.Instance.PlaySVX(clickClip);
-            LoadSelectedPlanetLevel();
-        }
+		{
+			AudioManager.Instance.PlaySVX(clickClip);
+			LoadSelectedPlanetLevel();
+		}
 	}
 
 	private void LoadSelectedPlanetLevel()
 	{
 		var level = planets[0].name;
-		if (level == "ВВМ")
-		{
-			SceneManager.LoadScene("VVMLevel");
-		}
-
-		if (level == "Term 1")
-		{
-			SceneManager.LoadScene("Term1Level");
-		}
-		
-		
-		if (level == "Term 2")
-		{
-			SceneManager.LoadScene("Term2Level");
-		}
+		if (levelScenesByNames.TryGetValue(level, out var sceneName))
+			SceneManager.LoadScene(sceneName);
+		else
+			Debug.LogError($"No scene found for level: {level}");
 	}
 
 	private void RotateRight()

@@ -5,8 +5,8 @@ public class RadiusMover : MonoBehaviour
 {
     public RectTransform planetRect;
     public float angularSpeed = 90f;
-    new Camera camera;
-    float cameraZ;
+    private new Camera camera;
+    private float cameraZ;
     public AudioClip stepSound;
     private AudioSource audioSource;
 
@@ -62,10 +62,9 @@ public class RadiusMover : MonoBehaviour
             newScreen.x < 0f || newScreen.x > Screen.width ||
             newScreen.y < 0f || newScreen.y > Screen.height;
 
-        if (!outOfBounds)
-        {
-            ((RectTransform)transform).position = newScreen;
-            transform.up = (newWorld - worldPlanet).normalized;
-        }
+        if (outOfBounds) return;
+        
+        ((RectTransform)transform).position = newScreen;
+        transform.up = (newWorld - worldPlanet).normalized;
     }
 }

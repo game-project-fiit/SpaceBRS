@@ -90,13 +90,13 @@ public class SettingsMenuController : MonoBehaviour
 
 	private void PlayNavigateSounds()
 	{
-		if (audioSource != null && audioClip != null)
+		if (audioSource && audioClip)
 			audioSource.PlayOneShot(audioClip, soundSlider.value);
 	}
 
 	private void PlayClickSounds()
 	{
-        if (audioSource != null && clickClip != null)
+        if (audioSource && clickClip)
             audioSource.PlayOneShot(clickClip, soundSlider.value);
     }
 
@@ -134,7 +134,7 @@ public class SettingsMenuController : MonoBehaviour
 		mainMenuPanel.SetActive(true);
 
 		var mainMenuController = mainMenuPanel.GetComponentInParent<MainMenuController>();
-		if (mainMenuController != null)
+		if (mainMenuController)
 		{
 			mainMenuController.enabled = true;
 			mainMenuController.ResetSelection();
@@ -174,12 +174,12 @@ public class SettingsMenuController : MonoBehaviour
 
 	private void OpenHotkeysPanel()
 	{
-		if (storyPanel != null)
+		if (storyPanel)
 		{
 			storyPanel.SetActive(false);
 			var storyController = storyPanel.GetComponent<StoryController>();
 
-			if (storyController != null)
+			if (storyController)
 			{
 				storyController.StopAllCoroutines();
 				storyController.enabled = false;
@@ -187,7 +187,7 @@ public class SettingsMenuController : MonoBehaviour
 			}
 		}
 
-		if (hotkeysPanel == null || settingsMenuPanel == null)
+		if (!hotkeysPanel || !settingsMenuPanel)
 		{
 			Debug.LogError("HotkeysPanel or SettingsMenuPanel is not assigned!");
 			return;
@@ -198,9 +198,9 @@ public class SettingsMenuController : MonoBehaviour
 		mainMenuPanel.SetActive(false);
 
 		var hotkeysButtons = hotkeysPanel.GetComponentsInChildren<Button>(true);
+		
 		if (hotkeysButtons.Length > 0)
 			EventSystem.current.SetSelectedGameObject(hotkeysButtons[0].gameObject);
-
 		else
 			Debug.LogWarning("No buttons found in HotkeysPanel!");
 	}
@@ -220,14 +220,15 @@ public class SettingsMenuController : MonoBehaviour
 
 	private void OpenStoryPanelForReplay()
 	{
-		if (storyPanel == null)
+		if (!storyPanel)
 		{
 			Debug.Log("StoryPanel is not assigned!");
 			return;
 		}
 
 		var storyController = storyPanel.GetComponent<StoryController>();
-		if (storyController != null)
+		
+		if (storyController)
 		{
 			storyController.currentSlideIndex = 0;
 			storyController.replayFromOptions = true;
@@ -245,6 +246,5 @@ public class SettingsMenuController : MonoBehaviour
 
 		selectedIndex = 0;
 		UpdateMenu();
-		//UpdateMenu();
 	}
 }
