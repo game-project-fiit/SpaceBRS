@@ -10,7 +10,8 @@ public class PlanetController : MonoBehaviour
 	public TextMeshProUGUI planetNameText;
 	public AudioClip rotateClip;
 	public AudioClip clickClip;
-
+	
+	
 	private readonly Dictionary<string, string> levelScenesByNames = new()
 	{
 		{ "ВВМ", "VVMLevel" },
