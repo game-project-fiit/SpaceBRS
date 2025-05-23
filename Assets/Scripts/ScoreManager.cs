@@ -39,6 +39,8 @@ public class ScoreManager : MonoBehaviour
 			positive ? 1.0f : 0.2f
 		);
 	}
+	
+	public void ResetScore() => score = 0;
 
 	private void PlaySound(AudioClip clip, float volume)
 	{

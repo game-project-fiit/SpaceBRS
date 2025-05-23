@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
 		cometSpawner.ClearAllComets();
 
 		var finalScore = ScoreManager.instance.GetScore();
+		ScoreManager.instance.ResetScore();
 		var resultIndex = automaticWin
 			? 4
 			: finalScore switch
