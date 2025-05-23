@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class RulesManager : MonoBehaviour
 {
@@ -23,11 +24,12 @@ public class RulesManager : MonoBehaviour
     private void HandleRulesNavigation()
     {
         if (!IsShowingRules) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ExitGame();
         
         if (Input.GetKeyDown(KeyCode.Return))
-        {
             ShowNextRule();
-        }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentRuleIndex != rulesImages.Count - 1) return;
@@ -75,4 +77,7 @@ public class RulesManager : MonoBehaviour
         if (pageTurnSound && audioSource)
             audioSource.PlayOneShot(pageTurnSound);
     }
+    
+    private static void ExitGame()
+        => SceneManager.LoadScene("LevelsMenu");
 }
