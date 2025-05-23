@@ -26,10 +26,9 @@ public class RulesManager : MonoBehaviour
         if (!IsShowingRules) return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            ExitGame();
-        
-        if (Input.GetKeyDown(KeyCode.Return))
-            ShowNextRule();
+            ChangeRule(false);
+        else if (Input.GetKeyDown(KeyCode.Return))
+            ChangeRule(true);
         else if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentRuleIndex != rulesImages.Count - 1) return;
@@ -51,12 +50,13 @@ public class RulesManager : MonoBehaviour
         rulesImages[currentRuleIndex].SetActive(true);
     }
 
-    private void ShowNextRule()
+    private void ChangeRule(bool forward)
     {
-        if (currentRuleIndex >= rulesImages.Count - 1) return;
+        if (currentRuleIndex >= rulesImages.Count - 1 && forward) return;
+        if (currentRuleIndex == 0 && !forward) ExitGame();
         
         rulesImages[currentRuleIndex].SetActive(false);
-        currentRuleIndex++;
+        currentRuleIndex += forward ? 1 : -1;
         rulesImages[currentRuleIndex].SetActive(true);
         PlayPageTurnSound();
     }
