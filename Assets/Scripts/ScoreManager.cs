@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
 		if (!instance)
 		{
 			instance = this;
-			DontDestroyOnLoad(gameObject);
+			//DontDestroyOnLoad(gameObject);
 		}
 		else
 			Destroy(gameObject);
@@ -44,15 +44,6 @@ public class ScoreManager : MonoBehaviour
 	public void ResetScore()
 	{
 		score = 0;
-		UpdateScoreText();
-	}
-	
-	private void OnEnable() => SceneManager.sceneLoaded += OnLevelLoaded;
-	private void OnDisable() => SceneManager.sceneLoaded -= OnLevelLoaded;
-
-	private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
-	{
-		scoreText = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
 		UpdateScoreText();
 	}
 
