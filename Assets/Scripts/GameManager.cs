@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 	private bool isGameActive;
 	private bool isGameOver;
 	private bool isPaused;
+	private bool automaticWin;
+	private bool nextLevelAvailable;
 
 	private void Start()
 	{
@@ -54,7 +56,8 @@ public class GameManager : MonoBehaviour
 
 			if (ScoreManager.instance.GetScore() >= 100)
 			{
-				EndGameWithAutomaticWin();
+				automaticWin = true;
+				EndGame();
 				yield break;
 			}
 
@@ -86,8 +89,19 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
-		if (isGameOver && Input.GetKeyDown(KeyCode.Return))
-			ExitGame();
+		if (isGameOver)
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+				ExitGame();
+
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				if (nextLevelAvailable)
+					LoadNextLevel();
+				else
+					ExitGame();
+			}
+		}
 	}
 
 	private void PauseGame()
@@ -113,13 +127,17 @@ public class GameManager : MonoBehaviour
 		cometSpawner.ClearAllComets();
 
 		var finalScore = ScoreManager.instance.GetScore();
-		var resultIndex = finalScore switch
-		{
-			< 40 => 0,
-			< 60 => 1,
-			< 80 => 2,
-			_ => 3
-		};
+		var resultIndex = automaticWin
+			? 4
+			: finalScore switch
+			{
+				< 40 => 0,
+				< 60 => 1,
+				< 80 => 2,
+				_ => 3
+			};
+		if (resultIndex != 0)
+			nextLevelAvailable = true;
 
 		foreach (var img in resultImages)
 			img.gameObject.SetActive(false);
@@ -134,7 +152,7 @@ public class GameManager : MonoBehaviour
 			cometSpawner.StopSpawning();
 	}
 
-	private void EndGameWithAutomaticWin()
+	/*private void EndGameWithAutomaticWin()
 	{
 		isGameActive = false;
 		isGameOver = true;
@@ -150,8 +168,24 @@ public class GameManager : MonoBehaviour
 
 		if (cometSpawner)
 			cometSpawner.StopSpawning();
-	}
+	}*/
 
 	private static void ExitGame()
 		=> SceneManager.LoadScene("LevelsMenu");
+	
+	private void LoadNextLevel()
+	{
+		switch (gameObject.scene.name)
+		{
+			case "VVMLevel":
+				SceneManager.LoadScene("Term1Level");
+				break;
+			case "Term1Level":
+				SceneManager.LoadScene("Term2Level");
+				break;
+			case "Term2Level":
+				ExitGame();
+				break;
+		}
+	}
 }
