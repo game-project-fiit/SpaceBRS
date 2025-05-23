@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -39,8 +40,21 @@ public class ScoreManager : MonoBehaviour
 			positive ? 1.0f : 0.2f
 		);
 	}
+
+	public void ResetScore()
+	{
+		score = 0;
+		UpdateScoreText();
+	}
 	
-	public void ResetScore() => score = 0;
+	private void OnEnable() => SceneManager.sceneLoaded += OnLevelLoaded;
+	private void OnDisable() => SceneManager.sceneLoaded -= OnLevelLoaded;
+
+	private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+	{
+		scoreText = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+		UpdateScoreText();
+	}
 
 	private void PlaySound(AudioClip clip, float volume)
 	{

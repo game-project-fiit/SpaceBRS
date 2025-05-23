@@ -153,24 +153,6 @@ public class GameManager : MonoBehaviour
 			cometSpawner.StopSpawning();
 	}
 
-	/*private void EndGameWithAutomaticWin()
-	{
-		isGameActive = false;
-		isGameOver = true;
-		cometSpawner.ClearAllComets();
-
-		foreach (var img in resultImages)
-			img.gameObject.SetActive(false);
-
-		resultImages[4].gameObject.SetActive(true);
-		tapEnterText.gameObject.SetActive(true);
-		tapEnterText.text = "Tap Enter";
-		audioSource.PlayOneShot(victorySound);
-
-		if (cometSpawner)
-			cometSpawner.StopSpawning();
-	}*/
-
 	private static void ExitGame()
 		=> SceneManager.LoadScene("LevelsMenu");
 	
