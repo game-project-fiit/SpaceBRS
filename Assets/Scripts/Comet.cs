@@ -7,12 +7,12 @@ public class Comet : MonoBehaviour
 {
     public RectTransform planetRect;
     public TextMeshProUGUI cometText;
-    public float cometScreenRadius = 20f;
-    public float bulletScreenRadius = 10f;
     public float size = 0.1f;
 
     private Dictionary<int, List<string>> currentCometPoints = new();
     private Dictionary<string, int> currentTaskScores = new();
+
+    private bool processed;
 
     private readonly Dictionary<int, List<string>> cometPointsVvm = new()
     {
@@ -95,6 +95,7 @@ public class Comet : MonoBehaviour
         transform.localScale = Vector3.one * size;
 
         cometText = GetComponentInChildren<TextMeshProUGUI>();
+        //cometValue = int.Parse(cometText.text);
         
         switch (SceneManager.GetActiveScene().name)
         {
@@ -139,8 +140,6 @@ public class Comet : MonoBehaviour
             var randomTask = tasks[Random.Range(0, tasks.Count)];
             ScoreManager.instance.ChangeScore(currentTaskScores[randomTask], false);
             NotificationManager.instance.ShowNotification(randomTask, currentTaskScores[randomTask], false);
-
-            return;
         }
 
         if (cometText)
@@ -152,7 +151,7 @@ public class Comet : MonoBehaviour
                 Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, offsetY, 0);
         }
 
-        foreach (var bullet in FindObjectsOfType<Bullet>())
+        /*foreach (var bullet in FindObjectsOfType<Bullet>())
         {
             var bulletScreenPosition = bullet.GetComponent<RectTransform>();
             
@@ -172,6 +171,24 @@ public class Comet : MonoBehaviour
 
             Destroy(bullet.gameObject);
             Destroy(gameObject);
+            return;
+        }*/
+    }
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (processed) return;
+        processed = true;
+        
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+            
+        var cometValue = int.Parse(cometText.text);
+        if (currentCometPoints.TryGetValue(cometValue, out var tasks))
+        {
+            var randomTask = tasks[Random.Range(0, tasks.Count)];
+            ScoreManager.instance.ChangeScore(currentTaskScores[randomTask], true);
+            NotificationManager.instance.ShowNotification(randomTask, currentTaskScores[randomTask], true);
             return;
         }
     }
