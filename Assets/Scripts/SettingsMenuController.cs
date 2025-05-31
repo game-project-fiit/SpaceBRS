@@ -50,7 +50,7 @@ public class SettingsMenuController : MonoBehaviour
 			UpdateMenu();
 		}
 
-		else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) // Зачем еще S для переключения?
+		else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
 		{
 			selectedIndex = (selectedIndex + 1) % settingTexts.Length;
             PlayNavigateSounds();

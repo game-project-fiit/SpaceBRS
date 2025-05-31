@@ -20,10 +20,22 @@ public class RadiusMover : MonoBehaviour
     private void Update()
     {
         var input = 0f;
-        if (Keyboard.current.aKey.isPressed)
-            input += 1f;
-        if (Keyboard.current.dKey.isPressed)
-            input -= 1f;
+        var controlScheme = HotkeysPanelController.GetControlScheme();
+
+        if (controlScheme == "Arrows")
+        {
+            if (Keyboard.current.leftArrowKey.isPressed)
+                input += 1f;
+            if (Keyboard.current.rightArrowKey.isPressed)
+                input -= 1f;
+        }
+        else
+        {
+            if (Keyboard.current.aKey.isPressed)
+                input += 1f;
+            if (Keyboard.current.dKey.isPressed)
+                input -= 1f;
+        }
 
         if (input == 0f) return;
 
@@ -48,7 +60,7 @@ public class RadiusMover : MonoBehaviour
             newScreen.y < 0f || newScreen.y > Screen.height;
 
         if (outOfBounds) return;
-        
+
         ((RectTransform)transform).position = newScreen;
         transform.up = (newWorld - worldPlanet).normalized;
     }
