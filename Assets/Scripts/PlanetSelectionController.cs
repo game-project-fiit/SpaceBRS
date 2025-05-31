@@ -15,8 +15,8 @@ public class PlanetController : MonoBehaviour
 	private readonly Dictionary<string, string> levelScenesByNames = new()
 	{
 		{ "ВВМ", "VVMLevel" },
-		{ "Term 1", "Term1Level" },
-		{ "Term 2", "Term2Level" }
+		{ "1 семестр", "Term1Level" },
+		{ "2 семестр", "Term2Level" }
 	};
 
 	private void Update()

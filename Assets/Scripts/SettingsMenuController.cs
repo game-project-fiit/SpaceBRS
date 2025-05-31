@@ -103,10 +103,10 @@ public class SettingsMenuController : MonoBehaviour
     private string GetOptionText(int index)
 		=> index switch
 		{
-			0 => $"Music Volume: {Mathf.RoundToInt(musicSlider.value * 100)}%",
-			1 => $"Sound Volume: {Mathf.RoundToInt(soundSlider.value * 100)}%",
-			2 => "Hotkeys",
-			3 => "See the plot again",
+			0 => $"Уровень музыки: {Mathf.RoundToInt(musicSlider.value * 100)}%",
+			1 => $"Уровень звука: {Mathf.RoundToInt(soundSlider.value * 100)}%",
+			2 => "Горячие клавиши",
+			3 => "Посмотреть сюжет снова",
 			_ => ""
 		};
 
