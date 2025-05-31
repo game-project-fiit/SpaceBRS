@@ -154,7 +154,11 @@ public class GameManager : MonoBehaviour
 	}
 
 	private static void ExitGame()
-		=> SceneManager.LoadScene("LevelsMenu");
+	{
+        SceneManager.LoadScene("LevelsMenu");
+		Time.timeScale = 1f;
+    }
+		
 	
 	private void LoadNextLevel()
 	{
