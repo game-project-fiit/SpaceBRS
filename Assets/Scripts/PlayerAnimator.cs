@@ -25,6 +25,7 @@ public class PlayerAnimator : MonoBehaviour
 
 		if (right)
 			image.rectTransform.localScale = new(-1, 1, 1);
+
 		else if (left)
 			image.rectTransform.localScale = Vector3.one;
 

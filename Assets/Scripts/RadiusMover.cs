@@ -7,7 +7,6 @@ public class RadiusMover : MonoBehaviour
     public float angularSpeed = 90f;
     private new Camera camera;
     private float cameraZ;
-    //public AudioClip stepSound;
     private AudioSource audioSource;
 
     private void Awake()
@@ -29,6 +28,7 @@ public class RadiusMover : MonoBehaviour
             if (Keyboard.current.rightArrowKey.isPressed)
                 input -= 1f;
         }
+
         else
         {
             if (Keyboard.current.aKey.isPressed)
