@@ -10,6 +10,7 @@ public class PlanetController : MonoBehaviour
 	public List<Transform> positions;
 	public TextMeshProUGUI planetNameText;
 	public TextMeshProUGUI bestScoreText;
+	public TextMeshProUGUI unavailablePlanetText;
 	public AudioClip rotateClip;
 	public AudioClip clickClip;
 
@@ -94,8 +95,9 @@ public class PlanetController : MonoBehaviour
 
 		if (levelScenesByNames.TryGetValue(levelName, out var sceneName))
 		{
-            var prefsKey = $"BestScore_{sceneName}";
-            var best = PlayerPrefs.GetInt(prefsKey, 0);
+            var best = PlayerPrefs.GetInt($"BestScore_{sceneName}", 0);
+            var available = PlayerPrefs.GetInt($"IsAvailable_{sceneName}", 0);
+            unavailablePlanetText.text = available > 0 ? null : "Unavailable!";
 			bestScoreText.text = $"Best: {best}";
         }
 
