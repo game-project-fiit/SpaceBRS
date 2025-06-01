@@ -95,7 +95,6 @@ public class Comet : MonoBehaviour
         transform.localScale = Vector3.one * size;
 
         cometText = GetComponentInChildren<TextMeshProUGUI>();
-        //cometValue = int.Parse(cometText.text);
         
         switch (SceneManager.GetActiveScene().name)
         {
@@ -118,7 +117,7 @@ public class Comet : MonoBehaviour
         var randomScore = Random.Range(1, 7);
         cometText.text = randomScore.ToString();
 
-        cometText.fontSize = 45;
+        cometText.fontSize = 100;
         cometText.color = Color.black;
 
         var material = cometText.fontMaterial;
@@ -144,35 +143,12 @@ public class Comet : MonoBehaviour
 
         if (cometText)
         {
-            var offsetX = (transform.position.x < 0) ? 122f : 52f;
-            const float offsetY = -32f;
+            var offsetX = (transform.position.x < 0) ? 160f : -17f;
+            const float offsetY = -53f;
 
             cometText.transform.position =
                 Camera.main.WorldToScreenPoint(transform.position) + new Vector3(offsetX, offsetY, 0);
         }
-
-        /*foreach (var bullet in FindObjectsOfType<Bullet>())
-        {
-            var bulletScreenPosition = bullet.GetComponent<RectTransform>();
-            
-            Vector2 bulletScreen = bulletScreenPosition 
-                ? bulletScreenPosition.position 
-                : Camera.main.WorldToScreenPoint(bullet.transform.position);
-
-            if (!((cometScreen - bulletScreen).magnitude < cometScreenRadius + bulletScreenRadius)) continue;
-            
-            var cometValue = int.Parse(cometText.text);
-            if (currentCometPoints.TryGetValue(cometValue, out var tasks))
-            {
-                var randomTask = tasks[Random.Range(0, tasks.Count)];
-                ScoreManager.instance.ChangeScore(currentTaskScores[randomTask], true);
-                NotificationManager.instance.ShowNotification(randomTask, currentTaskScores[randomTask], true);
-            }
-
-            Destroy(bullet.gameObject);
-            Destroy(gameObject);
-            return;
-        }*/
     }
     
     void OnTriggerEnter2D(Collider2D other)
