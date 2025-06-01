@@ -8,9 +8,11 @@ public class GunShoot : MonoBehaviour
     public AudioClip shootSound;
     public AudioSource audioSource;
 
-    private void Start() =>
+    private void Start()
+    {
         audioSource = GetComponent<AudioSource>();
-    
+    }
+
     private void Update()
     {
         if (!Keyboard.current.spaceKey.wasPressedThisFrame || !Camera.main) return;

@@ -22,8 +22,7 @@ public class NotificationManager : MonoBehaviour
 
 	public void ShowNotification(string cometTextValue, int score, bool positive)
 		=> CreateNotification(
-			$"Вы {(positive ? "сдали" : "не сдали")} " +
-			$"{cometTextValue} {(positive ? "+" : "-")}{score}!");
+			$"Вы {(positive ? "сдали" : "не сдали")} {cometTextValue} {(positive ? "+" : "-")}{score}!");
 
 	private void CreateNotification(string message)
 	{
