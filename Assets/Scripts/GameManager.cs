@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class GameManager : MonoBehaviour
 	private bool isGameOver;
 	private bool isPaused;
 	private bool automaticWin;
-	private bool nextLevelAvailable;
+	
+	private static readonly List<string> LevelsList = new()
+	{
+		"VVMLevel", "Term1Level", "Term2Level"
+	};
 
 	private void Start()
 	{
@@ -91,7 +96,7 @@ public class GameManager : MonoBehaviour
 
 			if (Input.GetKeyDown(KeyCode.Return))
 			{
-				if (nextLevelAvailable)
+				if (NextLevelAvailable())
 					LoadNextLevel();
 				else
 					ExitGame();
@@ -153,7 +158,7 @@ public class GameManager : MonoBehaviour
 				_ => 3
 			};
 		if (resultIndex != 0)
-			nextLevelAvailable = true;
+			MakeNextLevelAvailable();
 
 		foreach (var img in resultImages)
 			img.gameObject.SetActive(false);
@@ -176,17 +181,30 @@ public class GameManager : MonoBehaviour
 	
 	private void LoadNextLevel()
 	{
-		switch (gameObject.scene.name)
-		{
-			case "VVMLevel":
-				SceneManager.LoadScene("Term1Level");
-				break;
-			case "Term1Level":
-				SceneManager.LoadScene("Term2Level");
-				break;
-			case "Term2Level":
-				ExitGame();
-				break;
-		}
+		if (TryGetNextLevelName(out var nextLevelName))
+			SceneManager.LoadScene(nextLevelName);
+		else ExitGame();
+	}
+
+	private void MakeNextLevelAvailable()
+	{
+		if (TryGetNextLevelName(out var nextLevelName))
+			PlayerPrefs.SetInt($"IsAvailable_{nextLevelName}", 1);
+	}
+
+	private bool NextLevelAvailable()
+	{
+		if (TryGetNextLevelName(out var nextLevelName))
+			return PlayerPrefs.GetInt($"IsAvailable_{nextLevelName}", 0) == 1;
+		return false;
+	}
+
+	private bool TryGetNextLevelName(out string levelName)
+	{
+		levelName = null;
+		var nextLevelIndex = LevelsList.IndexOf(gameObject.scene.name) + 1;
+		if (nextLevelIndex >= LevelsList.Count) return false;
+		levelName = LevelsList[nextLevelIndex];
+		return true;
 	}
 }

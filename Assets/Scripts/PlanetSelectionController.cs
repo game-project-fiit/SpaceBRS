@@ -13,7 +13,6 @@ public class PlanetController : MonoBehaviour
 	public AudioClip rotateClip;
 	public AudioClip clickClip;
 
-
 	private readonly Dictionary<string, string> levelScenesByNames = new()
 	{
 		{ "ВВМ", "VVMLevel" },
@@ -21,8 +20,11 @@ public class PlanetController : MonoBehaviour
 		{ "2 семестр", "Term2Level" }
 	};
 
-    private void Start() =>
+	private void Start()
+	{
 		UpdatePlanetPositions();
+		PlayerPrefs.SetInt("IsAvailable_VVMLevel", 1);
+	}
 
     private void Update()
 	{
@@ -47,18 +49,21 @@ public class PlanetController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.Return))
 		{
 			AudioManager.Instance.PlaySVX(clickClip);
-			LoadSelectedPlanetLevel();
+			TryLoadSelectedPlanetLevel();
 		}
 
 		if (Input.GetKeyDown(KeyCode.F))
 			ResetCurrentPlanetRecord();
 	}
 
-	private void LoadSelectedPlanetLevel()
+	private void TryLoadSelectedPlanetLevel()
 	{
 		var level = planets[0].name;
 		if (levelScenesByNames.TryGetValue(level, out var sceneName))
-			SceneManager.LoadScene(sceneName);
+		{
+			if (PlayerPrefs.GetInt($"IsAvailable_{sceneName}", 0) == 1)
+				SceneManager.LoadScene(sceneName);
+		}
 		else
 			Debug.LogError($"No scene found for level: {level}");
 	}
