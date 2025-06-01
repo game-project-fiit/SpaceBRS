@@ -105,6 +105,9 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 0;
 		pausePanel.SetActive(true);
 		gamePanel.SetActive(false);
+
+		if (cometSpawner != null)
+			cometSpawner.StopSpawning();
 	}
 
 	private void ResumeGame()
@@ -113,6 +116,12 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 1;
 		pausePanel.SetActive(false);
 		gamePanel.SetActive(true);
+
+		if (cometSpawner != null)
+		{
+			cometSpawner.StopSpawning();
+			cometSpawner.StartSpawning();
+		}
 	}
 
 	private void EndGame()
@@ -153,7 +162,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LevelsMenu");
 		Time.timeScale = 1f;
     }
-		
 	
 	private void LoadNextLevel()
 	{
