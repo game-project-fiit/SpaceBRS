@@ -131,7 +131,18 @@ public class GameManager : MonoBehaviour
 		cometSpawner.ClearAllComets();
 
 		var finalScore = ScoreManager.instance.GetScore();
+		var currentScene = gameObject.scene.name;
+		var prefsKey = $"BestScore_{currentScene}";
+		var oldBest = PlayerPrefs.GetInt(prefsKey, 0);
+
+		if (finalScore > oldBest)
+		{
+			PlayerPrefs.SetInt(prefsKey, finalScore);
+			PlayerPrefs.Save();
+		}
+
 		ScoreManager.instance.ResetScore();
+
 		var resultIndex = automaticWin
 			? 4
 			: finalScore switch

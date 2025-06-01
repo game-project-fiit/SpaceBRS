@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -17,10 +16,8 @@ public class ScoreManager : MonoBehaviour
 	private void Awake()
 	{
 		if (!instance)
-		{
 			instance = this;
-			//DontDestroyOnLoad(gameObject);
-		}
+		
 		else
 			Destroy(gameObject);
 	}
@@ -34,6 +31,8 @@ public class ScoreManager : MonoBehaviour
 	public void ChangeScore(int amount, bool positive)
 	{
 		score += positive ? amount : -amount;
+		score = Mathf.Clamp(score, 0, 100);
+
 		UpdateScoreText();
 		PlaySound(
 			positive ? scoreSound : decreasingScoreSound,
