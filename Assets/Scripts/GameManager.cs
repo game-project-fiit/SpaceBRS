@@ -207,4 +207,6 @@ public class GameManager : MonoBehaviour
 		levelName = LevelsList[nextLevelIndex];
 		return true;
 	}
+	
+	public bool IsGameActive() => isGameActive;
 }

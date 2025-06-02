@@ -7,6 +7,7 @@ public class GunShoot : MonoBehaviour
     public RectTransform firePoint;
     public AudioClip shootSound;
     public AudioSource audioSource;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class GunShoot : MonoBehaviour
 
     private void Update()
     {
-        if (!Keyboard.current.spaceKey.wasPressedThisFrame || !Camera.main) return;
+        if (!Keyboard.current.spaceKey.wasPressedThisFrame || !Camera.main || !gameManager.IsGameActive()) return;
 
         var screenPosition = firePoint.position;
         screenPosition.z = Mathf.Abs(Camera.main.transform.position.z);
