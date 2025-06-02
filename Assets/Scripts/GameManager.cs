@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 	public Slider timeSlider;
 	public Image[] resultImages;
 	public TextMeshProUGUI tapEnterText;
+	public TextMeshProUGUI tapExitText;
 	public AudioClip gameOverSound;
 	public AudioClip victorySound;
 	private AudioSource audioSource;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
 			img.gameObject.SetActive(false);
 
 		tapEnterText.gameObject.SetActive(false);
+		tapExitText.gameObject.SetActive(false);
 		pausePanel.SetActive(false);
 		gamePanel.SetActive(true);
 
@@ -94,13 +96,8 @@ public class GameManager : MonoBehaviour
 			if (Input.GetKeyDown(KeyCode.Escape))
 				ExitGame();
 
-			if (Input.GetKeyDown(KeyCode.Return))
-			{
-				if (NextLevelAvailable())
-					LoadNextLevel();
-				else
-					ExitGame();
-			}
+			if (Input.GetKeyDown(KeyCode.Return) && NextLevelAvailable())
+				LoadNextLevel();
 		}
 	}
 
@@ -164,8 +161,9 @@ public class GameManager : MonoBehaviour
 			img.gameObject.SetActive(false);
 
 		resultImages[resultIndex].gameObject.SetActive(true);
-		tapEnterText.gameObject.SetActive(true);
-		tapEnterText.text = "Tap Enter";
+		if (NextLevelAvailable())
+			tapEnterText.gameObject.SetActive(true);
+		tapExitText.gameObject.SetActive(true);
 
 		audioSource.PlayOneShot(finalScore < 40 ? gameOverSound : victorySound);
 

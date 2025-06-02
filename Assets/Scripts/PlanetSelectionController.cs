@@ -97,12 +97,12 @@ public class PlanetController : MonoBehaviour
 		{
             var best = PlayerPrefs.GetInt($"BestScore_{sceneName}", 0);
             var available = PlayerPrefs.GetInt($"IsAvailable_{sceneName}", 0);
-            unavailablePlanetText.text = available > 0 ? null : "Unavailable!";
-			bestScoreText.text = $"Best: {best}";
+            unavailablePlanetText.text = available > 0 ? null : "Недоступно!";
+			bestScoreText.text = $"Рекорд: {best}";
         }
 
         else
-			bestScoreText.text = "Best: 0";
+			bestScoreText.text = "Рекорд: 0";
     }
 
 	private void ResetCurrentPlanetRecord()
@@ -116,7 +116,7 @@ public class PlanetController : MonoBehaviour
 			PlayerPrefs.DeleteKey(prefsKey);
 			PlayerPrefs.Save();
 
-            bestScoreText.text = "Best: 0";
+            bestScoreText.text = "Рекорд: 0";
         }
     }
 }
