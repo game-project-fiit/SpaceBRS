@@ -17,11 +17,21 @@ public class PlayerAnimator : MonoBehaviour
 
 	void Update()
 	{
-		var left = Input.GetKey(KeyCode.A);
-		var right = Input.GetKey(KeyCode.D);
-		var run = left || right;
+		var controlScheme = HotkeysPanelController.GetControlScheme();
+		bool left, right;
 
-		animator.SetBool("isRunning", run);
+		if (controlScheme == "Arrows")
+		{
+			left = Input.GetKey(KeyCode.LeftArrow);
+			right = Input.GetKey(KeyCode.RightArrow);
+		}
+		else
+		{
+			left = Input.GetKey(KeyCode.A);
+			right = Input.GetKey(KeyCode.D);
+		}
+
+		animator.SetBool("isRunning", left || right);
 
 		if (right)
 			image.rectTransform.localScale = new(-1, 1, 1);

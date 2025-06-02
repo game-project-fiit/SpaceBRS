@@ -35,10 +35,24 @@ public class RotatingRadiusMover : MonoBehaviour
     void Update()
     {
         var input = 0f;
-        if (Keyboard.current.aKey.isPressed)
-            input += 1f;
-        if (Keyboard.current.dKey.isPressed)
-            input -= 1f;
+
+        var controlScheme = HotkeysPanelController.GetControlScheme();
+
+        if (controlScheme == "WASD")
+        {
+            if (Keyboard.current.aKey.isPressed)
+                input -= 1f;
+            if (Keyboard.current.dKey.isPressed)
+                input += 1f;
+        }
+        else if (controlScheme == "Arrows")
+        {
+            if (Keyboard.current.leftArrowKey.isPressed)
+                input -= 1f;
+            if (Keyboard.current.rightArrowKey.isPressed)
+                input += 1f;
+        }
+
         if (input == 0f && planetRotator.rotationSpeed == 0f) return;
 
         var playerDeltaDegree = angularSpeed * input * Time.deltaTime;
@@ -54,7 +68,7 @@ public class RotatingRadiusMover : MonoBehaviour
                                            || newScreen.y < 0f || newScreen.y > Screen.height;
 
         if (outOfBounds) return;
-        
+
         direction = candidateDirection;
         ((RectTransform)transform).position = newScreen;
         transform.up = direction;
