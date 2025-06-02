@@ -110,6 +110,13 @@ public class GameManager : MonoBehaviour
 
 		if (cometSpawner != null)
 			cometSpawner.StopSpawning();
+
+		foreach (var comet in GameObject.FindGameObjectsWithTag("Comet"))
+		{
+			var label = comet.GetComponentInChildren<TextMeshProUGUI>();
+			if (label != null)
+				label.enabled = false;
+		}
 	}
 
 	private void ResumeGame()
@@ -124,7 +131,14 @@ public class GameManager : MonoBehaviour
 			cometSpawner.StopSpawning();
 			cometSpawner.StartSpawning();
 		}
-	}
+
+        foreach (var comet in GameObject.FindGameObjectsWithTag("Comet"))
+        {
+            var label = comet.GetComponentInChildren<TextMeshProUGUI>();
+            if (label != null)
+                label.enabled = true;
+        }
+    }
 
 	private void EndGame()
 	{
