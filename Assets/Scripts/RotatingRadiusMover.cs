@@ -55,7 +55,7 @@ public class RotatingRadiusMover : MonoBehaviour
 
         if (input == 0f && planetRotator.rotationSpeed == 0f) return;
 
-        var playerDeltaDegree = angularSpeed * input * Time.deltaTime;
+        var playerDeltaDegree = -angularSpeed * input * Time.deltaTime;
         var spineDeltaDegree = planetRotator.rotationSpeed * Time.deltaTime;
         var totalDegree = playerDeltaDegree + spineDeltaDegree;
 
