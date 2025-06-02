@@ -57,7 +57,7 @@ public class RadiusMoverTerm2 : MonoBehaviour
 		if (input == 0f && randomPlanetRotator.rotationSpeed == 0f)
 			return;
 
-		var playerDeltaDegree = angularSpeed * input * Time.deltaTime;
+		var playerDeltaDegree = -angularSpeed * input * Time.deltaTime;
 		var spineDeltaDegree = randomPlanetRotator.rotationSpeed * Time.deltaTime;
 		var totalDegree = playerDeltaDegree + spineDeltaDegree;
 

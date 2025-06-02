@@ -33,9 +33,9 @@ public class PlayerAnimator : MonoBehaviour
 
 		animator.SetBool("isRunning", left || right);
 
-		if (left)
+		if (right)
 			image.rectTransform.localScale = new(-1, 1, 1);
-		else if (right)
+		else if (left)
 			image.rectTransform.localScale = Vector3.one;
 
 		if (Input.GetKeyDown(KeyCode.Space))
